@@ -4,6 +4,7 @@ if not present then
 end
 
 require('telescope').load_extension('media_files')
+-- require('telescope').extensions.packer.plugins(opts)
 telescope.setup {
    defaults = {
       vimgrep_arguments = {
