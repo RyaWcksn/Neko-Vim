@@ -11,3 +11,4 @@ nvim +PackerSync
   * Live grep
   * Git integration 
   * Org mode and Vim wiki for note taking
+  * Images using Telescope
