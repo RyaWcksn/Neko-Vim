@@ -63,5 +63,6 @@ return require('packer').startup(function()
   use  "ray-x/lsp_signature.nvim"
   use 'skywind3000/vim-quickui'
   use 'tpope/vim-fugitive'
+  use 'nvim-telescope/telescope-packer.nvim'
 
 end)
