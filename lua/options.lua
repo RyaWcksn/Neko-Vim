@@ -1,0 +1,25 @@
+local opt = vim.opt
+local g = vim.g
+
+opt.undofile = true
+opt.ruler = false
+opt.hidden = true
+opt.ignorecase = true
+opt.splitbelow = true
+opt.splitright = true
+opt.termguicolors = true
+opt.cul = true
+opt.mouse = "a"
+opt.signcolumn = "yes"
+opt.cmdheight = 1
+opt.updatetime = 250 -- update interval for gitsigns
+opt.timeoutlen = 400
+opt.clipboard = "unnamedplus"
+opt.foldmethod = "manual"
+opt.number = true
+opt.numberwidth = 2
+opt.relativenumber = true
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
+g.completeopts = "menu,menuone,noselect,noinsert"

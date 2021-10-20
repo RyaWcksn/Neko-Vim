@@ -1,0 +1,33 @@
+local opt = {}
+vim.g.mapleader = " "
+local map = vim.api.nvim_set_keymap
+map('i', 'jk', '<esc>', opt)
+map('n', '<Leader>h', '<C-w>h', opt)
+map('n', '<Leader>j', '<C-w>j', opt)
+map('n', '<Leader>k', '<C-w>k', opt)
+map('n', '<Leader>l', '<C-w>l', opt)
+map('n', '<Leader>o', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<Leader>p', ':BufferLineCycleNext<CR>', opt)
+map('n', '<Leader>v', ':vs<CR>', opt)
+map('n', '<Leader>b', ':sp<CR>', opt)
+map('n', '<C-c>', ':bd<CR>', opt)
+map('n', '<Leader>ff', ':NvimTreeToggle<CR>', opt)
+map('n', '<Leader>z', '<cmd>nohlsearch<CR>', opt)
+map('n', '<Leader>w', ':w<CR>', opt)
+map('n', '<Leader>q', ':q<CR>', opt)
+map("n", ";", ":", opt)
+map("n", "<leader>.", "<cmd>Telescope find_files<CR>", opt)
+map("n", "<leader>f", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
+map("n", "<leader>:", "<cmd>Telescope commands<CR>", opt)
+map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opt)
+map("n", "<leader>pi", ":PackerInstall<CR>", opt)
+map("n", "<leader>ps", ":PackerSync<CR>", opt)
+map("n", "<leader>td", ":lua package.loaded.presence:update()<CR>", opt)
+map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+map("t", "jk", "<C-\\><C-n>", opt)
+map("i", "<F2>", "<Esc>:FloatermToggle<CR>", opt)
+map("n", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
+map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
+map("n", "tZ", ":FloatermUpdate --width=0.8 --height=0.8<CR>", opt)
+map("n", "<leader>zz", ":ZenMode<CR>", opt)
+vim.g.onedark_toggle_style_keymap = '<Leader>tc'
