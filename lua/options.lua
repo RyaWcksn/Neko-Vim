@@ -23,3 +23,5 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 g.completeopts = "menu,menuone,noselect,noinsert"
+g.tokyonight_style = "night"
+g.tokyonight_terminal_colors = true
