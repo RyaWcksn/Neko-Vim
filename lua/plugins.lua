@@ -60,5 +60,8 @@ return require('packer').startup(function()
         end,
       }
   use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+  use  "ray-x/lsp_signature.nvim"
+  use 'skywind3000/vim-quickui'
+  use 'tpope/vim-fugitive'
 
 end)

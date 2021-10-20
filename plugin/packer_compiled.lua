@@ -109,6 +109,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/headlines.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
@@ -194,9 +198,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-floaterm"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
   ["vim-multiple-cursors"] = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
+  },
+  ["vim-quickui"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-quickui"
   },
   ["vim-vsnip"] = {
     loaded = true,
@@ -228,11 +240,11 @@ time([[Config for headlines.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardNewFile lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardNewFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardJumpMarks lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardJumpMarks", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SessionLoad lua require("packer.load")({'dashboard-nvim'}, { cmd = "SessionLoad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SessionSave lua require("packer.load")({'dashboard-nvim'}, { cmd = "SessionSave", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dashboard lua require("packer.load")({'dashboard-nvim'}, { cmd = "Dashboard", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardNewFile lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardNewFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardJumpMarks lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardJumpMarks", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 if should_profile then save_profiles() end
