@@ -1,5 +1,7 @@
 <h1 align="center">Neko Vim (Nvim)</h1>
 
+## Installation
+
 - Linux and MacOS 
   
 ``` shell
@@ -22,6 +24,8 @@ for /f "delims=" %x in ('dir /b /ad .') do rd /s /q "%x"
 cd %userprofile%\AppData\Local
 git clone https://github.com/AyaWcksn/neovim-configuration nvim
 ```
+
+## Features
 
 - Depedencies :
   - NodeJs 
