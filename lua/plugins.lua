@@ -66,5 +66,34 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-packer.nvim'
   use 'mangeshrex/uwu.vim'
   use 'ntk148v/vim-horizon'
-
+  use 'lewis6991/gitsigns.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  -- use "tversteeg/registers.nvim"
+  use 'lambdalisue/suda.vim'
+  use "norcalli/nvim-colorizer.lua"
+  use {
+      "NTBBloodbath/rest.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("rest-nvim").setup({
+          -- Open request results in a horizontal split
+          result_split_horizontal = false,
+          -- Skip SSL verification, useful for unknown certificates
+          skip_ssl_verification = false,
+          -- Highlight request on run
+          highlight = {
+            enabled = true,
+            timeout = 150,
+          },
+          -- Jump to request line on run
+          jump_to_request = false,
+        })
+      end
+    }
+  use {'stevearc/gkeep.nvim', run = ':UpdateRemotePlugins'}
+  use {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter"
+      }
+  use 'michaelb/sniprun'
 end)
