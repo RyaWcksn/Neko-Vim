@@ -12,3 +12,4 @@ nvim +PackerSync
   * Git integration 
   * Org mode and Vim wiki for note taking
   * Images using Telescope
+  * Termux integration
