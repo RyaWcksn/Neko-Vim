@@ -31,7 +31,6 @@ return require('packer').startup(function()
   use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
   use 'glepnir/dashboard-nvim'
-  -- use "mhinz/vim-startify"
   use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
