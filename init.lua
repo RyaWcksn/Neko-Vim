@@ -3,6 +3,7 @@ local cmd = vim.cmd
 require('mappings')
 require('options')
 require('plugins')
+require('autocmd')
 require('plugins/treesitter')
 require('plugins/lualine')
 require('plugins/bufferline')
@@ -23,5 +24,10 @@ require('plugins/truezen')
 require('plugins/bullet')
 require('plugins/headline')
 require('plugins/lsp-signature')
+require('plugins/gitsigns')
+require('plugins/nvim-gps')
+require('plugins/sniprun')
+-- require('plugins/indentline')
 -- require('plugins/quickui')
-cmd[[colorscheme tokyonight]]
+cmd[[colorscheme horizon]]
+
