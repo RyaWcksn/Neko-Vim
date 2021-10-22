@@ -29,3 +29,4 @@ require('plugins/sniprun')
 -- require('plugins/indentline')
 -- require('plugins/quickui')
 cmd[[colorscheme horizon]]
+
