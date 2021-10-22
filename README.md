@@ -13,3 +13,4 @@ nvim +PackerSync
   * Org mode and Vim wiki for note taking
   * Images using Telescope
   * Termux integration
+  * Test
