@@ -64,5 +64,7 @@ return require('packer').startup(function()
   use 'skywind3000/vim-quickui'
   use 'tpope/vim-fugitive'
   use 'nvim-telescope/telescope-packer.nvim'
+  use 'mangeshrex/uwu.vim'
+  use 'ntk148v/vim-horizon'
 
 end)

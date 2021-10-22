@@ -24,4 +24,4 @@ require('plugins/bullet')
 require('plugins/headline')
 require('plugins/lsp-signature')
 -- require('plugins/quickui')
-cmd[[colorscheme tokyonight]]
+cmd[[colorscheme horizon]]

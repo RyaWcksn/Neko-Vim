@@ -31,7 +31,11 @@ map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term 
 map("t", "jk", "<C-\\><C-n>", opt)
 map("i", "<F2>", "<Esc>:FloatermToggle<CR>", opt)
 map("n", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
-map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 map("n", "tZ", ":FloatermUpdate --width=0.8 --height=0.8<CR>", opt)
+map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 map("n", "<leader>zz", ":ZenMode<CR>", opt)
+map("n", "<A-h>", "<ESC>:<<<CR>", opt)
+map("n", "<A-j>", "<ESC>:m. +1<CR>", opt)
+map("n", "<A-k>", "<ESC>:m. -2<CR>", opt)
+map("n", "<A-l>", "<ESC>:>><CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
