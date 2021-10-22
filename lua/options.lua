@@ -23,3 +23,5 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 g.completeopts = "menu,menuone,noselect,noinsert"
+g.vimwiki_listsyms = "✗○◐●✓"
+g.indentLine_fileTypeExclude = 'dashboard'

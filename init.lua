@@ -3,6 +3,7 @@ local cmd = vim.cmd
 require('mappings')
 require('options')
 require('plugins')
+require('autocmd')
 require('plugins/treesitter')
 require('plugins/lualine')
 require('plugins/bufferline')

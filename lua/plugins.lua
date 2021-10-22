@@ -30,19 +30,7 @@ return require('packer').startup(function()
   use 'L3MON4D3/LuaSnip'
   use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
-  use {
-      "glepnir/dashboard-nvim",
-      cmd = {
-        "Dashboard",
-        "DashboardNewFile",
-        "DashboardJumpMarks",
-        "SessionLoad",
-        "SessionSave"
-      },
-      setup = function()
-      require "plugins.dashboard"
-      end
-      }
+  use 'glepnir/dashboard-nvim'
   -- use "mhinz/vim-startify"
   use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
@@ -96,4 +84,5 @@ return require('packer').startup(function()
       requires = "nvim-treesitter/nvim-treesitter"
       }
   use 'michaelb/sniprun'
+  use 'mattn/calendar-vim'
 end)
