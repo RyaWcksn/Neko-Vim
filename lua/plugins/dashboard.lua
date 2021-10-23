@@ -34,6 +34,6 @@ g.dashboard_custom_section = {
 }
 
 g.dashboard_custom_footer = {
-    "   ",
-    "> Neko Vim <"
+    "  (=^･ω･^=)  ",
+    "> Neko  Vim <"
 }
