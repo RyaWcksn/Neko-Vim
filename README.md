@@ -45,6 +45,7 @@ git clone https://github.com/AyaWcksn/neovim-configuration nvim
   - Termux integration
 
 - Work in progress
+ 
 | Feature                    | Status   |
 |----------------------------|----------|
 | Debugging                  | Progress |

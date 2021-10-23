@@ -1,4 +1,4 @@
-<h1 align="center"> Keymaps ⌨️h </h1>
+<h1 align="center"> Keymaps ⌨️  </h1>
 
 | Keymaps         | Commands                                      |
 |-----------------|-----------------------------------------------|
