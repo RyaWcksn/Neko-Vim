@@ -25,5 +25,5 @@ require("nvim-gps").setup({
 		--	}
 		--}
 	},
-	separator = '  ',
+	separator = ' >> ',
 })

@@ -63,4 +63,5 @@ return require('packer').startup(function()
       }
   use 'mattn/calendar-vim'
   use 'jlesquembre/nterm.nvim'
+  use 'hrsh7th/vim-vsnip'
 end)

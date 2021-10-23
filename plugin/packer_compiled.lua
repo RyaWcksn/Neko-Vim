@@ -243,6 +243,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
   },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
   vimwiki = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vimwiki"
@@ -254,14 +258,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: headlines.nvim
 time([[Config for headlines.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14headlines\frequire\0", "config", "headlines.nvim")
 time([[Config for headlines.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 if should_profile then save_profiles() end
 
 end)

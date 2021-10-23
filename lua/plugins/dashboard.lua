@@ -30,7 +30,8 @@ g.dashboard_custom_section = {
     c = {description = {"  Find Word                 SPC f w"}, command = "Telescope live_grep"},
     d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
     e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
-    f = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"}
+    f = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"},
+    g = {description = {"  Edit NekoRc file          SPC e n"}, command = ":e ~/.config/nvim/lua/nekorc.lua"}
 }
 
 g.dashboard_custom_footer = {
