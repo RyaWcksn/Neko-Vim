@@ -1,5 +1,9 @@
 <h1 align="center">Neko Vim (Nvim)</h1>
 
+
+<img src="./images/Dashboard.png" align="center"></img>
+
+
 ## Installation
 
 - Linux and MacOS 
