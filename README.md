@@ -44,3 +44,20 @@ git clone https://github.com/AyaWcksn/neovim-configuration nvim
   - Images using Telescope
   - Termux integration
 
+- Work in progress
+| Feature                    | Status   |
+|----------------------------|----------|
+| Debugging                  | Progress |
+| Work in termux and windows | Done     |
+
+## How to use 
+
+It's just basic typical neovim configuration just like other 
+Y for copy whole line, y for copy, p for paste, h/j/k/l for movement, etc
+You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands mapping keys
+
+## Screenshoots
+
+-- Soon --
+
+
