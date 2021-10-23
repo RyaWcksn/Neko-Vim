@@ -32,9 +32,7 @@ return require('packer').startup(function()
   use 'L3MON4D3/LuaSnip'
   use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
-  use {
-    'glepnir/dashboard-nvim',
-  }
+  use 'glepnir/dashboard-nvim'
   use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
@@ -89,3 +87,16 @@ return require('packer').startup(function()
   use 'michaelb/sniprun'
   use 'mattn/calendar-vim'
 end)
+require("plugins.modules.truezen")
+require("plugins.modules.autopairs")
+require("plugins.modules.bufferline")
+require("plugins.modules.cmp")
+require("plugins.modules.cmp-tabnine")
+require("plugins.modules.comment")
+require("plugins.modules.dashboard")
+require("plugins.modules.gitsigns")
+require("plugins.modules.indentline")
+require("plugins.modules.lsp-signature")
+require("plugins.modules.lspconfig")
+require("plugins.modules.lspinstall")
+require("plugins.modules.lualine")
