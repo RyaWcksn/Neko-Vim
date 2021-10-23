@@ -18,7 +18,6 @@ map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", 
 map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
-
 map('i', 'jk', '<esc>', opt)
 map('n', '<Leader>h', '<C-w>h', opt)
 map('n', '<Leader>j', '<C-w>j', opt)
