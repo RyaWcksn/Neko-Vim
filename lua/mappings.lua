@@ -1,6 +1,24 @@
 local opt = {}
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
+
+
+map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
+map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opt)
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
+map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
+map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
+map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
+map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
+map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opt)
+map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
+map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
+map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
+
 map('i', 'jk', '<esc>', opt)
 map('n', '<Leader>h', '<C-w>h', opt)
 map('n', '<Leader>j', '<C-w>j', opt)
