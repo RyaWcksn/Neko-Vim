@@ -88,4 +88,5 @@ return require('packer').startup(function()
       }
   use 'michaelb/sniprun'
   use 'mattn/calendar-vim'
+  use 'jlesquembre/nterm.nvim'
 end)
