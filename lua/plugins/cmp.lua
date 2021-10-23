@@ -8,11 +8,6 @@ vim.opt.completeopt = "menuone,noselect"
 
 -- nvim-cmp setup
 cmp.setup {
-   snippet = {
-      expand = function(args)
-         require("luasnip").lsp_expand(args.body)
-      end,
-   },
    formatting = {
       format = function(entry, vim_item)
          vim_item.menu = ({
@@ -90,10 +85,18 @@ cmp.setup {
       { name = "nvim_lua" },
       { name = "orgmode" },
       { name = "cmp_tabnine" },
+      { name = "crates" },
+      { name = "treesitter" },
+      { name = "calc" },
+      { name = "emoji" },
    },
    snippet = {
      expand = function(args)
        require("luasnip").lsp_expand(args.body)
      end,
+   },
+   experimental = {
+     ghost_text = true,
+     native_menu = false
    }
 }

@@ -1,4 +1,4 @@
-local opt = {}
+local opt = {noremap = true, silent = true}
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 
@@ -111,7 +111,16 @@ map("n", "<A-9>", ":BufferLineGoToBuffer 9<CR>", opt)
 map("n", "<A-0>", ":BufferLineGoToBuffer 0<CR>", opt)
 map("n", "<leader>tn", ":enew<CR>", opt)
 
+-- Indent line
+map("n", "<leader>ii", ":IndentBlanklineEnable<CR>", opt)
+map("n", "<leader>iI", ":IndentBlanklineDisable<CR>", opt)
+
 -- Gitsigns
 map("n", "<Leader>m", ":Gitsigns toggle_current_line_blame<CR>", opt)
 
+-- NekoRc
+map("n", "<Leader>en", ":e ~/.config/nvim/lua/nekorc.lua<CR>", opt)
+
+-- Tab in markdown
+map("n", "<Leader>tm", ":VimwikiTable", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
