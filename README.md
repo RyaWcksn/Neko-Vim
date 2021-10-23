@@ -43,3 +43,4 @@ git clone https://github.com/AyaWcksn/neovim-configuration nvim
   - Org mode and Vim wiki for note taking
   - Images using Telescope
   - Termux integration
+
