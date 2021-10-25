@@ -27,3 +27,4 @@ require('plugins/nvim-gps')
 require('plugins/indentline')
 cmd[[colorscheme tokyonight]]
 vim.lsp.set_log_level("debug")
+

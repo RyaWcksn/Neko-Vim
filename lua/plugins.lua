@@ -1,3 +1,16 @@
+vim.cmd 'autocmd BufwritePost plugins.lua PackerCompile'
+
+require('packer').init({display = {auto_clean = false}})
+
+local packer = require('packer');
+
+packer.init {
+    display = {
+        open_fn = function()
+            return require("packer.util").float { border = "single" }
+        end,
+    },
+}
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -19,6 +32,7 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope.nvim'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-calc'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
@@ -64,4 +78,5 @@ return require('packer').startup(function()
   use 'mattn/calendar-vim'
   use 'jlesquembre/nterm.nvim'
   use 'hrsh7th/vim-vsnip'
+  -- use 'hrsh7th/cmp-vsnip'
 end)

@@ -28,7 +28,6 @@ local servers = {
                   'bashls', 
                   'dockerls', 
                   'phpactor', 
-                  'pylsp', 
                   'sqls', 
                   'solargraph', 
                   'jsonls',

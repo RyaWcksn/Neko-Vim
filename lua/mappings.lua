@@ -89,10 +89,10 @@ map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 map("n", "<leader>zz", ":ZenMode<CR>", opt)
 
 -- Using Alt and Movement key for moving line
-map("v", "<A-h>", "<gv", opt)
-map("v", "<A-j>", "<ESC>:m. +1<CR>", opt)
-map("v", "<A-k>", "<ESC>:m. -2<CR>", opt)
-map("v", "<A-l>", ">gv", opt)
+map("n", "<A-h>", "<<", opt)
+map("n", "<A-j>", "<ESC>:m. +1<CR>", opt)
+map("n", "<A-k>", "<ESC>:m. -2<CR>", opt)
+map("n", "<A-l>", ">>", opt)
 
 -- Buffer switch
 map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opt)
