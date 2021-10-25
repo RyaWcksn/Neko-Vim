@@ -93,3 +93,7 @@ also with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) f
 <img src="./images/Signature.png" align="center"></img>
 
 There's also included [Lsp-signature](https://github.com/ray-x/lsp_signature.nvim) for nice touch in the code!
+
+- LSP Language
+
+For the language server, i'm using [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer), you can look at there how to install language server
