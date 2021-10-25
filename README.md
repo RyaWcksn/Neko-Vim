@@ -61,6 +61,21 @@ You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands m
 
 ## Screenshoots
 
--- Soon --
+- Git
 
+<img src="./images/LazyGit.png" align="center"></img>
 
+I'm using LazyGit for my git related stuff  
+Cherry-picking, commits, push, pull, etc
+
+- LSP
+
+<img src="./images/Autocompletion.png" align="center"></img>
+
+I'm using [vim-cmp](https://github.com/hrsh7th/nvim-cmp) as completion plugin  
+and [Luasnip](https://github.com/L3MON4D3/LuaSnip) as snippet plugin  
+also with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) for my snippets management
+
+<img src="./images/Autocompletion.png" align="center"></img>
+
+There's also included [Lsp-signature](https://github.com/ray-x/lsp_signature.nvim) for nice touch in the code!
