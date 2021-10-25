@@ -9,6 +9,12 @@
 
 </div>
 
+<div align="center">
+ <a href="https://github.com/AyaWcksn/Neko-Vim/tree/master#installation"> Installation 💻 </a>
+ <span> 🐾 </span>
+ <a href="https://github.com/AyaWcksn/Neko-Vim/blob/master/docs/KEYMAPS.md"> Keymaps ⌨️ </a>
+</div>
+
 Neovim distribution created by Lua programming language  
 Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)
 
