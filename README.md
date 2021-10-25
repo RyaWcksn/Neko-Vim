@@ -9,7 +9,9 @@
 - Linux and MacOS 
   
 ``` shell
-cd .config && mv nvim nvim.bak && git clone https://github.com/AyaWcksn/neovim-configuration.git nvim
+cd .config  
+mv nvim nvim.bak  
+git clone https://github.com/AyaWcksn/neovim-configuration.git nvim
 ```
 
 ``` shell
