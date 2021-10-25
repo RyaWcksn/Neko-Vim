@@ -79,7 +79,7 @@ You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands m
 
 <img src="./images/LazyGit.png" align="center"></img>
 
-I'm using LazyGit for my git related stuff  
+I'm using [LazyGit](https://github.com/jesseduffield/lazygit) for my git related stuff  
 Cherry-picking, commits, push, pull, etc
 
 - LSP
