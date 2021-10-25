@@ -3,6 +3,20 @@
 
 <img src="./images/Dashboard.png" align="center"></img>
 
+<div align="center">
+
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
+
+</div>
+
+<div align="center">
+ <a href="https://github.com/AyaWcksn/Neko-Vim/tree/master#installation"> Installation 💻 </a>
+ <span> 🐾 </span>
+ <a href="https://github.com/AyaWcksn/Neko-Vim/blob/master/docs/KEYMAPS.md"> Keymaps ⌨️ </a>
+</div>
+
+Neovim distribution created by Lua programming language  
+Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)
 
 ## Installation
 
@@ -61,6 +75,21 @@ You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands m
 
 ## Screenshoots
 
--- Soon --
+- Git
 
+<img src="./images/LazyGit.png" align="center"></img>
 
+I'm using LazyGit for my git related stuff  
+Cherry-picking, commits, push, pull, etc
+
+- LSP
+
+<img src="./images/Autocompletion.png" align="center"></img>
+
+I'm using [vim-cmp](https://github.com/hrsh7th/nvim-cmp) as completion plugin  
+and [Luasnip](https://github.com/L3MON4D3/LuaSnip) as snippet plugin  
+also with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) for my snippets management
+
+<img src="./images/Signature.png" align="center"></img>
+
+There's also included [Lsp-signature](https://github.com/ray-x/lsp_signature.nvim) for nice touch in the code!
