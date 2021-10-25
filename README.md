@@ -3,6 +3,14 @@
 
 <img src="./images/Dashboard.png" align="center"></img>
 
+<div align="center">
+
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
+
+</div>
+
+Neovim distribution created by Lua programming language  
+Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)
 
 ## Installation
 
@@ -76,6 +84,6 @@ I'm using [vim-cmp](https://github.com/hrsh7th/nvim-cmp) as completion plugin
 and [Luasnip](https://github.com/L3MON4D3/LuaSnip) as snippet plugin  
 also with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) for my snippets management
 
-<img src="./images/Autocompletion.png" align="center"></img>
+<img src="./images/Signature.png" align="center"></img>
 
 There's also included [Lsp-signature](https://github.com/ray-x/lsp_signature.nvim) for nice touch in the code!
