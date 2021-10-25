@@ -8,7 +8,7 @@ require('nekorc')
 require('plugins/treesitter')
 require('plugins/lualine')
 require('plugins/bufferline')
--- require('plugins/onedark')
+require('plugins/onedark')
 require('plugins/cmp')
 require('plugins/cmp-tabnine')
 -- require('plugins/lspinstall')
@@ -31,4 +31,7 @@ require('luasnip/loaders/from_vscode').lazy_load()
 -- require('plugins/navigator')
 -- require('plugins/go')
 require('plugins/lsp-server-install')
-cmd[[colorscheme tokyonight]]
+-- cmd[[colorscheme tokyonight]]
+-- vim.g.tokyonight_style = "storm"
+-- vim.g.tokyonight_italic_functions = true
+-- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
