@@ -2,7 +2,7 @@ local gps = require("nvim-gps")
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'tokyonight',
+    theme = 'horizon',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}

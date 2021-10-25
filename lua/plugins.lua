@@ -40,7 +40,7 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  -- use 'kabouzeid/nvim-lspinstall'
   use 'onsails/lspkind-nvim'
   use 'windwp/nvim-autopairs'
   use 'L3MON4D3/LuaSnip'
@@ -78,5 +78,8 @@ return require('packer').startup(function()
   use 'mattn/calendar-vim'
   use 'jlesquembre/nterm.nvim'
   use 'hrsh7th/vim-vsnip'
+  use 'williamboman/nvim-lsp-installer'
+  -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
   -- use 'hrsh7th/cmp-vsnip'
+  use "rafamadriz/friendly-snippets"
 end)
