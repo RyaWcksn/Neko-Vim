@@ -11,7 +11,7 @@
 
 <div align="center">
  <a href="https://github.com/AyaWcksn/Neko-Vim/tree/master#installation"> Installation 💻 </a>
- <span> 🐾 </span>
+ <span>  </span>
  <a href="https://github.com/AyaWcksn/Neko-Vim/blob/master/docs/KEYMAPS.md"> Keymaps ⌨️ </a>
 </div>
 
