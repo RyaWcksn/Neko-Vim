@@ -124,4 +124,7 @@ map("n", "<Leader>en", ":e ~/.config/nvim/lua/nekorc.lua<CR>", opt)
 
 -- Tab in markdown
 map("n", "<Leader>tm", ":VimwikiTable", opt)
+
+-- LazyGit
+map("n", "<Leader>gg", ":LazyGit<CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
