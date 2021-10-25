@@ -26,9 +26,9 @@ require('plugins/gitsigns')
 require('plugins/nvim-gps')
 require('plugins/indentline')
 require('plugins/luasnip')
+require('plugins/lazygit')
 require('luasnip/loaders/from_vscode').lazy_load()
 -- require('plugins/navigator')
 -- require('plugins/go')
 require('plugins/lsp-server-install')
-cmd[[colorscheme horizon]]
-vim.lsp.set_log_level("debug")
+cmd[[colorscheme tokyonight]]

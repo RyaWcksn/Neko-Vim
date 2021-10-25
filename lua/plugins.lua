@@ -82,4 +82,5 @@ return require('packer').startup(function()
   -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
   -- use 'hrsh7th/cmp-vsnip'
   use "rafamadriz/friendly-snippets"
+  use 'kdheepak/lazygit.nvim'
 end)
