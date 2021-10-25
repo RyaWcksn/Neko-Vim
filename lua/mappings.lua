@@ -72,6 +72,7 @@ map("n", "<leader>td", ":lua package.loaded.presence:update()<CR>", opt)
 
 -- Terminal on bellow the screen
 map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+map("n", "<Leader>x", ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opt)
 
 -- Using jk as ESC
 map("t", "jk", "<C-\\><C-n>", opt)
