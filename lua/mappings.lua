@@ -44,8 +44,9 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opt)
 map("n", "<leader>fe", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
 map("n", "<leader>:", "<cmd>Telescope commands<CR>", opt)
 map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opt)
-map("n", "<leader>aa", "<cmd>Telescope git_branches<CR>", opt)
-map("n", "<leader>ss", "<cmd>Telescope git_commits<CR>", opt)
+map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opt)
+map("n", "<leader>cc", "<cmd>Telescope git_commits<CR>", opt)
+map("n", "<leader>ss", ":Telescope sessions<CR>", opt)
 
 -- Using ; to Command mode
 map("n", ";", ":", opt)
