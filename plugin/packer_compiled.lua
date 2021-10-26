@@ -77,6 +77,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/TrueZen.nvim"
   },
+  ["base16-vim"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/base16-vim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/bufferline.nvim"
@@ -254,6 +258,10 @@ _G.packer_plugins = {
   ["vim-multiple-cursors"] = {
     loaded = true,
     path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
+  },
+  ["vim-neko"] = {
+    loaded = true,
+    path = "/Users/wonderlabs/.local/share/nvim/site/pack/packer/start/vim-neko"
   },
   ["vim-vsnip"] = {
     loaded = true,
