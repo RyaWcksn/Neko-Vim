@@ -18,7 +18,7 @@
 Neovim distribution created by Lua programming language  
 Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)
 
-## 💻 Installation
+## Installation 💻 
 
 - Linux and MacOS 
   
@@ -45,7 +45,7 @@ cd %userprofile%\AppData\Local
 git clone https://github.com/AyaWcksn/neovim-configuration nvim
 ```
 
-## 🔥 Features
+## Features 🔥
 
 - Depedencies :
   - NodeJs 
@@ -67,13 +67,13 @@ git clone https://github.com/AyaWcksn/neovim-configuration nvim
 | Debugging                  | Progress |
 | Work in termux and windows | Done     |
 
-## ❓ How to use 
+## How to use ❓
 
 It's just basic typical neovim configuration just like other  
 Y for copy whole line, y for copy, p for paste, h/j/k/l for movement, etc  
 You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands mapping keys  
 
-## 📸 Screenshoots
+## Screenshoots 📸
 
 - Git
 
