@@ -18,6 +18,7 @@ map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", 
 map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 map("n", "<space>c", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
+map("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
 -- Switch screen
 map('n', '<Leader>h', '<C-w>h', opt)
@@ -39,7 +40,6 @@ map('n', '<Leader>e', ':NvimTreeToggle<CR>', opt)
 map('n', '<Leader>z', '<cmd>nohlsearch<CR>', opt)
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opt)
 map("n", "<leader>fe", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
 map("n", "<leader>:", "<cmd>Telescope commands<CR>", opt)
@@ -53,7 +53,7 @@ map("n", ";", ":", opt)
 
 -- Quit and Save
 map('n', '<Leader>w', ':w<CR>', opt)
-map('n', '<Leader>ww', ':SudaWrite<CR>', opt)
+map('n', '<Leader>sw', ':SudaWrite<CR>', opt)
 map('n', '<Leader>q', ':q<CR>', opt)
 map('n', '<Leader>qq', ':q!<CR>', opt)
 
