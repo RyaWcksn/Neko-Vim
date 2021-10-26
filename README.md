@@ -60,13 +60,6 @@ git clone https://github.com/AyaWcksn/neovim-configuration nvim
   - Images using Telescope
   - Termux integration
 
-- Work in progress
- 
-| Feature                    | Status   |
-|----------------------------|----------|
-| Debugging                  | Progress |
-| Work in termux and windows | Done     |
-
 ## How to use ❓
 
 It's just basic typical neovim configuration just like other  
@@ -99,3 +92,11 @@ There's also included [Lsp-signature](https://github.com/ray-x/lsp_signature.nvi
 <img src="./images/lsp-installer.png" align="center"></img>
 
 For the language server, i'm using [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer), you can look at there how to install language server
+
+## Future development 🌍
+
+| Feature                    | Status   |
+|----------------------------|----------|
+| Debugging                  | Progress |
+| Work in termux and windows | Done     |
+
