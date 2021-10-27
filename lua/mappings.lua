@@ -128,4 +128,6 @@ map("n", "<Leader>tm", ":VimwikiTable", opt)
 
 -- LazyGit
 map("n", "<Leader>gg", ":LazyGit<CR>", opt)
+
+map("n", "e", ":HopWord<CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
