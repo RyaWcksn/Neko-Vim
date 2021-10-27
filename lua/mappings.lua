@@ -91,14 +91,14 @@ map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 map("n", "<leader>zz", ":ZenMode<CR>", opt)
 
 -- Using Alt and Movement key for moving line
-map("n", "<A-h>", "<<", opt)
-map("n", "<A-j>", "<ESC>:m. +1<CR>", opt)
-map("n", "<A-k>", "<ESC>:m. -2<CR>", opt)
-map("n", "<A-l>", ">>", opt)
+map("n", "<C-h>", "<<", opt)
+map("n", "<C-j>", "<ESC>:m. +1<CR>", opt)
+map("n", "<C-k>", "<ESC>:m. -2<CR>", opt)
+map("n", "<C-l>", ">>", opt)
 
 -- Buffer switch
-map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opt)
-map('n', '<C-l>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<Tab>', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<S-Tab>', ':BufferLineCycleNext<CR>', opt)
 
 -- Buffer tabbing
 map("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opt)
@@ -128,4 +128,12 @@ map("n", "<Leader>tm", ":VimwikiTable", opt)
 
 -- LazyGit
 map("n", "<Leader>gg", ":LazyGit<CR>", opt)
+
+map("n", "e", ":HopWord<CR>", opt)
+
+-- Resize
+map("n", "<A-l>", ":vertical resize +5<CR>", opt)
+map("n", "<A-h>", ":vertical resize -5<CR>", opt)
+map("n", "<A-j>", ":res -5<CR>", opt)
+map("n", "<A-k>", ":res +5<CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'

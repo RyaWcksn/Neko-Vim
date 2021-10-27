@@ -9,7 +9,7 @@
 | Space + h/j/k/l | Switch panel                                  |
 | Space + v       | Split to right                                |
 | Space + b       | Split to bottom                               |
-| Ctrl + h/l      | Switch tab left right                         |
+| Tab + Shift-Tab | Switch tab left right                         |
 | Alt + 1~0       | Jump tab                                      |
 | F2              | Open floating terminal                        |
 | tz              | Make floating terminal large                  |
@@ -20,4 +20,5 @@
 | ;               | Command mode                                  |
 | jk              | Exit insert mode                              |
 | Space + zz      | Zen mode for distractions free coding session |
-| Alt + h/j/k/l   | Move line left/down/up/right                  |
+| Ctrl + h/j/k/l  | Move line left/down/up/right                  |
+| Alt + h/j/k/l   | Resize splits                                 |
