@@ -25,3 +25,4 @@ opt.smartindent = true
 g.completeopts = "menu,menuone,noselect,noinsert"
 g.vimwiki_listsyms = "✗○◐●✓"
 g.indentLine_fileTypeExclude = 'dashboard'
+opt.colorcolumn="90"

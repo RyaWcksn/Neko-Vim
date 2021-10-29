@@ -85,14 +85,26 @@ return require('packer').startup(function()
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'
   use 'rtakasuke/vim-neko'
+  use 'justinmk/vim-sneak'
+  use 'ellisonleao/glow.nvim'
+  use 'xiyaowong/nvim-transparent'
+  use 'sunjon/Shade.nvim'
+  use {
+  "folke/twilight.nvim",
+  config = function()
+    require("twilight").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
   use {
   'phaazon/hop.nvim',
   as = 'hop',
   config = function()
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-  end,
-  use 'justinmk/vim-sneak'
+  end
 }
-
 end)

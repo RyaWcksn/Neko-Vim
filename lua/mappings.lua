@@ -97,8 +97,8 @@ map("n", "<C-k>", "<ESC>:m. -2<CR>", opt)
 map("n", "<C-l>", ">>", opt)
 
 -- Buffer switch
-map('n', '<Tab>', ':BufferLineCyclePrev<CR>', opt)
-map('n', '<S-Tab>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<A-[>', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<A-]>', ':BufferLineCycleNext<CR>', opt)
 
 -- Buffer tabbing
 map("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opt)
@@ -134,6 +134,8 @@ map("n", "e", ":HopWord<CR>", opt)
 -- Resize
 map("n", "<A-l>", ":vertical resize +5<CR>", opt)
 map("n", "<A-h>", ":vertical resize -5<CR>", opt)
-map("n", "<A-j>", ":res -5<CR>", opt)
-map("n", "<A-k>", ":res +5<CR>", opt)
+map("n", "<A-k>", ":res -5<CR>", opt)
+map("n", "<A-j>", ":res +5<CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
+
+return map
