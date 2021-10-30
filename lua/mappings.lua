@@ -136,6 +136,9 @@ map("n", "<A-l>", ":vertical resize +5<CR>", opt)
 map("n", "<A-h>", ":vertical resize -5<CR>", opt)
 map("n", "<A-k>", ":res -5<CR>", opt)
 map("n", "<A-j>", ":res +5<CR>", opt)
+
+-- ranger
+map('n', '<leader>rr', ':Ranger<CR>',opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
 
 return map

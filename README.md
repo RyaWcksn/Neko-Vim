@@ -21,6 +21,11 @@ Why i'm using Neko as name? It's simple because when it combine, the name turns 
 ## Installation 💻 
 
 - Linux and MacOS 
+
+```Shell
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
   
 ``` shell
 cd .config  
@@ -33,6 +38,10 @@ nvim +PackerSync
 ```
 
 - Windows
+
+``` cmd
+git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+```
    
 ``` cmd
 cd %userprofile%\AppData\Local\nvim
@@ -74,6 +83,12 @@ You can refer to this [mapping](./docs/KEYMAPS.md) page for specifics commands m
 
 I'm using [LazyGit](https://github.com/jesseduffield/lazygit) for my git related stuff  
 Cherry-picking, commits, push, pull, etc
+
+- Global file search
+
+<img src="./images/File.png" align="center"></img>
+
+Global file search just like `Ctrl/Cmd + p` in VSCode
 
 - LSP
 

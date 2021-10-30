@@ -89,6 +89,8 @@ return require('packer').startup(function()
   use 'ellisonleao/glow.nvim'
   use 'xiyaowong/nvim-transparent'
   use 'sunjon/Shade.nvim'
+  use 'francoiscabrol/ranger.vim'
+  use 'rbgrouleff/bclose.vim'
   use {
   "folke/twilight.nvim",
   config = function()

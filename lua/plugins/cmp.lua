@@ -57,6 +57,7 @@ cmp.setup {
     { name = "orgmode" },
     { name = "crates" },
     { name = "buffer" },
+    { name = "path" },
   },
   formatting = {
     format = function(entry, vim_item)
