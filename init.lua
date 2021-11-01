@@ -5,12 +5,13 @@ require('options')
 require('plugins')
 require('autocmd')
 require('nekorc')
+require('lsp')
 require('plugins/treesitter')
 require('plugins/twilight')
 require('plugins/lualine')
 require('plugins/bufferline')
 -- require('plugins/shade')
-require('plugins/onedark')
+-- require('plugins/onedark')
 require('plugins/cmp')
 require('plugins/cmp-tabnine')
 -- require('plugins/lspinstall')
@@ -35,7 +36,8 @@ require('luasnip/loaders/from_vscode').lazy_load()
 -- require('plugins/navigator')
 -- require('plugins/go')
 require('plugins/lsp-server-install')
--- cmd[[colorscheme tokyonight]]
+cmd[[colorscheme nightfly]]
 -- vim.g.tokyonight_style = "storm"
 -- vim.g.tokyonight_italic_functions = true
 -- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+vim.opt.fillchars = {eob = " "}

@@ -90,6 +90,8 @@ return require('packer').startup(function()
   use 'xiyaowong/nvim-transparent'
   use 'sunjon/Shade.nvim'
   use 'kevinhwang91/rnvimr'
+  use 'bluz71/vim-moonfly-colors'
+  use 'bluz71/vim-nightfly-guicolors'
   use {
   "folke/twilight.nvim",
   config = function()
