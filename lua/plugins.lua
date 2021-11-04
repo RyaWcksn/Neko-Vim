@@ -92,6 +92,8 @@ return require('packer').startup(function()
   use 'kevinhwang91/rnvimr'
   use 'bluz71/vim-moonfly-colors'
   use 'bluz71/vim-nightfly-guicolors'
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
   use {
   "folke/twilight.nvim",
   config = function()

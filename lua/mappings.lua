@@ -97,8 +97,8 @@ map("n", "<C-k>", "<ESC>:m. -2<CR>", opt)
 map("n", "<C-l>", ">>", opt)
 
 -- Buffer switch
-map('n', '<A-[>', ':BufferLineCyclePrev<CR>', opt)
-map('n', '<A-]>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<Tab>', ':BufferLineCycleNext<CR>', opt)
 
 -- Buffer tabbing
 map("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opt)
