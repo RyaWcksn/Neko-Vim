@@ -47,6 +47,7 @@ map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opt)
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opt)
 map("n", "<leader>cc", "<cmd>Telescope git_commits<CR>", opt)
 map("n", "<leader>ss", ":Telescope sessions<CR>", opt)
+map("n", "<leader>tt", ":Telescope colorscheme<CR>", opt)
 
 -- Using ; to Command mode
 map("n", ";", ":", opt)
@@ -97,20 +98,20 @@ map("n", "<C-k>", "<ESC>:m. -2<CR>", opt)
 map("n", "<C-l>", ">>", opt)
 
 -- Buffer switch
-map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opt)
-map('n', '<Tab>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<C-n>', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<C-m>', ':BufferLineCycleNext<CR>', opt)
 
 -- Buffer tabbing
-map("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opt)
-map("n", "<A-2>", ":BufferLineGoToBuffer 2<CR>", opt)
-map("n", "<A-3>", ":BufferLineGoToBuffer 3<CR>", opt)
-map("n", "<A-4>", ":BufferLineGoToBuffer 4<CR>", opt)
-map("n", "<A-5>", ":BufferLineGoToBuffer 5<CR>", opt)
-map("n", "<A-6>", ":BufferLineGoToBuffer 6<CR>", opt)
-map("n", "<A-7>", ":BufferLineGoToBuffer 7<CR>", opt)
-map("n", "<A-8>", ":BufferLineGoToBuffer 8<CR>", opt)
-map("n", "<A-9>", ":BufferLineGoToBuffer 9<CR>", opt)
-map("n", "<A-0>", ":BufferLineGoToBuffer 0<CR>", opt)
+map("n", "<Leader>1", ":BufferLineGoToBuffer 1<CR>", opt)
+map("n", "<Leader>2", ":BufferLineGoToBuffer 2<CR>", opt)
+map("n", "<Leader>3", ":BufferLineGoToBuffer 3<CR>", opt)
+map("n", "<Leader>4", ":BufferLineGoToBuffer 4<CR>", opt)
+map("n", "<Leader>5", ":BufferLineGoToBuffer 5<CR>", opt)
+map("n", "<Leader>6", ":BufferLineGoToBuffer 6<CR>", opt)
+map("n", "<Leader>7", ":BufferLineGoToBuffer 7<CR>", opt)
+map("n", "<Leader>8", ":BufferLineGoToBuffer 8<CR>", opt)
+map("n", "<Leader>9", ":BufferLineGoToBuffer 9<CR>", opt)
+map("n", "<Leader>0", ":BufferLineGoToBuffer 0<CR>", opt)
 map("n", "<leader>tn", ":enew<CR>", opt)
 
 -- Indent line
