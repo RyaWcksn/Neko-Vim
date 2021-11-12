@@ -1,7 +1,6 @@
 vim.cmd 'autocmd BufwritePost plugins.lua PackerCompile'
 
 require('packer').init({display = {auto_clean = false}})
-
 local packer = require('packer');
 
 packer.init {
@@ -94,6 +93,10 @@ return require('packer').startup(function()
   use 'bluz71/vim-nightfly-guicolors'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
+  use 'chipsenkbeil/vimwiki-server.nvim'
+  use 'sillybun/vim-repl'
+  use 'gelguy/wilder.nvim'
+  use 'Pocco81/Catppuccino.nvim'
   use {
   "folke/twilight.nvim",
   config = function()
@@ -110,6 +113,17 @@ return require('packer').startup(function()
   config = function()
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+}
+use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   end
 }
 end)

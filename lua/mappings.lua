@@ -7,17 +7,22 @@ map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opt)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
-map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
-map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
-map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
-map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', opt)
+map("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
+map("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
+map("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
+map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+map("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
+map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
 map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opt)
 map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 map("n", "<space>c", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
+map('n','<leader>ld','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opt)
 map("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
 -- Switch screen
@@ -92,14 +97,14 @@ map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 map("n", "<leader>zz", ":ZenMode<CR>", opt)
 
 -- Using Alt and Movement key for moving line
-map("n", "<C-h>", "<<", opt)
-map("n", "<C-j>", "<ESC>:m. +1<CR>", opt)
-map("n", "<C-k>", "<ESC>:m. -2<CR>", opt)
-map("n", "<C-l>", ">>", opt)
+-- map("n", "<Leader>h", "<<", opt)
+-- map("n", "<Leader>j", "<ESC>:m. +1<CR>", opt)
+-- map("n", "<Leader>k", "<ESC>:m. -2<CR>", opt)
+-- map("n", "<Leader>l", ">>", opt)
 
 -- Buffer switch
-map('n', '<C-n>', ':BufferLineCyclePrev<CR>', opt)
-map('n', '<C-m>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<Leader>[', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<Leader>]', ':BufferLineCycleNext<CR>', opt)
 
 -- Buffer tabbing
 map("n", "<Leader>1", ":BufferLineGoToBuffer 1<CR>", opt)
@@ -132,11 +137,11 @@ map("n", "<Leader>gg", ":LazyGit<CR>", opt)
 
 map("n", "e", ":HopWord<CR>", opt)
 
+map("n", "<C-l>", ":vertical resize +5<CR>", opt)
 -- Resize
-map("n", "<A-l>", ":vertical resize +5<CR>", opt)
-map("n", "<A-h>", ":vertical resize -5<CR>", opt)
-map("n", "<A-k>", ":res -5<CR>", opt)
-map("n", "<A-j>", ":res +5<CR>", opt)
+map("n", "<C-h>", ":vertical resize -5<CR>", opt)
+map("n", "<C-k>", ":res -5<CR>", opt)
+map("n", "<C-j>", ":res +5<CR>", opt)
 
 -- ranger
 map('n', '<leader>rr', ':RnvimrToggle<CR>',opt)
