@@ -31,13 +31,13 @@ require('plugins/indentline')
 require('plugins/luasnip')
 require('plugins/lazygit')
 require('plugins/glow')
-require('catppuccino')
+-- require('catppuccino')
 -- require('plugins/session')
 require('luasnip/loaders/from_vscode').lazy_load()
 -- require('plugins/navigator')
 -- require('plugins/go')
 require('plugins/lsp-server-install')
-cmd[[colorscheme dark_catppuccino]]
+cmd[[colorscheme onedark]]
 -- vim.g.tokyonight_style = "storm"
 -- vim.g.tokyonight_italic_functions = true
 -- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
