@@ -10,7 +10,7 @@
 | Space + v       | Split to right                                |
 | Space + b       | Split to bottom                               |
 | Tab + Shift-Tab | Switch tab left right                         |
-| Alt + 1~0       | Jump tab                                      |
+| Space + 1~0     | Jump tab                                      |
 | F2              | Open floating terminal                        |
 | tz              | Make floating terminal large                  |
 | tZ              | Make floating terminal small                  |

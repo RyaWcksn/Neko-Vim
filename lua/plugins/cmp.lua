@@ -28,7 +28,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = function(fallback)
+    ['<S-j>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -37,7 +37,7 @@ cmp.setup {
         fallback()
       end
     end,
-    ['<S-Tab>'] = function(fallback)
+    ['<S-k>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -52,12 +52,16 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'cmp_tabnine'},
     { name = 'calc'},
-    { name = "emoji" },
-    { name = "treesitter" },
-    { name = "orgmode" },
-    { name = "crates" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = 'emoji' },
+    { name = 'treesitter' },
+    { name = 'orgmode' },
+    { name = 'crates' },
+    { name = 'buffer' },
+    { name = 'path' },
+  },
+ documentation = {
+    border = "rounded",
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
   },
   formatting = {
     format = function(entry, vim_item)
@@ -94,8 +98,9 @@ cmp.setup {
 	nvim_lua = "[Lua]",
 	cmp_tabnine = "[TabNine]",
 	path = "[Path]",
-        emoji = "[Emoji",
-        calc = "[Calc]"
+        emoji = "[Emoji]",
+        calc = "[Calc]",
+        latex_symbol = "[Latex]",
     }
 
     local menu = source_mapping[entry.source.name]
@@ -103,7 +108,7 @@ cmp.setup {
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
           menu = entry.completion_item.data.detail .. ' ' .. menu
         end
-        vim_item.kind = '⚡️'
+        vim_item.kind = ' ⚡️'
       end
       vim_item.menu = menu
       return vim_item
