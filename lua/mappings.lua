@@ -143,6 +143,10 @@ map("n", "<C-h>", ":vertical resize -5<CR>", opt)
 map("n", "<C-k>", ":res -5<CR>", opt)
 map("n", "<C-j>", ":res +5<CR>", opt)
 
+map("n", "<Leader>sn", ":SpPrevious<CR>", opt)
+map("n", "<Leader>sm", ":SpNext<CR>", opt)
+map("n", "<Leader>ss", ":SpToggle<CR>", opt)
+
 -- ranger
 map('n', '<leader>rr', ':RnvimrToggle<CR>',opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
