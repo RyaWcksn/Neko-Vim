@@ -84,7 +84,6 @@ return require('packer').startup(function()
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'
   use 'rtakasuke/vim-neko'
-  use 'justinmk/vim-sneak'
   use 'ellisonleao/glow.nvim'
   use 'xiyaowong/nvim-transparent'
   use 'sunjon/Shade.nvim'
@@ -93,6 +92,7 @@ return require('packer').startup(function()
   use 'bluz71/vim-nightfly-guicolors'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
+  use 'HendrikPetertje/vimify'
   use 'chipsenkbeil/vimwiki-server.nvim'
   use 'sillybun/vim-repl'
   use 'gelguy/wilder.nvim'
@@ -106,6 +106,10 @@ return require('packer').startup(function()
       -- refer to the configuration section below
     }
   end
+}
+use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
 }
   use {
   'phaazon/hop.nvim',
