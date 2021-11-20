@@ -97,6 +97,7 @@ return require('packer').startup(function()
   use 'sillybun/vim-repl'
   use 'gelguy/wilder.nvim'
   use 'Pocco81/Catppuccino.nvim'
+  use 'lervag/vimtex'
   use {
   "folke/twilight.nvim",
   config = function()
