@@ -2,6 +2,11 @@ local opt = {noremap = true, silent = true}
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 
+-- Disable key
+vim.cmd[[
+noremap . <NOP>
+]]
+
 -- LSP
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
