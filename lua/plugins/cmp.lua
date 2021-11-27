@@ -58,6 +58,7 @@ cmp.setup {
     { name = 'crates' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'neorg' }
   },
  documentation = {
     border = "rounded",
