@@ -129,7 +129,8 @@ map("n", "<leader>ii", ":IndentBlanklineEnable<CR>", opt)
 map("n", "<leader>iI", ":IndentBlanklineDisable<CR>", opt)
 
 -- Gitsigns
-map("n", "<Leader>m", ":Gitsigns toggle_current_line_blame<CR>", opt)
+map("n", "<leader>m", ":Gitsigns toggle_current_line_blame<cr>", opt)
+map("n", "<leader>hh", ":Gitsigns preview_hunk<cr>", opt)
 
 -- NekoRc
 map("n", "<Leader>en", ":e ~/.config/nvim/lua/nekorc.lua<CR>", opt)

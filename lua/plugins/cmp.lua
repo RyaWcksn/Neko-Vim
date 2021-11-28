@@ -28,7 +28,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<S-j>'] = function(fallback)
+    ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -37,7 +37,7 @@ cmp.setup {
         fallback()
       end
     end,
-    ['<S-k>'] = function(fallback)
+    ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -67,30 +67,30 @@ cmp.setup {
   formatting = {
     format = function(entry, vim_item)
     vim_item.kind = ({
-      Text = "",
-      Method = "",
-      Function = "",
-      Constructor = "",
-      Field = "ﰠ",
-      Variable = "",
-      Class = "ﴯ",
-      Interface = "",
-      Module = "",
-      Property = "ﰠ",
-      Unit = "塞",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
+      Text = " Text",
+      Method = " Method",
+      Function = " Function",
+      Constructor = " Constructor",
+      Field = "ﰠ Field",
+      Variable = " Variable",
+      Class = "ﴯ Class",
+      Interface = " Interface",
+      Module = " Module",
+      Property = "ﰠ Property",
+      Unit = "塞Unit",
+      Value = " Value",
+      Enum = " Enum",
+      Keyword = " Keyword",
+      Snippet = " Snippets",
+      Color = " Color",
+      File = " File",
+      Reference = " Reference",
+      Folder = " Folder",
+      EnumMember = " EnumMember",
+      Constant = " Constant",
+      Struct = "פּ Struct",
+      Event = " AI",
+      Operator = " Operator",
       TypeParameter = "",
     })[vim_item.kind]
     local source_mapping = {
