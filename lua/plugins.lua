@@ -110,7 +110,7 @@ return require('packer').startup(function()
 }
 use {
     'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end 
+    run = function() vim.fn['firenvim#install'](0) end
 }
   use {
   'phaazon/hop.nvim',
@@ -120,7 +120,7 @@ use {
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
 }
-use { 
+use {
     "nvim-neorg/neorg",
     config = function()
         require('neorg').setup {

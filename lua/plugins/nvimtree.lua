@@ -76,4 +76,4 @@ nvimtree.setup {
       side = "left",
       width = 25,
    },
-} 
+}
