@@ -98,6 +98,7 @@ return require('packer').startup(function()
   use 'gelguy/wilder.nvim'
   use 'Pocco81/Catppuccino.nvim'
   use 'lervag/vimtex'
+  use 'kristijanhusak/vim-carbon-now-sh'
   use {
   "folke/twilight.nvim",
   config = function()
@@ -149,6 +150,13 @@ use {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
-  end
+  end,
+--   use {
+--       "michaelb/sniprun",
+--       run = "bash install.sh",
+--       config = function()
+--         require("config.sniprun").setup()
+--       end,
+-- }
 }
 end)

@@ -34,6 +34,7 @@ require('plugins/lazygit')
 require('plugins/glow')
 require('plugins/spotify')
 require('plugins/hop')
+require('plugins/sniprun')
 -- require('catppuccino')
 -- require('plugins/session')
 require('luasnip/loaders/from_vscode').lazy_load()
@@ -45,3 +46,4 @@ cmd[[colorscheme onedark]]
 -- vim.g.tokyonight_italic_functions = true
 -- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.opt.fillchars = {eob = " "}
+

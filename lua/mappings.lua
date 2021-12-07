@@ -153,6 +153,9 @@ map("n", "<Leader>sn", ":SpPrevious<CR>", opt)
 map("n", "<Leader>sm", ":SpNext<CR>", opt)
 map("n", "<Leader>ss", ":SpToggle<CR>", opt)
 
+-- Carbon Now Sha
+map("v", "<F5>", ":CarbonNowSh<CR>", opt)
+
 -- ranger
 map('n', '<leader>rr', ':RnvimrToggle<CR>',opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'

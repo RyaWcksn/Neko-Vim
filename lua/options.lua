@@ -22,7 +22,6 @@ opt.relativenumber = true
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
-g.completeopts = "menuone,noselect"
 g.vimwiki_listsyms = "✗○◐●✓"
 g.indentLine_fileTypeExclude = 'dashboard'
 opt.colorcolumn="90"
