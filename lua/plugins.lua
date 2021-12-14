@@ -77,6 +77,9 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip'
   use 'williamboman/nvim-lsp-installer'
   -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+  -- Database
+  use { 'tpope/vim-dadbod' }
+  use { 'kristijanhusak/vim-dadbod-ui' }
   use 'hrsh7th/cmp-vsnip'
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'

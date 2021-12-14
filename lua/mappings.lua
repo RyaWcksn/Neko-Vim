@@ -18,7 +18,7 @@ map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', opt)
 map("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
 map("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
 map("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
-map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+map('n', '<space>ca', 'Telescope lsp_code_action', opt)
 map("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
 map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
 map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
@@ -79,7 +79,7 @@ map("n", "<leader>so", "<cmd>SessionLoad<CR>", opt)
 map("n", "<leader>pi", ":PackerInstall<CR>", opt)
 map("n", "<leader>ps", ":PackerSync<CR>", opt)
 
--- Update Discord Rich Presence 
+-- Update Discord Rich Presence
 map("n", "<leader>td", ":lua package.loaded.presence:update()<CR>", opt)
 
 -- Terminal on bellow the screen
@@ -143,11 +143,11 @@ map("n", "<Leader>gg", ":LazyGit<CR>", opt)
 
 map("n", "e", ":HopWord<CR>", opt)
 
-map("n", "<C-l>", ":vertical resize +5<CR>", opt)
--- Resize
-map("n", "<C-h>", ":vertical resize -5<CR>", opt)
-map("n", "<C-k>", ":res -5<CR>", opt)
-map("n", "<C-j>", ":res +5<CR>", opt)
+-- map("n", "<C-l>", ":vertical resize +5<CR>", opt)
+-- -- Resize
+-- map("n", "<C-h>", ":vertical resize -5<CR>", opt)
+-- map("n", "<C-k>", ":res -5<CR>", opt)
+-- map("n", "<C-j>", ":res +5<CR>", opt)
 
 map("n", "<Leader>sn", ":SpPrevious<CR>", opt)
 map("n", "<Leader>sm", ":SpNext<CR>", opt)
@@ -158,6 +158,9 @@ map("v", "<F5>", ":CarbonNowSh<CR>", opt)
 
 -- ranger
 map('n', '<leader>rr', ':RnvimrToggle<CR>',opt)
+
+-- Trouble
+map('n', '<leader>tr', ":Trouble<CR>", opt)
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
 
 return map
