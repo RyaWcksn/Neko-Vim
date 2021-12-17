@@ -7,27 +7,39 @@ vim.cmd[[
 noremap . <NOP>
 ]]
 
+-- Stuff
+map("n", "Y","y$", opt)
+map("n", "J", "mzJ`z", opt)
+map("n", "n", "nzzzv", opt)
+map("n", "N", "Nzzzv", opt)
+map("v", "J", ":m '>+1<CR>gv=gv", opt)
+map("v", "K", ":m '<-2<CR>gv=gv", opt)
+map("v", "L", ">gv", opt)
+map("v", "H", "<gv", opt)
+map("n", "j", "gj", opt)
+map("n", "k", "gk", opt)
+
 -- LSP
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opt)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
+map("n","gs","<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', opt)
+map("n","gr","<cmd>lua vim.lsp.buf.references()<CR>", opt)
 map("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
 map("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
 map("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
-map('n', '<space>ca', 'Telescope lsp_code_action', opt)
+map("n", "<space>ca", ":Telescope lsp_code_actions<CR>", opt)
 map("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
-map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+map("n","gi","<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
 map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
 map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opt)
 map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 map("n", "<space>c", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
-map('n','<leader>ld','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opt)
+map("n","<leader>ld","<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", opt)
 map("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
 -- Switch screen
