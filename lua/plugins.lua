@@ -98,6 +98,7 @@ return require('packer').startup(function()
   use 'gelguy/wilder.nvim'
   use 'lervag/vimtex'
   use 'kristijanhusak/vim-carbon-now-sh'
+  use "nvim-telescope/telescope-file-browser.nvim"
 use {
   "folke/twilight.nvim",
   config = function()

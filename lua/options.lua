@@ -25,3 +25,5 @@ opt.smartindent = true
 g.vimwiki_listsyms = "✗○◐●✓"
 g.indentLine_fileTypeExclude = 'dashboard'
 opt.colorcolumn="90"
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")

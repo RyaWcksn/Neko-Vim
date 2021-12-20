@@ -60,12 +60,12 @@
 -- -- replace the default lsp diagnostic symbols
 function lspSymbol(name, icon)
     vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+    lspSymbol("Error", "")
+    lspSymbol("Warning", "")
+    lspSymbol("Information", "")
+    lspSymbol("Hint", "")
 end
 --
-lspSymbol("Error", "")
-lspSymbol("Warning", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(
