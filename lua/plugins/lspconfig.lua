@@ -3,11 +3,11 @@
 -- if not (present1 or present2) then
 --     return
 -- end
--- 
+--
 -- local function on_attach(client, bufnr)
 --     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 --     local opts = {noremap = true, silent = true}
--- 
+--
 --     local function buf_set_keymap(...)
 --         vim.api.nvim_buf_set_keymap(bufnr, ...)
 --     end
@@ -26,7 +26,7 @@
 --     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 --     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 --     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
--- 
+--
 --     -- Set some keybinds conditional on server capabilities
 --     if client.resolved_capabilities.document_formatting then
 --         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -34,12 +34,12 @@
 --         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 --     end
 -- end
--- 
+--
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
--- 
+--
 -- local nvim_lsp = require('lspconfig')
--- 
+--
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'bashls'}
 -- for _, lsp in ipairs(servers) do
 --   nvim_lsp[lsp].setup {
@@ -47,25 +47,25 @@
 --     capabilities = capabilities,
 --   }
 -- end
--- 
+--
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- 
+--
 -- -- lspInstall + lspconfig stuff
--- 
+--
 -- local nvim_lsp = require('lspconfig')
--- 
+--
 -- -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
--- 
+--
 -- -- replace the default lsp diagnostic symbols
 function lspSymbol(name, icon)
     vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+    lspSymbol("Error", "")
+    lspSymbol("Warning", "")
+    lspSymbol("Information", "")
+    lspSymbol("Hint", "")
 end
--- 
-lspSymbol("Error", "")
-lspSymbol("Warning", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
+--
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(
@@ -93,7 +93,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 --         vim.api.nvim_echo({{msg}}, true, {})
 --     end
 --   end
--- 
+--
 -- .
 local lsp = require('lspconfig')
 lsp.gopls.setup(require('lang.go').lsp)

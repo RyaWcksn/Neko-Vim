@@ -7,27 +7,40 @@ vim.cmd[[
 noremap . <NOP>
 ]]
 
+-- Stuff
+map("n", "Y","y$", opt)
+map("n", "J", "mzJ`z", opt)
+map("n", "n", "nzzzv", opt)
+map("n", "N", "Nzzzv", opt)
+map("v", "J", ":m '>+1<CR>gv=gv", opt)
+map("v", "K", ":m '<-2<CR>gv=gv", opt)
+map("v", "L", ">gv", opt)
+map("v", "H", "<gv", opt)
+map("n", "j", "gj", opt)
+map("n", "k", "gk", opt)
+map("n", "<C-L>", "zL", opt)
+map("n", "<C-H>", "zH", opt)
+
 -- LSP
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opt)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
+map("n","gs","<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', opt)
+map("n","gr",":Telescope lsp_references<CR>", opt)
 map("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
 map("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
 map("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
-map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+map("n", "<space>ca", ":Telescope lsp_code_actions<CR>", opt)
 map("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
-map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+map("n","gi","<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
 map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
 map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opt)
 map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 map("n", "<space>c", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt)
-map('n','<leader>ld','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opt)
+map("n","<leader>ld","<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", opt)
 map("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
 -- Switch screen
@@ -58,6 +71,7 @@ map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opt)
 map("n", "<leader>cc", "<cmd>Telescope git_commits<CR>", opt)
 map("n", "<leader>ss", ":Telescope sessions<CR>", opt)
 map("n", "<leader>tt", ":Telescope colorscheme<CR>", opt)
+map("n", "<leader>fm", ":Telescope file_browser<CR>", opt)
 
 -- Using ; to Command mode
 map("n", ";", ":", opt)
@@ -79,11 +93,11 @@ map("n", "<leader>so", "<cmd>SessionLoad<CR>", opt)
 map("n", "<leader>pi", ":PackerInstall<CR>", opt)
 map("n", "<leader>ps", ":PackerSync<CR>", opt)
 
--- Update Discord Rich Presence 
+-- Update Discord Rich Presence
 map("n", "<leader>td", ":lua package.loaded.presence:update()<CR>", opt)
 
 -- Terminal on bellow the screen
-map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+map("n", "<C-x>", ":20new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
 map("n", "<Leader>x", ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opt)
 
 -- Using jk as ESC
@@ -93,10 +107,11 @@ map('i', 'jk', '<esc>', opt)
 -- Terminal
 map("i", "<F2>", "<Esc>:FloatermToggle<CR>", opt)
 map("n", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
+map("t", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
 
 -- Floating terminal
-map("n", "tZ", ":FloatermUpdate --width=0.8 --height=0.8<CR>", opt)
-map("n", "tz", ":FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
+map("n", "<F3>", "<c-\\><c-n>:FloatermUpdate --width=0.8 --height=0.8<CR>", opt)
+map("n", "<F4>", "<c-\\><c-n>:FloatermUpdate --width=1.0 --height=1.0<CR>", opt)
 
 -- Zen mode
 map("n", "<leader>zz", ":ZenMode<CR>", opt)
@@ -129,7 +144,8 @@ map("n", "<leader>ii", ":IndentBlanklineEnable<CR>", opt)
 map("n", "<leader>iI", ":IndentBlanklineDisable<CR>", opt)
 
 -- Gitsigns
-map("n", "<Leader>m", ":Gitsigns toggle_current_line_blame<CR>", opt)
+map("n", "<leader>m", ":Gitsigns toggle_current_line_blame<cr>", opt)
+map("n", "<leader>hh", ":Gitsigns preview_hunk<cr>", opt)
 
 -- NekoRc
 map("n", "<Leader>en", ":e ~/.config/nvim/lua/nekorc.lua<CR>", opt)
@@ -142,18 +158,48 @@ map("n", "<Leader>gg", ":LazyGit<CR>", opt)
 
 map("n", "e", ":HopWord<CR>", opt)
 
-map("n", "<C-l>", ":vertical resize +5<CR>", opt)
--- Resize
-map("n", "<C-h>", ":vertical resize -5<CR>", opt)
-map("n", "<C-k>", ":res -5<CR>", opt)
-map("n", "<C-j>", ":res +5<CR>", opt)
+-- map("n", "<C-l>", ":vertical resize +5<CR>", opt)
+-- -- Resize
+-- map("n", "<C-h>", ":vertical resize -5<CR>", opt)
+-- map("n", "<C-k>", ":res -5<CR>", opt)
+-- map("n", "<C-j>", ":res +5<CR>", opt)
 
-map("n", "<Leader>sn", ":SpPrevious<CR>", opt)
-map("n", "<Leader>sm", ":SpNext<CR>", opt)
-map("n", "<Leader>ss", ":SpToggle<CR>", opt)
+map("n", "<F7>", ":SpPrevious<CR>", opt)
+map("n", "<F9>", ":SpNext<CR>", opt)
+map("n", "<F8>", ":SpToggle<CR>", opt)
+map("n", "<F6>", ":SpSearch ", {noremap = true})
+
+-- Carbon Now Sha
+map("v", "<F5>", ":CarbonNowSh<CR>", opt)
 
 -- ranger
 map('n', '<leader>rr', ':RnvimrToggle<CR>',opt)
+
+-- Trouble
+map('n', '<leader>tr', ":Trouble<CR>", opt)
+
+-- Resize
+map("n", "<C-k>", ":res +5<CR>", opt)
+map("n", "<C-j>", ":res -5<CR>", opt)
+map("n", "<S-l>", ":vertical res +5<CR>", opt)
+map("n", "<S-h>", ":vertical res -5<CR>", opt)
+
+-- Save
+if vim.fn.has("mac") == 1 then
+    map('n', "<D-s>", ":w <CR>", opt)
+    map('i', "<D-s>", "<c-\\><c-n>:w <CR>", opt)
+    map("n", "<D-1>", ":BufferLineGoToBuffer 1<CR>", opt)
+    map("n", "<D-2>", ":BufferLineGoToBuffer 2<CR>", opt)
+    map("n", "<D-3>", ":BufferLineGoToBuffer 3<CR>", opt)
+    map("n", "<D-4>", ":BufferLineGoToBuffer 4<CR>", opt)
+    map("n", "<D-5>", ":BufferLineGoToBuffer 5<CR>", opt)
+    map("n", "<D-6>", ":BufferLineGoToBuffer 6<CR>", opt)
+    map("n", "<D-7>", ":BufferLineGoToBuffer 7<CR>", opt)
+    map("n", "<D-8>", ":BufferLineGoToBuffer 8<CR>", opt)
+    map("n", "<D-9>", ":BufferLineGoToBuffer 9<CR>", opt)
+    map("n", "<D-0>", ":BufferLineGoToBuffer 0<CR>", opt)
+end
+
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
 
 return map

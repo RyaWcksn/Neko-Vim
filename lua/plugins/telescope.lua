@@ -3,7 +3,6 @@ if not present then
    return
 end
 
-require('telescope').load_extension('media_files')
 -- require('telescope').extensions.packer.plugins(opts)
 telescope.setup {
    defaults = {
@@ -53,6 +52,17 @@ telescope.setup {
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
    },
    extensions = {
+     file_browser = {
+      theme = "ivy",
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
       fzf = {
          fuzzy = true, -- false will only do exact matching
          override_generic_sorter = false, -- override the generic sorter
@@ -83,3 +93,5 @@ pcall(function()
       telescope.load_extension(ext)
    end
 end) 
+require("telescope").load_extension "file_browser"
+require('telescope').load_extension('media_files')

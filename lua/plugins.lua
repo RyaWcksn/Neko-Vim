@@ -37,12 +37,10 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/nvim-cmp'
-  use 'saadparwaiz1/cmp_luasnip'
   use 'neovim/nvim-lspconfig'
   -- use 'kabouzeid/nvim-lspinstall'
   use 'onsails/lspkind-nvim'
   use 'windwp/nvim-autopairs'
-  use 'L3MON4D3/LuaSnip'
   use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
   use 'glepnir/dashboard-nvim'
@@ -66,7 +64,6 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-packer.nvim'
   use 'ntk148v/vim-horizon'
   use 'lewis6991/gitsigns.nvim'
-  use 'lukas-reineke/indent-blankline.nvim'
   -- use "tversteeg/registers.nvim"
   use 'lambdalisue/suda.vim'
   use "norcalli/nvim-colorizer.lua"
@@ -79,8 +76,10 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip'
   use 'williamboman/nvim-lsp-installer'
   -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
-  -- use 'hrsh7th/cmp-vsnip'
-  use "rafamadriz/friendly-snippets"
+  -- Database
+  use { 'tpope/vim-dadbod' }
+  use { 'kristijanhusak/vim-dadbod-ui' }
+  use 'hrsh7th/cmp-vsnip'
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'
   use 'rtakasuke/vim-neko'
@@ -96,9 +95,10 @@ return require('packer').startup(function()
   use 'chipsenkbeil/vimwiki-server.nvim'
   use 'sillybun/vim-repl'
   use 'gelguy/wilder.nvim'
-  use 'Pocco81/Catppuccino.nvim'
   use 'lervag/vimtex'
-  use {
+  use 'kristijanhusak/vim-carbon-now-sh'
+  use "nvim-telescope/telescope-file-browser.nvim"
+use {
   "folke/twilight.nvim",
   config = function()
     require("twilight").setup {
@@ -110,35 +110,15 @@ return require('packer').startup(function()
 }
 use {
     'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end 
+    run = function() vim.fn['firenvim#install'](0) end
 }
-  use {
+use {
   'phaazon/hop.nvim',
   as = 'hop',
   config = function()
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
-}
-use { 
-    "nvim-neorg/neorg",
-    config = function()
-        require('neorg').setup {
-            -- Tell Neorg what modules to load
-            load = {
-                ["core.defaults"] = {}, -- Load all the default modules
-                ["core.norg.concealer"] = {}, -- Allows for use of icons
-                ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                    config = {
-                        workspaces = {
-                            my_workspace = "~/neorg"
-                        }
-                    }
-                }
-            },
-        }
-    end,
-    requires = "nvim-lua/plenary.nvim"
 }
 use {
   "folke/trouble.nvim",
@@ -149,6 +129,39 @@ use {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
-  end
+  end,
 }
+use({
+    'NTBBloodbath/doom-one.nvim',
+    config = function()
+        require('doom-one').setup({
+            cursor_coloring = false,
+            terminal_colors = false,
+            italic_comments = false,
+            enable_treesitter = true,
+            transparent_background = false,
+            pumblend = {
+                enable = true,
+                transparency_amount = 20,
+            },
+            plugins_integrations = {
+                neorg = true,
+                barbar = true,
+                bufferline = false,
+                gitgutter = false,
+                gitsigns = true,
+                telescope = false,
+                neogit = true,
+                nvim_tree = true,
+                dashboard = true,
+                startify = true,
+                whichkey = true,
+                indent_blankline = true,
+                vim_illuminate = true,
+                lspsaga = false,
+            },
+        })
+    end,
+})
 end)
+
