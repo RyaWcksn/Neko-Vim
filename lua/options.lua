@@ -30,6 +30,7 @@ opt.shiftwidth = 4        -- shift 4 spaces when tab
 opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
 
+
 -- Url handler
 --
 -- local map = require('utils').map
@@ -40,12 +41,14 @@ opt.smartindent = true    -- autoindent new lines
 -- else
 --     map[''].gx = {'<Cmd>lua print("Error: gx is not supported on this OS!")<CR>'}
 -- end
--- 
+--
+
 
 vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
+colorscheme nightfly
 ]])
 
 exec([[

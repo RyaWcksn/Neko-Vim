@@ -198,6 +198,25 @@ if vim.fn.has("mac") == 1 then
     map("n", "<D-8>", ":BufferLineGoToBuffer 8<CR>", opt)
     map("n", "<D-9>", ":BufferLineGoToBuffer 9<CR>", opt)
     map("n", "<D-0>", ":BufferLineGoToBuffer 0<CR>", opt)
+    map('n', '<D-e>', ':NvimTreeToggle<CR>', opt)
+
+    map("n", "<D-f>", "<cmd>Telescope find_files<CR>", opt)
+    map("n", "<D-w>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
+    map("n", "<D-b>", "<cmd>Telescope buffers<CR>", opt)
+    map("n", "<leader>cc", "<cmd>Telescope git_commits<CR>", opt)
+    map("n", "<D-t>", ":Telescope colorscheme<CR>", opt)
+    map("n", "<D-m>", ":Telescope file_browser<CR>", opt)
+
+    map('n', '<D-h>', '<C-w>h', opt)
+    map('n', '<D-j>', '<C-w>j', opt)
+    map('n', '<D-k>', '<C-w>k', opt)
+    map('n', '<D-l>', '<C-w>l', opt)
+
+    map('n', '<D-[>', ':BufferLineCyclePrev<CR>', opt)
+    map('n', '<D-]>', ':BufferLineCycleNext<CR>', opt)
+
+    map('n', '<D-v>', ':vs<CR>', opt)
+    map('n', '<D-b>', ':sp<CR>', opt)
 end
 
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
