@@ -165,6 +165,10 @@ use({
     end,
 })
 -- Lua
+use({
+	"catppuccin/nvim",
+	as = "catppuccin"
+})
 use {
     'KadoBOT/nvim-spotify', 
     requires = 'nvim-telescope/telescope.nvim',
