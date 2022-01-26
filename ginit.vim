@@ -2,7 +2,7 @@
 set mouse=a
 
 " Set Editor Font
-    set guifont=MesloLGS\ NF:h13
+    set guifont=MesloLGS\ NF:h10
     " set guifont=FiraCode\ NF:h16
 " Disable GUI Tabline
 if exists(':GuiTabline')

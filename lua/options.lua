@@ -17,6 +17,7 @@ opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamed"
 opt.foldmethod = "manual"
 opt.number = true
 opt.numberwidth = 2
@@ -48,7 +49,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme nightfly
+colorscheme catppuccin
 ]])
 
 exec([[

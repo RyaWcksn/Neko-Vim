@@ -217,6 +217,39 @@ if vim.fn.has("mac") == 1 then
 
     map('n', '<D-v>', ':vs<CR>', opt)
     map('n', '<D-b>', ':sp<CR>', opt)
+elseif vim.fn.has("unix") then
+    map('n', "<M-w>", ":w <CR>", opt)
+    map('n', "<M-q>", ":bd! <CR>", opt)
+    map('n', '<M-c>', ':bd<CR>', opt)
+    map('i', "<M-w>", "<c-\\><c-n>:w <CR>", opt)
+    map("n", "<M-1>", ":BufferLineGoToBuffer 1<CR>", opt)
+    map("n", "<M-2>", ":BufferLineGoToBuffer 2<CR>", opt)
+    map("n", "<M-3>", ":BufferLineGoToBuffer 3<CR>", opt)
+    map("n", "<M-4>", ":BufferLineGoToBuffer 4<CR>", opt)
+    map("n", "<M-5>", ":BufferLineGoToBuffer 5<CR>", opt)
+    map("n", "<M-6>", ":BufferLineGoToBuffer 6<CR>", opt)
+    map("n", "<M-7>", ":BufferLineGoToBuffer 7<CR>", opt)
+    map("n", "<M-8>", ":BufferLineGoToBuffer 8<CR>", opt)
+    map("n", "<M-9>", ":BufferLineGoToBuffer 9<CR>", opt)
+    map("n", "<M-0>", ":BufferLineGoToBuffer 0<CR>", opt)
+    map('n', '<M-e>', ':NvimTreeToggle<CR>', opt)
+
+    map("n", "<M-f>", "<cmd>Telescope find_files<CR>", opt)
+    map("n", "<M-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
+    map("n", "<M-b>", "<cmd>Telescope buffers<CR>", opt)
+    map("n", "<M-t>", ":Telescope colorscheme<CR>", opt)
+    map("n", "<M-m>", ":Telescope file_browser<CR>", opt)
+
+    map('n', '<M-h>', '<C-w>h', opt)
+    map('n', '<M-j>', '<C-w>j', opt)
+    map('n', '<M-k>', '<C-w>k', opt)
+    map('n', '<M-l>', '<C-w>l', opt)
+
+    map('n', '<M-[>', ':BufferLineCyclePrev<CR>', opt)
+    map('n', '<M-]>', ':BufferLineCycleNext<CR>', opt)
+
+    map('n', '<M-v>', ':vs<CR>', opt)
+    map('n', '<M-b>', ':sp<CR>', opt)
 end
 
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
