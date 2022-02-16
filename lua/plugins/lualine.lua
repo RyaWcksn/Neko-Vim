@@ -10,8 +10,8 @@ require'lualine'.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'filename'},
-    lualine_c = { gps.get_location, condition = gps.is_available },
-    lualine_x = {'branch', 'fileformat', 'filetype'},
+    lualine_c = {'fileformat'},
+    lualine_x = {'branch', 'filetype'},
     lualine_y = {'diff'},
     lualine_z = {'hostname'}
   },

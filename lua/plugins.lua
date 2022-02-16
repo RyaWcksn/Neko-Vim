@@ -41,9 +41,9 @@ return require('packer').startup(function()
   -- use 'kabouzeid/nvim-lspinstall'
   use 'onsails/lspkind-nvim'
   use 'windwp/nvim-autopairs'
-  use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
   use 'glepnir/dashboard-nvim'
+  use 'b3nj5m1n/kommentary'
   use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
@@ -98,6 +98,7 @@ return require('packer').startup(function()
   use 'gelguy/wilder.nvim'
   use 'lervag/vimtex'
   use 'kristijanhusak/vim-carbon-now-sh'
+  use 'github/copilot.vim'
   use "nvim-telescope/telescope-file-browser.nvim"
 use {
   "folke/twilight.nvim",
@@ -132,45 +133,13 @@ use {
     }
   end,
 }
-use({
-    'NTBBloodbath/doom-one.nvim',
-    config = function()
-        require('doom-one').setup({
-            cursor_coloring = false,
-            terminal_colors = false,
-            italic_comments = false,
-            enable_treesitter = true,
-            transparent_background = false,
-            pumblend = {
-                enable = true,
-                transparency_amount = 20,
-            },
-            plugins_integrations = {
-                neorg = true,
-                barbar = true,
-                bufferline = false,
-                gitgutter = false,
-                gitsigns = true,
-                telescope = false,
-                neogit = true,
-                nvim_tree = true,
-                dashboard = true,
-                startify = true,
-                whichkey = true,
-                indent_blankline = true,
-                vim_illuminate = true,
-                lspsaga = false,
-            },
-        })
-    end,
-})
 -- Lua
 use({
 	"catppuccin/nvim",
 	as = "catppuccin"
 })
 use {
-    'KadoBOT/nvim-spotify', 
+    'KadoBOT/nvim-spotify',
     requires = 'nvim-telescope/telescope.nvim',
     config = function()
         local spotify = require'nvim-spotify'
