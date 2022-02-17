@@ -122,6 +122,9 @@ cmp.setup {
    },
 }
 
+-- Make sure that the completion menu is always visible
+vim.g.completion_menu_height = 0
+
 
 vim.cmd([[
 augroup NvimCmp

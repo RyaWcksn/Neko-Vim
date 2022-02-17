@@ -183,6 +183,8 @@ map("n", "<C-k>", ":res +5<CR>", opt)
 map("n", "<C-j>", ":res -5<CR>", opt)
 map("n", "<S-l>", ":vertical res +5<CR>", opt)
 map("n", "<S-h>", ":vertical res -5<CR>", opt)
+-- map keybind to cd current file directory
+map("n", "<leader>cd", ":cd %:h<CR>", opt)
 
 -- Save
 if vim.fn.has("mac") == 1 then
