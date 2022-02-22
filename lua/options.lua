@@ -49,7 +49,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme catppuccin
+colorscheme base16-default-dark
 ]])
 
 exec([[

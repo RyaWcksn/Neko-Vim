@@ -51,8 +51,19 @@ return require('packer').startup(function()
   use "Pocco81/TrueZen.nvim"
   use 'folke/zen-mode.nvim'
   use "terryma/vim-multiple-cursors"
-  use "vimwiki/vimwiki"
   use "akinsho/org-bullets.nvim"
+  use {
+      "vimwiki/vimwiki",
+      config = function()
+      vim.g["vimwiki_list"] = {
+        {
+          template_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/vimwiki/autoload/",
+          syntax = "markdown", ext = ".md"
+        }
+      }
+      vim.g["vimwiki_global_ext"] = 0
+    end
+  }
   use {
       'lukas-reineke/headlines.nvim',
         config = function()
@@ -100,6 +111,7 @@ return require('packer').startup(function()
   use 'kristijanhusak/vim-carbon-now-sh'
   use 'github/copilot.vim'
   use "nvim-telescope/telescope-file-browser.nvim"
+  use 'glepnir/lspsaga.nvim'
 use {
   "folke/twilight.nvim",
   config = function()
