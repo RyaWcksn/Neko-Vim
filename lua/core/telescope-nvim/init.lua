@@ -15,7 +15,7 @@ telescope.setup {
          "--column",
          "--smart-case",
       },
-      prompt_prefix = " ? ",
+      prompt_prefix = " λ ",
       selection_caret = " > ",
       entry_prefix = "  ",
       initial_mode = "insert",
@@ -41,7 +41,7 @@ telescope.setup {
       path_display = { "absolute" },
       winblend = 0,
       border = {},
-      borderchars = { "?", "?", "?", "?", "?", "?", "?", "?" },
+      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       color_devicons = true,
       use_less = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
@@ -95,3 +95,4 @@ pcall(function()
 end) 
 require("telescope").load_extension "file_browser"
 require('telescope').load_extension('media_files')
+

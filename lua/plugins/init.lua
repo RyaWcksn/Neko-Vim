@@ -10,7 +10,7 @@ packer.init {
         end,
     },
 }
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
@@ -59,7 +59,7 @@ return require('packer').startup(function()
         require('headlines').setup()
         end,
       }
-  use  "ray-x/lsp_signature.nvim"
+  use "ray-x/lsp_signature.nvim"
   use 'tpope/vim-fugitive'
   use 'nvim-telescope/telescope-packer.nvim'
   use 'ntk148v/vim-horizon'
@@ -76,7 +76,6 @@ return require('packer').startup(function()
   use 'jlesquembre/nterm.nvim'
   use 'hrsh7th/vim-vsnip'
   use 'williamboman/nvim-lsp-installer'
-  -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
   -- Database
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
@@ -95,7 +94,6 @@ return require('packer').startup(function()
   use 'HendrikPetertje/vimify'
   use 'chipsenkbeil/vimwiki-server.nvim'
   use 'sillybun/vim-repl'
-  use 'gelguy/wilder.nvim'
   use 'lervag/vimtex'
   use 'kristijanhusak/vim-carbon-now-sh'
   use 'github/copilot.vim'
@@ -134,10 +132,6 @@ use {
   end,
 }
 -- Lua
-use({
-	"catppuccin/nvim",
-	as = "catppuccin"
-})
 use {
     'KadoBOT/nvim-spotify',
     requires = 'nvim-telescope/telescope.nvim',

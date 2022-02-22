@@ -252,6 +252,8 @@ elseif vim.fn.has("unix") then
 
     map('n', '<M-v>', ':vs<CR>', opt)
     map('n', '<M-b>', ':sp<CR>', opt)
+
+    map('n', '<M-d>', ":Trouble<CR>", opt)
 end
 
 vim.g.onedark_toggle_style_keymap = '<Leader>tc'
