@@ -21,29 +21,28 @@ g.nvim_tree_show_icons = {
    files = 1,
   git = git_status,
 }
-
 g.nvim_tree_icons = {
-   default = "?",
-   symlink = "?",
+   default = "",
+   symlink = "",
    git = {
-      deleted = "?",
-      ignored = "?",
-      renamed = "?",
-      staged = "?",
-      unmerged = "?",
-      unstaged = "?",
-      untracked = "?",
+      deleted = "",
+      ignored = "◌",
+      renamed = "➜",
+      staged = "✓",
+      unmerged = "",
+      unstaged = "✗",
+      untracked = "★",
    },
    folder = {
       -- disable indent_markers option to get arrows working or if you want both arrows and indent then just add the arrow icons in front            ofthe default and opened folders below!
-      -- arrow_open = "?",
-      -- arrow_closed = "?",
-      default = "?",
-      empty = "?", -- ?
-      empty_open = "?",
-      open = "?",
-      symlink = "?",
-      symlink_open = "?",
+      -- arrow_open = "",
+      -- arrow_closed = "",
+      default = "",
+      empty = "", -- 
+      empty_open = "",
+      open = "",
+      symlink = "",
+      symlink_open = "",
    },
 }
 
@@ -51,10 +50,10 @@ nvimtree.setup {
    diagnostics = {
       enable = false,
       icons = {
-         hint = "?",
-         info = "?",
-         warning = "?",
-         error = "?",
+         hint = "",
+         info = "",
+         warning = "",
+         error = "",
       },
    },
    disable_netrw = true,
