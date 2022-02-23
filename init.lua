@@ -11,5 +11,5 @@ require('core.dashboard-nvim')
 require('core.lspconfig-nvim')
 require('core.gitsign-nvim')
 require('core.autopairs-nvim')
-require('core.gitsign-nvim')
+require('core.signature-nvim')
 vim.opt.fillchars = {eob = " "}
