@@ -12,4 +12,5 @@ require('core.lspconfig-nvim')
 require('core.gitsign-nvim')
 require('core.autopairs-nvim')
 require('core.signature-nvim')
+require('core.indentline-nvim')
 vim.opt.fillchars = {eob = " "}

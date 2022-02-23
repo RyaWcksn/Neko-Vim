@@ -153,7 +153,7 @@ vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {
 
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
-local function goto_definition(split_cmd)
+--[[ local function goto_definition(split_cmd)
   local util = vim.lsp.util
   local log = require("vim.lsp.log")
   local api = vim.api
@@ -184,21 +184,15 @@ local function goto_definition(split_cmd)
 
   return handler
 end
-
-vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
-
-vim.diagnostic.config({
-  virtual_text = {
-    source = "always",  -- Or "if_many"
-  },
-  float = {
-    source = "always",  -- Or "if_many"
-  },
-})
+ ]]
+-- vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 
 vim.diagnostic.config({
-  virtual_text = {
+    source = "always",  -- Or "if_many"
+    virtual_text = false,
+    signs = true,
     prefix = '●', -- Could be '●', '▎', 'x'
-  }
+    underline = true,
+    update_in_insert = false,
+    severity_sort = false,
 })
-
