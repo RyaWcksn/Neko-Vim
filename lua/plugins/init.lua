@@ -28,6 +28,12 @@ return require('packer').startup(function(use)
   }
   use 'navarasu/onedark.nvim'
   use 'kyazdani42/nvim-web-devicons'
+  use 'tomasr/molokai'
+  use 'fxn/vim-monochrome'
+  use 'andreasvc/vim-256noir'
+  use 'plan9-for-vimspace/acme-colors'
+  use 'sonph/onehalf'
+  use 'NLKNguyen/papercolor-theme'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'neovim/nvim-lspconfig'
@@ -49,11 +55,11 @@ return require('packer').startup(function(use)
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'voldikss/vim-floaterm'
-  use "Pocco81/TrueZen.nvim"
   use 'folke/zen-mode.nvim'
   use "terryma/vim-multiple-cursors"
   use "vimwiki/vimwiki"
   use "akinsho/org-bullets.nvim"
+  use 'danishprakash/vim-yami'
   use {
       'lukas-reineke/headlines.nvim',
         config = function()
@@ -80,6 +86,10 @@ return require('packer').startup(function(use)
   -- Database
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
+  use 'preservim/vim-colors-pencil'
+  use 'pbrisbin/vim-colors-off'
+  use 'jaredgorski/fogbell.vim'
+  use 'Lokaltog/vim-monotone'
   use 'hrsh7th/cmp-vsnip'
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'

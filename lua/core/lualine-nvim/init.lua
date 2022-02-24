@@ -4,18 +4,34 @@ require'lualine'.setup {
     theme = 'auto',
     disabled_filetypes = {},
     section_separators = {
-        left = '', right = ''
+        left = '', right = ''
     },
     component_separators = {
         left = '', right = ''
     }
   },
+
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'filename'},
-    lualine_x = {'branch', 'fileformat', 'filetype'},
+    lualine_a = {'branch'},
+    lualine_b = {'hostname'},
+    lualine_c = {{
+      'diagnostics',
+      sources = { 'nvim_diagnostic', 'nvim_lsp' },
+      sections = { 'error', 'warn', 'info', 'hint' },
+      diagnostics_color = {
+        error = 'DiagnosticError', -- Changes diagnostics' error color.
+        warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
+        info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
+        hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
+      },
+      symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
+      colored = true,           -- Displays diagnostics status in color if set to true.
+      update_in_insert = false, -- Update diagnostics in insert mode.
+      always_visible = false,   -- Show diagnostics even if there are none.
+    }},
+    lualine_x = {'location', 'tabs', 'encoding'},
     lualine_y = {'diff'},
-    lualine_z = {'hostname'}
+    lualine_z = {'filetype'}
   },
   inactive_sections = {
     lualine_a = {},

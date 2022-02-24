@@ -30,7 +30,7 @@ opt.expandtab = true      -- use spaces instead of tabs
 opt.shiftwidth = 4        -- shift 4 spaces when tab
 opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
-vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "storm"
 
 
 -- Url handler
@@ -50,7 +50,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme tokyonight
+colorscheme onehalfdark
 ]])
 
 exec([[
