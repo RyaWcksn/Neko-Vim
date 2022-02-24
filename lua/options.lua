@@ -1,7 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 local exec = vim.api.nvim_exec
-local fn = vim.fn
 
 opt.undofile = true
 opt.ruler = false
@@ -22,7 +21,7 @@ opt.foldmethod = "manual"
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
-g.vimwiki_listsyms = "✗○◐●✓"
+g.vimwiki_listsyms = "X"
 --opt.colorcolumn="90"
 vim.wo.wrap = false
 
@@ -50,7 +49,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme onehalfdark
+colorscheme onedark
 ]])
 
 exec([[

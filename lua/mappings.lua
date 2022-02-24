@@ -256,10 +256,6 @@ elseif vim.fn.has("unix") then
     map('n', '<M-d>', ":Trouble<CR>", opt)
     map("n", "<M-z>", ":ZenMode<CR>", opt)
 end
-
 map('n', '<leader>lL', ":set relativenumber<CR>", opt)
 map('n', '<leader>ll', ":set norelativenumber<CR>", opt)
-
-vim.g.onedark_toggle_style_keymap = '<Leader>tc'
-
 return map

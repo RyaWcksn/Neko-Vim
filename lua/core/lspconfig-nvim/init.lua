@@ -1,15 +1,4 @@
-local LspServer = {
-  "bashls",
-  "cssls",
-  "html",
-  "jsonls",
-  "sumneko_lua",
-  "pyright",
-  "tsserver",
-  "gopls"
-}
-
-function lspSymbol(name, icon)
+function LspSymbol(name, icon)
     vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
     lspSymbol("Error", "")
     lspSymbol("Warning", "")
@@ -32,7 +21,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 -- -- suppress error messages from lang servers
-vim.notify = function(msg, log_level, _opts)
+vim.notify = function(msg, log_level)
     if msg:match("exit code") then
         return
     end
@@ -72,6 +61,7 @@ lsp_installer.on_server_ready(function(server)
     }
 
     for _ , name  in pairs(servers) do
+---@diagnostic disable-next-line: redefined-local
       local ok, server = lsp_installer_servers.get_server(name)
         if ok then
           if not server:is_installed() then
@@ -106,9 +96,19 @@ local handlers =  {
 }
 
 -- Do not forget to use the on_attach function
---[[ for _, v in pairs(LspServer) do
-    require 'lspconfig'[v].setup { handlers=handlers }
-end ]]
+local LspServer = {
+  "bashls",
+  "cssls",
+  "html",
+  "jsonls",
+  "pyright",
+  "tsserver",
+  "gopls"
+}
+
+for _, v in pairs(LspServer) do
+    require('lspconfig')[v].setup { handlers=handlers }
+end
 
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -125,7 +125,7 @@ for type, icon in pairs(signs) do
 end
 
 -- Print diagnostics to the status line
-function PrintDiagnostics(opts, bufnr, line_nr, client_id)
+function PrintDiagnostics(opts, bufnr, line_nr)
   bufnr = bufnr or 0
   line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
   opts = opts or {['lnum'] = line_nr}
