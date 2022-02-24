@@ -18,3 +18,4 @@ require("bufferline").setup{
       indicator_icon = '▎',
     }
 }
+

@@ -1,7 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 local exec = vim.api.nvim_exec
-local fn = vim.fn
 
 opt.undofile = true
 opt.ruler = false
@@ -22,7 +21,7 @@ opt.foldmethod = "manual"
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
-g.vimwiki_listsyms = "✗○◐●✓"
+g.vimwiki_listsyms = "X"
 --opt.colorcolumn="90"
 vim.wo.wrap = false
 
@@ -30,6 +29,7 @@ opt.expandtab = true      -- use spaces instead of tabs
 opt.shiftwidth = 4        -- shift 4 spaces when tab
 opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
+vim.g.tokyonight_style = "storm"
 
 
 -- Url handler
@@ -49,7 +49,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme catppuccin
+colorscheme onedark
 ]])
 
 exec([[
@@ -57,6 +57,6 @@ exec([[
   autocmd TermOpen * startinsert
   augroup YankHighlight
     autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
   augroup end
 ]], false)

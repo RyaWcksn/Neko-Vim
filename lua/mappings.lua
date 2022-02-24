@@ -183,6 +183,8 @@ map("n", "<C-k>", ":res +5<CR>", opt)
 map("n", "<C-j>", ":res -5<CR>", opt)
 map("n", "<S-l>", ":vertical res +5<CR>", opt)
 map("n", "<S-h>", ":vertical res -5<CR>", opt)
+-- map keybind to cd current file directory
+map("n", "<leader>cd", ":cd %:h<CR>", opt)
 
 -- Save
 if vim.fn.has("mac") == 1 then
@@ -234,7 +236,7 @@ elseif vim.fn.has("unix") then
     map("n", "<M-0>", ":BufferLineGoToBuffer 0<CR>", opt)
     map('n', '<M-e>', ':NvimTreeToggle<CR>', opt)
 
-    map("n", "<M-f>", "<cmd>Telescope find_files<CR>", opt)
+    map("n", "<M-f>", "<cmd>FZF<CR>", opt)
     map("n", "<M-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
     map("n", "<M-b>", "<cmd>Telescope buffers<CR>", opt)
     map("n", "<M-t>", ":Telescope colorscheme<CR>", opt)
@@ -250,8 +252,10 @@ elseif vim.fn.has("unix") then
 
     map('n', '<M-v>', ':vs<CR>', opt)
     map('n', '<M-b>', ':sp<CR>', opt)
+
+    map('n', '<M-d>', ":Trouble<CR>", opt)
+    map("n", "<M-z>", ":ZenMode<CR>", opt)
 end
-
-vim.g.onedark_toggle_style_keymap = '<Leader>tc'
-
+map('n', '<leader>lL', ":set relativenumber<CR>", opt)
+map('n', '<leader>ll', ":set norelativenumber<CR>", opt)
 return map

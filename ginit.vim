@@ -2,7 +2,16 @@
 set mouse=a
 
 " Set Editor Font
+" Check if the os is mac or linux
+
+let uname = substitute(system('uname'), '\n', '', '')
+if uname == 'Linux'
     set guifont=MesloLGS\ NF:h10
+elseif uname == 'Darwin' 
+    set guifont=MesloLGS\ NF:h12
+endif
+
+set guifont=MesloLGS\ NF:h12
     " set guifont=FiraCode\ NF:h16
 " Disable GUI Tabline
 if exists(':GuiTabline')

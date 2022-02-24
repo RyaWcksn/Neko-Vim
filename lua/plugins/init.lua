@@ -10,9 +10,10 @@ packer.init {
         end,
     },
 }
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'folke/tokyonight.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {
@@ -27,6 +28,12 @@ return require('packer').startup(function()
   }
   use 'navarasu/onedark.nvim'
   use 'kyazdani42/nvim-web-devicons'
+  use 'tomasr/molokai'
+  use 'fxn/vim-monochrome'
+  use 'andreasvc/vim-256noir'
+  use 'plan9-for-vimspace/acme-colors'
+  use 'sonph/onehalf'
+  use 'NLKNguyen/papercolor-theme'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'neovim/nvim-lspconfig'
@@ -41,25 +48,25 @@ return require('packer').startup(function()
   -- use 'kabouzeid/nvim-lspinstall'
   use 'onsails/lspkind-nvim'
   use 'windwp/nvim-autopairs'
-  use "terrortylor/nvim-comment"
   use 'andweeb/presence.nvim'
   use 'glepnir/dashboard-nvim'
+  use 'b3nj5m1n/kommentary'
   use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'voldikss/vim-floaterm'
-  use "Pocco81/TrueZen.nvim"
   use 'folke/zen-mode.nvim'
   use "terryma/vim-multiple-cursors"
   use "vimwiki/vimwiki"
   use "akinsho/org-bullets.nvim"
+  use 'danishprakash/vim-yami'
   use {
       'lukas-reineke/headlines.nvim',
         config = function()
         require('headlines').setup()
         end,
       }
-  use  "ray-x/lsp_signature.nvim"
+  use "ray-x/lsp_signature.nvim"
   use 'tpope/vim-fugitive'
   use 'nvim-telescope/telescope-packer.nvim'
   use 'ntk148v/vim-horizon'
@@ -76,10 +83,13 @@ return require('packer').startup(function()
   use 'jlesquembre/nterm.nvim'
   use 'hrsh7th/vim-vsnip'
   use 'williamboman/nvim-lsp-installer'
-  -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
   -- Database
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
+  use 'preservim/vim-colors-pencil'
+  use 'pbrisbin/vim-colors-off'
+  use 'jaredgorski/fogbell.vim'
+  use 'Lokaltog/vim-monotone'
   use 'hrsh7th/cmp-vsnip'
   use 'chriskempson/base16-vim'
   use 'kdheepak/lazygit.nvim'
@@ -95,9 +105,9 @@ return require('packer').startup(function()
   use 'HendrikPetertje/vimify'
   use 'chipsenkbeil/vimwiki-server.nvim'
   use 'sillybun/vim-repl'
-  use 'gelguy/wilder.nvim'
   use 'lervag/vimtex'
   use 'kristijanhusak/vim-carbon-now-sh'
+  use 'github/copilot.vim'
   use "nvim-telescope/telescope-file-browser.nvim"
 use {
   "folke/twilight.nvim",
@@ -132,45 +142,9 @@ use {
     }
   end,
 }
-use({
-    'NTBBloodbath/doom-one.nvim',
-    config = function()
-        require('doom-one').setup({
-            cursor_coloring = false,
-            terminal_colors = false,
-            italic_comments = false,
-            enable_treesitter = true,
-            transparent_background = false,
-            pumblend = {
-                enable = true,
-                transparency_amount = 20,
-            },
-            plugins_integrations = {
-                neorg = true,
-                barbar = true,
-                bufferline = false,
-                gitgutter = false,
-                gitsigns = true,
-                telescope = false,
-                neogit = true,
-                nvim_tree = true,
-                dashboard = true,
-                startify = true,
-                whichkey = true,
-                indent_blankline = true,
-                vim_illuminate = true,
-                lspsaga = false,
-            },
-        })
-    end,
-})
 -- Lua
-use({
-	"catppuccin/nvim",
-	as = "catppuccin"
-})
 use {
-    'KadoBOT/nvim-spotify', 
+    'KadoBOT/nvim-spotify',
     requires = 'nvim-telescope/telescope.nvim',
     config = function()
         local spotify = require'nvim-spotify'
