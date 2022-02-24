@@ -1,21 +1,21 @@
-local has_words_before = function()
+--[[ local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+end ]]
 
 
 -- Enable the following language servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-local nvim_lsp = require "lspconfig"
+--[[ local nvim_lsp = require "lspconfig"
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
--- Set completeopt to have a better completion experience
+-- Set completeopt to have a better completion experience ]]
 vim.o.completeopt = 'menu,menuone,noselect,noinsert'
 
-local feedkey = function(key, mode)
+--[[ local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
-
+ ]]
 local cmp = require ('cmp')
 cmp.setup {
   snippet = {
@@ -115,7 +115,7 @@ cmp.setup {
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
           menu = entry.completion_item.data.detail .. ' ' .. menu
         end
-        vim_item.kind = ' ⚡️'
+        vim_item.kind = '  AI'
       end
       vim_item.menu = menu
       return vim_item

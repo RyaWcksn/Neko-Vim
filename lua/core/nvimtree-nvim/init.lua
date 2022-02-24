@@ -29,9 +29,9 @@ g.nvim_tree_icons = {
       -- arrow_open = "",
       -- arrow_closed = "",
       default = "",
-      empty = "", -- 
-      empty_open = "",
-      open = "",
+      empty = "", -- 
+      empty_open = "",
+      open = "",
       symlink = "",
       symlink_open = "",
    },

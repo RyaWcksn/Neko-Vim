@@ -236,7 +236,7 @@ elseif vim.fn.has("unix") then
     map("n", "<M-0>", ":BufferLineGoToBuffer 0<CR>", opt)
     map('n', '<M-e>', ':NvimTreeToggle<CR>', opt)
 
-    map("n", "<M-f>", "<cmd>Telescope find_files<CR>", opt)
+    map("n", "<M-f>", "<cmd>FZF<CR>", opt)
     map("n", "<M-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
     map("n", "<M-b>", "<cmd>Telescope buffers<CR>", opt)
     map("n", "<M-t>", ":Telescope colorscheme<CR>", opt)
