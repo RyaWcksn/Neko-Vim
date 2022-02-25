@@ -152,7 +152,7 @@ vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
-
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false, scope="cursor"})]]
 --[[ local function goto_definition(split_cmd)
   local util = vim.lsp.util
   local log = require("vim.lsp.log")
