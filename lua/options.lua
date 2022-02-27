@@ -55,6 +55,7 @@ colorscheme onedark
 exec([[
   autocmd BufEnter,BufNew term://* startinsert
   autocmd TermOpen * startinsert
+  autocmd TermOpen * setlocal nonumber norelativenumber
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
