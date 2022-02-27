@@ -249,6 +249,11 @@ if vim.fn.has("mac") == 1 then
 
     key('n', '<D-v>', ':vs<CR>', opt)
     key('n', '<D-b>', ':sp<CR>', opt)
+
+    key("n", "<D-r>", "<cmd>lua Rename.rename()<CR>", opt)
+    key("n", "<D-=>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
+    key("n", "<D-a>", ":Telescope lsp_code_actions<CR>", opt)
+    key("n", "<D-g>", ":LazyGit<CR>", opt)
 elseif vim.fn.has("unix") then
     key('n', "<M-w>", ":w <CR>", opt)
     key('n', "<M-q>", ":bd! <CR>", opt)
