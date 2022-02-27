@@ -11,7 +11,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     {
         virtual_text = {
             prefix = "● ",
-            spacing = 0
+            spacing = 1
         },
         signs = true,
         underline = true,
