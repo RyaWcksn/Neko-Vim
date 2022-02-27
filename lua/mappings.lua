@@ -288,6 +288,8 @@ elseif vim.fn.has("unix") then
 
     key("n", "<M-r>", "<cmd>lua Rename.rename()<CR>", opt)
     key("n", "<M-=>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
+    key("n", "<M-a>", ":Telescope lsp_code_actions<CR>", opt)
+    key("n", "<M-g>", ":LazyGit<CR>", opt)
 end
 key('n', '<leader>lL', ":set relativenumber<CR>", opt)
 key('n', '<leader>ll', ":set norelativenumber<CR>", opt)
