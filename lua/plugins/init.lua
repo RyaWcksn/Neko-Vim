@@ -15,6 +15,9 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'folke/tokyonight.nvim'
+  use 'rcarriga/nvim-notify'
+  use 'stsewd/spotify.nvim'
+  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {
     'hoob3rt/lualine.nvim',
@@ -51,7 +54,6 @@ return require('packer').startup(function(use)
   use 'andweeb/presence.nvim'
   use 'glepnir/dashboard-nvim'
   use 'b3nj5m1n/kommentary'
-  use 'kristijanhusak/orgmode.nvim'
   use {'tzachar/cmp-tabnine', run='./install.sh'}
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'voldikss/vim-floaterm'
@@ -104,6 +106,7 @@ return require('packer').startup(function(use)
   use 'junegunn/fzf.vim'
   use 'HendrikPetertje/vimify'
   use 'chipsenkbeil/vimwiki-server.nvim'
+  use 'nvim-telescope/telescope-project.nvim'
   use 'sillybun/vim-repl'
   use 'lervag/vimtex'
   use 'kristijanhusak/vim-carbon-now-sh'
@@ -158,6 +161,10 @@ use {
         }
     end,
     run = 'make'
+}
+use {'nvim-orgmode/orgmode', config = function()
+        require('orgmode').setup{}
+end
 }
 end)
 
