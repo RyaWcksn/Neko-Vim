@@ -30,6 +30,7 @@ opt.shiftwidth = 4        -- shift 4 spaces when tab
 opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
 vim.g.tokyonight_style = "storm"
+g.db_ui_save_location = "~/"
 
 
 -- Url handler
