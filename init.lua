@@ -14,6 +14,6 @@ require('core.autopairs-nvim')
 require('core.signature-nvim')
 require('core.indentline-nvim')
 require('core.orgmode-nvim')
-require('core.notify-nvim')
 require('core.sniprun-nvim')
+require('core.impatient-nvim')
 vim.opt.fillchars = {eob = " "}

@@ -92,7 +92,7 @@ pcall(function()
    for _, ext in ipairs(extensions) do
       telescope.load_extension(ext)
    end
-end) 
+end)
 require("telescope").load_extension "file_browser"
 require('telescope').load_extension('media_files')
 
