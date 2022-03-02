@@ -50,7 +50,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme onedark
+colorscheme tokyonight
 ]])
 
 exec([[

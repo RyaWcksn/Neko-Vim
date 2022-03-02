@@ -194,10 +194,9 @@ key("n", "e", ":HopWord<CR>", opt)
 -- map("n", "<C-k>", ":res -5<CR>", opt)
 -- map("n", "<C-j>", ":res +5<CR>", opt)
 
-key("n", "<F7>", ":SpPrevious<CR>", opt)
-key("n", "<F9>", ":SpNext<CR>", opt)
-key("n", "<F8>", ":SpToggle<CR>", opt)
-key("n", "<F6>", ":SpSearch ", {noremap = true})
+key("n", "<F7>", ":Spotify previous<CR>", opt)
+key("n", "<F9>", ":Spotify next<CR>", opt)
+key("n", "<F8>", ":Spotify play/pause<CR>", opt)
 
 -- Carbon Now Sha
 key("v", "<F5>", ":CarbonNowSh<CR>", opt)
@@ -298,6 +297,7 @@ elseif vim.fn.has("unix") then
     key("n", "<M-p>", ":Telescope telescope_project<CR>", opt)
 
     key('n', '<M-u>', ":DBUIToggle<CR>", opt)
+    key("n", "<M-Tab>", ":Spotify next<CR>", opt)
 end
 key('n', '<leader>lL', ":set relativenumber<CR>", opt)
 key('n', '<leader>ll', ":set norelativenumber<CR>", opt)
