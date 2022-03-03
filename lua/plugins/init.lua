@@ -16,9 +16,10 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'folke/tokyonight.nvim'
     use 'dstein64/vim-startuptime'
+    use 'rcarriga/nvim-notify'
     use 'stsewd/spotify.nvim'
-    use { 'michaelb/sniprun',  cmd = 'SnipRun' }
-    use {'nvim-treesitter/nvim-treesitter', cmd = ":TSUpdate"}
+    use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+    use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
     use {
       'hoob3rt/lualine.nvim',
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -31,7 +32,7 @@ return require('packer').startup(function(use)
     }
     use 'kyazdani42/nvim-web-devicons'
     use 'nvim-lua/plenary.nvim'
-    use {'nvim-telescope/telescope.nvim',  cmd = 'Telescope'}
+    use 'nvim-telescope/telescope.nvim'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-calc'
@@ -48,8 +49,8 @@ return require('packer').startup(function(use)
     use 'b3nj5m1n/kommentary'
     use {'tzachar/cmp-tabnine', run='./install.sh'}
     use 'nvim-telescope/telescope-media-files.nvim'
-    use {'voldikss/vim-floaterm', cmd = 'FloatermToggle'}
-    use {'folke/zen-mode.nvim', cmd = 'ZenMode'}
+    use 'voldikss/vim-floaterm'
+    use 'folke/zen-mode.nvim'
     use "terryma/vim-multiple-cursors"
     use "vimwiki/vimwiki"
     use "akinsho/org-bullets.nvim"
