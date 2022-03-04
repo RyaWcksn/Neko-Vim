@@ -1,4 +1,9 @@
-require("bufferline").setup{
+local present, bufferline = pcall(require, "bufferline")
+if not present then
+    return
+end
+
+bufferline.setup{
      options = {
       offsets = {{filetype = "NvimTree", text = "ディレクトリ", padding = 0}},
       buffer_close_icon = "",
