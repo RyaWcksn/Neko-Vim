@@ -16,7 +16,9 @@
 </div>
 
 Neovim distribution created by Lua programming language  
-Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)
+Why i'm using Neko as name? It's simple because when it combine, the name turns into Nvim haha! (damn weebs)  
+
+*NOW* i've done some refactoring to make it faster from *700ms* to around *150ms*.
 
 ## Installation 💻 
 

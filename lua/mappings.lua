@@ -298,6 +298,7 @@ elseif vim.fn.has("unix") then
 
     key('n', '<M-u>', ":DBUIToggle<CR>", opt)
     key("n", "<M-Tab>", ":Spotify next<CR>", opt)
+    key("n", "<M-LeftMouse>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 end
 key('n', '<leader>lL', ":set relativenumber<CR>", opt)
 key('n', '<leader>ll', ":set norelativenumber<CR>", opt)
