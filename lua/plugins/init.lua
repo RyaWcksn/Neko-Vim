@@ -1,7 +1,7 @@
 vim.cmd 'autocmd BufwritePost plugins.lua PackerCompile'
 
 require('packer').init({display = {auto_clean = false}})
-local packer = require('packer');
+local packer = require('packer')
 local use = require('packer').use
 
 packer.init {
@@ -11,6 +11,7 @@ packer.init {
         end,
     },
 }
+
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
 
@@ -21,6 +22,60 @@ return require('packer').startup(function()
     use {'Lokaltog/vim-monotone'}
     use {'preservim/vim-colors-pencil'}
     use {'pbrisbin/vim-colors-off'}
+    use {'danishprakash/vim-yami'}
+
+    -- Null lsp
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function ()
+            require('core.nullls-nvim')
+        end
+    }
+
+    -- Note taking
+    use {"vimwiki/vimwiki"}
+    use {"akinsho/org-bullets.nvim"}
+    use {'lervag/vimtex'}
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('core.orgmode-nvim')
+        end
+    }
+    use {
+        'lukas-reineke/headlines.nvim',
+          config = function()
+            require('headlines').setup()
+          end,
+    }
+
+    -- Dashboard
+    use {
+        'glepnir/dashboard-nvim',
+        event = "BufEnter",
+        cmd = {
+            "Dashboard",
+            "DashboardChangeColorscheme",
+            "DashboardFindFile",
+            "DashboardFindHistory",
+            "DashboardFindWord",
+            "DashboardNewFile",
+            "DashboardJumpMarks",
+            "SessionLoad",
+            "SessionSave"
+        },
+        config = function()
+            require('core.dashboard-nvim')
+        end
+    }
+
+    -- transparency
+    use {
+        'xiyaowong/nvim-transparent',
+        config = function()
+            require('core.transparent-nvim')
+        end
+    }
 
     -- Notify
     use {'rcarriga/nvim-notify'}
@@ -64,6 +119,10 @@ return require('packer').startup(function()
         'hrsh7th/cmp-vsnip',
         after = 'nvim-cmp'
     }
+    use {
+        'tzachar/cmp-tabnine',
+        run='./install.sh'
+    }
 
     -- Check startup time speed
     use {'dstein64/vim-startuptime'}
@@ -86,11 +145,11 @@ return require('packer').startup(function()
         end
     }
     use {
-      'hoob3rt/lualine.nvim',
-      after = "bufferline.nvim",
-      config = function()
-        require('core.lualine-nvim')
-      end
+        'hoob3rt/lualine.nvim',
+        after = "bufferline.nvim",
+        config = function()
+            require('core.lualine-nvim')
+        end
     }
 
     -- Bufferline on top
@@ -106,6 +165,7 @@ return require('packer').startup(function()
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
+        after = "dashboard.nvim",
         cmd = {
             "NvimTreeOpen",
             "NvimTreeFocus",
@@ -125,6 +185,7 @@ return require('packer').startup(function()
         end
     }
     use {"nvim-telescope/telescope-file-browser.nvim"}
+    use {'nvim-telescope/telescope-media-files.nvim'}
 
 
     -- Lsp
@@ -142,55 +203,37 @@ return require('packer').startup(function()
             require('core.signature-nvim')
         end
     }
-    use 'williamboman/nvim-lsp-installer'
+    use {'williamboman/nvim-lsp-installer'}
 
     -- Autopairs tag
     use {
         'windwp/nvim-autopairs',
         after = "nvim-cmp",
         config = function()
-            require('nvim-autopairs').setup{}
+            require('core.autopairs-nvim')
         end
     }
-    use 'andweeb/presence.nvim'
-    use {
-        'glepnir/dashboard-nvim',
-        event = "BufEnter",
-        cmd = {
-            "Dashboard",
-            "DashboardChangeColorscheme",
-            "DashboardFindFile",
-            "DashboardFindHistory",
-            "DashboardFindWord",
-            "DashboardNewFile",
-            "DashboardJumpMarks",
-            "SessionLoad",
-            "SessionSave"
-        },
-        config = function()
-            require('core.dashboard-nvim')
-        end
-    }
-    use 'b3nj5m1n/kommentary'
-    use {'tzachar/cmp-tabnine', run='./install.sh'}
-    use 'nvim-telescope/telescope-media-files.nvim'
-    use 'voldikss/vim-floaterm'
+
+    -- Discord Rich Presence
+    use {'andweeb/presence.nvim'}
+
+
+    -- Comment
+    use {'b3nj5m1n/kommentary'}
+
+    -- Floating terminal
+    use {'voldikss/vim-floaterm'}
+
+    -- Zen Mode
     use {
         'folke/zen-mode.nvim',
         cmd = {
             "ZenMode"
         }
     }
-    use "terryma/vim-multiple-cursors"
-    use "vimwiki/vimwiki"
-    use "akinsho/org-bullets.nvim"
-    use 'danishprakash/vim-yami'
-    use {
-        'lukas-reineke/headlines.nvim',
-          config = function()
-            require('headlines').setup()
-          end,
-        }
+
+    -- Multiple cursors
+    use {"terryma/vim-multiple-cursors"}
 
     -- Git
     use {
@@ -200,9 +243,17 @@ return require('packer').startup(function()
             require('core.gitsign-nvim')
         end
     }
+    use {'kdheepak/lazygit.nvim'}
+
+    -- Suround
     use {'tpope/vim-surround'}
+
+    -- Sudo write
     use {'lambdalisue/suda.vim'}
+
+    -- Snipper
     use {'hrsh7th/vim-vsnip'}
+
     -- Database
     use { 'tpope/vim-dadbod' }
     use { 'kristijanhusak/vim-dadbod-ui' }
@@ -212,39 +263,44 @@ return require('packer').startup(function()
             require('core.impatient-nvim')
         end
     }
-    use {'kdheepak/lazygit.nvim'}
+
+    -- Ranger plugin
     use {'kevinhwang91/rnvimr'}
+
+    -- FZF
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim'}
-    use {'lervag/vimtex'}
+
+    -- Code snip
     use {'kristijanhusak/vim-carbon-now-sh'}
+
+    -- Copilot
     use {'github/copilot.vim'}
+
+    -- Light
     use {
-      "folke/twilight.nvim",
-      config = function()
-        require("twilight").setup {
-        }
-      end
-    }
-    use {
-      'phaazon/hop.nvim',
-      as = 'hop',
-      config = function()
-        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      end
-    }
-    use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("trouble").setup {
-        }
-      end,
-    }
-    use {
-        'nvim-orgmode/orgmode',
+        "folke/twilight.nvim",
         config = function()
-            require('core.orgmode-nvim')
+            require("twilight").setup{}
+        end
+    }
+
+    -- Hopping words
+    use {
+        'phaazon/hop.nvim',
+        as = 'hop',
+        config = function()
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+
+    -- Trouble
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+        }
         end
     }
 end
