@@ -1,4 +1,4 @@
-require('mappings')
-require('options')
-require('plugins')
-vim.opt.fillchars = {eob = " "}
+require("mappings")
+require("options")
+require("plugins")
+vim.opt.fillchars = { eob = " " }
