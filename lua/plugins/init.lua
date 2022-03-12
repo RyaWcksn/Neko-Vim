@@ -23,12 +23,23 @@ return require('packer').startup(function()
     use {'preservim/vim-colors-pencil'}
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
+    use {
+        'RRethy/nvim-base16',
+        config = function()
+            require('base16-colorscheme').setup({
+                base00 = '#16161D', base01 = '#2c313c', base02 = '#3e4451', base03 = '#6c7891',
+                base04 = '#565c64', base05 = '#abb2bf', base06 = '#9a9bb3', base07 = '#c5c8e6',
+                base08 = '#e06c75', base09 = '#d19a66', base0A = '#e5c07b', base0B = '#98c379',
+                base0C = '#56b6c2', base0D = '#0184bc', base0E = '#c678dd', base0F = '#a06949',
+            })
+        end,
+    }
 
     -- Null lsp
     use {
         'jose-elias-alvarez/null-ls.nvim',
         config = function ()
-            require('core.nullls-nvim')
+            require('core.nullls-nvim').lazy_load()
         end
     }
 
@@ -48,6 +59,9 @@ return require('packer').startup(function()
             require('headlines').setup()
           end,
     }
+    
+    -- Tagbar
+    use {'simrat39/symbols-outline.nvim'}
 
     -- Dashboard
     use {
@@ -73,7 +87,7 @@ return require('packer').startup(function()
     use {
         'xiyaowong/nvim-transparent',
         config = function()
-            require('core.transparent-nvim')
+            require('core.transparent-nvim').lazy_load()
         end
     }
 
@@ -165,6 +179,7 @@ return require('packer').startup(function()
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
+        event = "BufEnter",
         after = "dashboard.nvim",
         cmd = {
             "NvimTreeOpen",
@@ -227,6 +242,7 @@ return require('packer').startup(function()
     -- Zen Mode
     use {
         'folke/zen-mode.nvim',
+        event = "BufEnter",
         cmd = {
             "ZenMode"
         }
@@ -265,14 +281,28 @@ return require('packer').startup(function()
     }
 
     -- Ranger plugin
-    use {'kevinhwang91/rnvimr'}
+    use {
+        'kevinhwang91/rnvimr',
+        event = "BufEnter",
+        cmd = {
+            "RnvimrOpen",
+            "RnvimrFocus",
+            "RnvimrToggle",
+        }
+    }
 
     -- FZF
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim'}
 
     -- Code snip
-    use {'kristijanhusak/vim-carbon-now-sh'}
+    use {
+        'kristijanhusak/vim-carbon-now-sh',
+        event = "BufRead",
+        cmd = {
+            "CarbonNowSh",
+        }
+    }
 
     -- Copilot
     use {'github/copilot.vim'}
