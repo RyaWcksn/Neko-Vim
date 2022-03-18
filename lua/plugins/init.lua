@@ -35,14 +35,6 @@ return require('packer').startup(function()
         end,
     }
 
-    -- Null lsp
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        config = function ()
-            require('core.nullls-nvim').lazy_load()
-        end
-    }
-
     -- Note taking
     use {"vimwiki/vimwiki"}
     use {"akinsho/org-bullets.nvim"}
@@ -87,7 +79,7 @@ return require('packer').startup(function()
     use {
         'xiyaowong/nvim-transparent',
         config = function()
-            require('core.transparent-nvim').lazy_load()
+            require('core.transparent-nvim')
         end
     }
 
@@ -180,7 +172,6 @@ return require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         event = "BufEnter",
-        after = "dashboard.nvim",
         cmd = {
             "NvimTreeOpen",
             "NvimTreeFocus",
