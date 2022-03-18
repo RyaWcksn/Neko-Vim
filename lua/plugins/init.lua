@@ -59,9 +59,9 @@ return require('packer').startup(function()
             require('headlines').setup()
           end,
     }
-    
-    -- Tagbar
-    use {'simrat39/symbols-outline.nvim'}
+
+    -- Test
+    use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
 
     -- Dashboard
     use {
@@ -324,9 +324,11 @@ return require('packer').startup(function()
         end
     }
 
+    -- Outline
+    use {"simrat39/symbols-outline.nvim"}
+
     -- Trouble
-    use {
-        "folke/trouble.nvim",
+    use {"folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("trouble").setup {
