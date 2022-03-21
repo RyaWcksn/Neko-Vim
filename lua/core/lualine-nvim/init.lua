@@ -2,7 +2,7 @@ require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		disabled_filetypes = {},
+		disabled_filetypes = {'dashboard', 'NvimTree', 'Outline', 'Terminal'},
 		section_separators = {
 			left = "",
 			right = "",

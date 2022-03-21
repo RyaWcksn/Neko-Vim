@@ -15,6 +15,9 @@ packer.init {
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
 
+    -- Markdown
+    use {'iamcco/markdown-preview.nvim'}
+
     -- Theme
     use {'bluz71/vim-moonfly-colors'}
     use {'bluz71/vim-nightfly-guicolors'}
@@ -23,13 +26,16 @@ return require('packer').startup(function()
     use {'preservim/vim-colors-pencil'}
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
-
-    -- Null lsp
     use {
-        'jose-elias-alvarez/null-ls.nvim',
-        config = function ()
-            require('core.nullls-nvim')
-        end
+        'RRethy/nvim-base16',
+        config = function()
+            require('base16-colorscheme').setup({
+                base00 = '#16161D', base01 = '#2c313c', base02 = '#3e4451', base03 = '#6c7891',
+                base04 = '#565c64', base05 = '#abb2bf', base06 = '#9a9bb3', base07 = '#c5c8e6',
+                base08 = '#e06c75', base09 = '#d19a66', base0A = '#e5c07b', base0B = '#98c379',
+                base0C = '#56b6c2', base0D = '#0184bc', base0E = '#c678dd', base0F = '#a06949',
+            })
+        end,
     }
 
     -- Note taking
@@ -48,6 +54,9 @@ return require('packer').startup(function()
             require('headlines').setup()
           end,
     }
+
+    -- Test
+    use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
 
     -- Dashboard
     use {
@@ -165,7 +174,7 @@ return require('packer').startup(function()
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        after = "dashboard.nvim",
+        event = "BufEnter",
         cmd = {
             "NvimTreeOpen",
             "NvimTreeFocus",
@@ -227,6 +236,7 @@ return require('packer').startup(function()
     -- Zen Mode
     use {
         'folke/zen-mode.nvim',
+        event = "BufEnter",
         cmd = {
             "ZenMode"
         }
@@ -257,22 +267,31 @@ return require('packer').startup(function()
     -- Database
     use { 'tpope/vim-dadbod' }
     use { 'kristijanhusak/vim-dadbod-ui' }
-    use {
-        'lewis6991/impatient.nvim',
-        config = function()
-            require('core.impatient-nvim')
-        end
-    }
+    use { 'lewis6991/impatient.nvim' }
 
     -- Ranger plugin
-    use {'kevinhwang91/rnvimr'}
+    use {
+        'kevinhwang91/rnvimr',
+        event = "BufEnter",
+        cmd = {
+            "RnvimrOpen",
+            "RnvimrFocus",
+            "RnvimrToggle",
+        }
+    }
 
     -- FZF
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim'}
 
     -- Code snip
-    use {'kristijanhusak/vim-carbon-now-sh'}
+    use {
+        'kristijanhusak/vim-carbon-now-sh',
+        event = "BufRead",
+        cmd = {
+            "CarbonNowSh",
+        }
+    }
 
     -- Copilot
     use {'github/copilot.vim'}
@@ -294,14 +313,19 @@ return require('packer').startup(function()
         end
     }
 
+    -- Outline
+    use {"simrat39/symbols-outline.nvim"}
+
     -- Trouble
-    use {
-        "folke/trouble.nvim",
+    use {"folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("trouble").setup {
         }
         end
     }
+
+    -- Nullls
+    use { 'jose-elias-alvarez/null-ls.nvim' } 
 end
 )

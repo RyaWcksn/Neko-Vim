@@ -86,6 +86,9 @@ key("n", "<Leader>tt", ":TransparentToggle<CR>", opt)
 key("n", "<Leader>v", ":vs<CR>", opt)
 key("n", "<Leader>b", ":sp<CR>", opt)
 
+-- Outline
+key("n", "<Leader>o", ":SymbolsOutline<CR>", opt)
+
 -- Kill buffer
 key("n", "<C-c>", ":bd<CR>", opt)
 
@@ -301,6 +304,8 @@ elseif vim.fn.has("unix") then
 	key("n", "<M-u>", ":DBUIToggle<CR>", opt)
 	key("n", "<M-Tab>", ":Spotify next<CR>", opt)
 	key("n", "<M-LeftMouse>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
+
+    key("n", "<M-o>", ":SymbolsOutline<CR>", opt)
 end
 key("n", "<leader>lL", ":set relativenumber<CR>", opt)
 key("n", "<leader>ll", ":set norelativenumber<CR>", opt)
