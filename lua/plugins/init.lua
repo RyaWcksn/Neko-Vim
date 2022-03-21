@@ -15,6 +15,9 @@ packer.init {
 return require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
 
+    -- Markdown
+    use {'iamcco/markdown-preview.nvim'}
+
     -- Theme
     use {'bluz71/vim-moonfly-colors'}
     use {'bluz71/vim-nightfly-guicolors'}
@@ -264,12 +267,7 @@ return require('packer').startup(function()
     -- Database
     use { 'tpope/vim-dadbod' }
     use { 'kristijanhusak/vim-dadbod-ui' }
-    use {
-        'lewis6991/impatient.nvim',
-        config = function()
-            require('core.impatient-nvim')
-        end
-    }
+    use { 'lewis6991/impatient.nvim' }
 
     -- Ranger plugin
     use {
@@ -326,5 +324,8 @@ return require('packer').startup(function()
         }
         end
     }
+
+    -- Nullls
+    use { 'jose-elias-alvarez/null-ls.nvim' } 
 end
 )

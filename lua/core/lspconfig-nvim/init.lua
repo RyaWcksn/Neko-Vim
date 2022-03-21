@@ -97,28 +97,6 @@ local border = {
 	{ "│", "FloatBorder" },
 }
 
--- LSP settings (for overriding per client)
---[[ local handlers =  {
-    ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
-    ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
-} ]]
-
--- Do not forget to use the on_attach function
---[[ local LspServer = {
-    "bashls",
-    "cssls",
-    "html",
-    "jsonls",
-    "pyright",
-    "tsserver",
-    "gopls",
-    "sumneko_lua"
-}
-
-for _, v in pairs(LspServer) do
-    require('lspconfig')[v].setup { handlers=handlers }
-end
- ]]
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
