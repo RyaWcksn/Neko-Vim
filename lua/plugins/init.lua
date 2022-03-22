@@ -1,8 +1,8 @@
 vim.cmd 'autocmd BufwritePost plugins.lua PackerCompile'
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 
 require('packer').init({display = {auto_clean = false}})
 local packer = require('packer')
-local use = require('packer').use
 
 packer.init {
     display = {
@@ -10,9 +10,16 @@ packer.init {
             return require("packer.util").float { border = "single" }
         end,
     },
+    git = {
+        clone_timeout = 300, -- 5 mins
+    },
+    profile = {
+        enable = true,
+    },
+    max_jobs = 1
 }
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
     -- Markdown
@@ -127,10 +134,6 @@ return require('packer').startup(function()
     use {
         'hrsh7th/cmp-vsnip',
         after = 'nvim-cmp'
-    }
-    use {
-        'tzachar/cmp-tabnine',
-        run='./install.sh'
     }
 
     -- Check startup time speed
@@ -253,7 +256,6 @@ return require('packer').startup(function()
             require('core.gitsign-nvim')
         end
     }
-    use {'kdheepak/lazygit.nvim'}
 
     -- Suround
     use {'tpope/vim-surround'}
@@ -326,6 +328,6 @@ return require('packer').startup(function()
     }
 
     -- Nullls
-    use { 'jose-elias-alvarez/null-ls.nvim' } 
+    use { 'jose-elias-alvarez/null-ls.nvim' }
 end
 )

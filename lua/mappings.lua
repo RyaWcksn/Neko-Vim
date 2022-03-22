@@ -99,7 +99,7 @@ key("n", "<Leader>e", ":NvimTreeToggle<CR>", opt)
 key("n", "<Leader>z", "<cmd>nohlsearch<CR>", opt)
 
 -- Telescope
-key("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opt)
+key("n", "<leader>ff", ":FZF<CR>", opt)
 key("n", "<leader>fe", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
 key("n", "<leader>:", "<cmd>Telescope commands<CR>", opt)
 key("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opt)
