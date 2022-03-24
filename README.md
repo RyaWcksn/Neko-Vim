@@ -114,6 +114,6 @@ For the language server, i'm using [nvim-lsp-installer](https://github.com/willi
 
 | Feature                    | Status   |
 |----------------------------|----------|
-| Debugging                  | Progress |
+| Debugging                  | Done     |
 | Work in termux and windows | Done     |
 
