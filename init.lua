@@ -6,4 +6,5 @@ end
 require("mappings")
 require("options")
 require("plugins")
-vim.opt.fillchars = { eob = " " }
+require("core.dap-nvim")
+require('dap-go').setup()

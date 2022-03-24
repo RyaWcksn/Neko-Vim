@@ -22,6 +22,11 @@ packer.init {
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
+    -- Dap
+    use {'mfussenegger/nvim-dap'}
+    use {'theHamsta/nvim-dap-virtual-text'}
+    use {'leoluz/nvim-dap-go'}
+
     -- Markdown
     use {'iamcco/markdown-preview.nvim'}
 

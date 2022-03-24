@@ -1,3 +1,13 @@
+local hide_in_width = function()
+	return vim.fn.winwidth(0) > 80
+end
+
+local diff = {
+	"diff",
+	colored = false,
+	symbols = { added = "  ", modified = " ", removed = " " },
+	cond = hide_in_width,
+}
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -34,7 +44,7 @@ require("lualine").setup({
 			},
 		},
 		lualine_x = { "location", "tabs", "encoding" },
-		lualine_y = { "diff" },
+		lualine_y = { diff },
 		lualine_z = { "filetype" },
 	},
 	inactive_sections = {
@@ -48,3 +58,4 @@ require("lualine").setup({
 	tabline = {},
 	extensions = { "nvim-tree" },
 })
+

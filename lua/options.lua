@@ -2,6 +2,8 @@ local opt = vim.opt
 local g = vim.g
 local exec = vim.api.nvim_exec
 
+opt.fillchars = { eob = " " }
+
 opt.undofile = true
 opt.ruler = false
 opt.hidden = true
@@ -84,6 +86,29 @@ opt.tabstop = 4 -- 1 tab == 4 spaces
 opt.smartindent = true -- autoindent new lines
 vim.g.tokyonight_style = "night"
 g.db_ui_save_location = "~/"
+
+local global_pkg_settings = {
+    netrw_silent = 1,
+    loaded_2html_plugin = 1,
+    loaded_gzip = 1,
+    loaded_man = 1,
+    loaded_matchit = 1,
+    loaded_matchparen = 1,
+    loaded_shada_plugin = 1,
+    loaded_spellfile_plugin = 1,
+    loaded_tarPlugin = 1,
+    loaded_tutor_mode_plugin = 1,
+    loaded_vimballPlugin = 1,
+    loaded_zipPlugin = 1,
+    loaded_netrwPlugin = 1,
+    loaded_python_provider = 0,
+    loaded_ruby_provider = 0,
+    loaded_perl_provider = 0,
+    loaded_node_provider = 0,
+    netrw_use_noswf = 0
+}
+
+for k, v in pairs(global_pkg_settings) do vim.g[k] = v end
 
 vim.cmd([[
 filetype indent on
