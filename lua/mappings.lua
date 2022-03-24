@@ -220,7 +220,9 @@ key("n", "<S-h>", ":vertical res -5<CR>", opt)
 -- map keybind to cd current file directory
 key("n", "<leader>cd", ":cd %:h<CR>", opt)
 
--- Save
+-- Unit testing
+key("n", "<Leader>m", ":lua require('dap-go').debug_test()<CR>", opt)
+key("n", "mm", ":UltestNearest<CR>", opt)
 if vim.fn.has("mac") == 1 then
 	key("n", "<D-s>", ":w <CR>", opt)
 	key("i", "<D-s>", "<c-\\><c-n>:w <CR>", opt)
@@ -239,9 +241,7 @@ if vim.fn.has("mac") == 1 then
 	key("n", "<D-f>", "<cmd>Telescope find_files<CR>", opt)
 	key("n", "<D-w>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
 	key("n", "<D-b>", "<cmd>Telescope buffers<CR>", opt)
-	key("n", "<leader>cc", "<cmd>Telescope git_commits<CR>", opt)
 	key("n", "<D-t>", ":Telescope colorscheme<CR>", opt)
-	key("n", "<D-m>", ":Telescope file_browser<CR>", opt)
 
 	key("n", "<D-h>", "<C-w>h", opt)
 	key("n", "<D-j>", "<C-w>j", opt)
@@ -258,6 +258,10 @@ if vim.fn.has("mac") == 1 then
 	key("n", "<D-=>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
 	key("n", "<D-a>", ":Telescope lsp_code_actions<CR>", opt)
 	key("n", "<D-g>", ":LazyGit<CR>", opt)
+
+    -- Unit testing
+	key("n", "<D-m>", ":lua require('dap-go').debug_test()<CR>", opt)
+	key("n", "<D-n>", ":UltestNearest<CR>", opt)
 elseif vim.fn.has("unix") then
 	key("n", "<M-w>", ":w <CR>", opt)
 	key("n", "<M-q>", ":bd! <CR>", opt)
@@ -279,7 +283,6 @@ elseif vim.fn.has("unix") then
 	key("n", "<M-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opt)
 	key("n", "<M-b>", "<cmd>Telescope buffers<CR>", opt)
 	key("n", "<M-t>", ":Telescope colorscheme<CR>", opt)
-	key("n", "<M-m>", ":Telescope file_browser<CR>", opt)
 
 	key("n", "<M-h>", "<C-w>h", opt)
 	key("n", "<M-j>", "<C-w>j", opt)
@@ -306,6 +309,10 @@ elseif vim.fn.has("unix") then
 	key("n", "<M-LeftMouse>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 
     key("n", "<M-o>", ":SymbolsOutline<CR>", opt)
+
+    -- Unit testing
+	key("n", "<M-m>", ":lua require('dap-go').debug_test()<CR>", opt)
+	key("n", "<M-mm>", ":UltestNearest<CR>", opt)
 end
 key("n", "<leader>lL", ":set relativenumber<CR>", opt)
 key("n", "<leader>ll", ":set norelativenumber<CR>", opt)
