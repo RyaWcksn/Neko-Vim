@@ -222,7 +222,8 @@ key("n", "<leader>cd", ":cd %:h<CR>", opt)
 
 -- Unit testing
 key("n", "<Leader>m", ":lua require('dap-go').debug_test()<CR>", opt)
-key("n", "mm", ":UltestNearest<CR>", opt)
+key("n", "<C-m>", ":UltestNearest<CR>", opt)
+key("n", "<C-p>", ":UltestSummary<CR>", opt)
 if vim.fn.has("mac") == 1 then
 	key("n", "<D-s>", ":w <CR>", opt)
 	key("i", "<D-s>", "<c-\\><c-n>:w <CR>", opt)
