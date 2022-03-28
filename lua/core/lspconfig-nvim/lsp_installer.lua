@@ -23,6 +23,7 @@ lsp_installer.on_server_ready(function(server)
 		"solargraph",
 		"tsserver",
         "gopls",
+        "golangci-lint",
 	}
 
 	for _, name in pairs(servers) do

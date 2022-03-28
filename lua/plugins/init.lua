@@ -22,6 +22,14 @@ packer.init {
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
+    -- Colorizer
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end
+    }
+
     -- Dap
     use {'mfussenegger/nvim-dap'}
     use {'theHamsta/nvim-dap-virtual-text'}

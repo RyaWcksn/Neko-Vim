@@ -37,6 +37,20 @@ _G.Rename = {
 	dorename = dorename,
 }
 
+local function preview_location_callback(_, result)
+  if result == nil or vim.tbl_isempty(result) then
+    return nil
+  end
+  vim.lsp.util.preview_location(result[1])
+end
+
+function PeekDefinition()
+  local params = vim.lsp.util.make_position_params()
+  return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
+end
+
+key("n", "<Leader>pi", ":lua PeekDefinition()<CR>", opt)
+
 -- Stuff
 key("n", "Y", "y$", opt)
 key("n", "J", "mzJ`z", opt)
@@ -62,10 +76,10 @@ key("n", "gr", ":Telescope lsp_references<CR>", opt)
 key("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
 key("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)
 key("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opt)
-key("n", "<space>ca", ":Telescope lsp_code_actions<CR>", opt)
+key("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 key("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opt)
 key("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-key("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+key("n", "<Leader>rn", "<cmd>lua Rename.rename()<CR>", opt)
 key("n", "<Leader>ee", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opt)
 key("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opt)
 key("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opt)
