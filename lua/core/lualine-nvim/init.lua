@@ -8,6 +8,27 @@ local diff = {
 	symbols = { added = "  ", modified = " ", removed = " " },
 	cond = hide_in_width,
 }
+
+local lsp = {
+    function()
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
+    end
+    return msg
+  end,
+  icon = ' LSP:',
+  color = { fg = '#ffffff', gui = 'bold' },
+}
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -43,7 +64,7 @@ require("lualine").setup({
 				always_visible = false, -- Show diagnostics even if there are none.
 			},
 		},
-		lualine_x = { "location", "tabs", "encoding" },
+		lualine_x = { "location", lsp, "encoding" },
 		lualine_y = { diff },
 		lualine_z = { "filetype" },
 	},
