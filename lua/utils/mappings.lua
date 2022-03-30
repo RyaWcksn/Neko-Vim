@@ -126,10 +126,10 @@ key("n", "<leader>fm", ":Telescope file_browser<CR>", opt)
 key("n", ";", ":", opt)
 
 -- Quit and Save
-key("n", "<Leader>w", ":w<CR>", opt)
 key("n", "<Leader>sw", ":SudaWrite<CR>", opt)
 key("n", "<Leader>q", ":q<CR>", opt)
 key("n", "<Leader>qq", ":q!<CR>", opt)
+key("n", "<Leader>w", ":w<CR> <cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 
 -- Dashboard shortcut
 key("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opt)
@@ -221,7 +221,7 @@ key("n", "<F8>", ":Spotify play/pause<CR>", opt)
 key("v", "<F5>", ":CarbonNowSh<CR>", opt)
 
 -- ranger
-key("n", "<leader>rr", ":RnvimrToggle<CR>", opt)
+key("n", "<leader>rr", ":LspRestart<CR>", opt)
 
 -- Trouble
 key("n", "<leader>tr", ":Trouble<CR>", opt)
@@ -277,6 +277,9 @@ if vim.fn.has("mac") == 1 then
     -- Unit testing
 	key("n", "<D-m>", ":lua require('dap-go').debug_test()<CR>", opt)
 	key("n", "<D-n>", ":UltestNearest<CR>", opt)
+
+    -- Lsp
+    key("n", "<D-r>", ":LspRestart<CR>", opt)
 elseif vim.fn.has("unix") then
 	key("n", "<M-w>", ":w <CR>", opt)
 	key("n", "<M-q>", ":bd! <CR>", opt)
@@ -328,6 +331,8 @@ elseif vim.fn.has("unix") then
     -- Unit testing
 	key("n", "<M-m>", ":lua require('dap-go').debug_test()<CR>", opt)
 	key("n", "<M-mm>", ":UltestNearest<CR>", opt)
+    -- Lsp
+    key("n", "<M>rr", ":LspRestart<CR>", opt)
 end
 key("n", "<leader>lL", ":set relativenumber<CR>", opt)
 key("n", "<leader>ll", ":set norelativenumber<CR>", opt)

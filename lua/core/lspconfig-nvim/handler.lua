@@ -51,15 +51,15 @@ M.setup = function ()
 		"solargraph",
 		"tsserver",
         "gopls",
-        "golangci-lint",
 	}
     for _, server in ipairs(servers) do
         local util = require("lspconfig/util")
         if server == "gopls" then
             lsp.gopls.setup({
-                cmd = {"gopls", "serve", "goimports", "golangci-lint"},
-                filetypes = {"go", "gomod"},
+                cmd = {"gopls", "serve", "goimports"},
+                filetypes = {"go", "gomod", "gotmpl"},
                 root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
+                single_file_support = true,
                 settings = {
                     gopls = {
                         analyses = {
@@ -70,6 +70,34 @@ M.setup = function ()
                 },
             })
         end
+        --[[ if server == "golangci_lint_ls" then
+           lsp.golangci_lint_ls.setup({
+                cmd = {"golangci-lint-langserver"},
+                init_options = {
+                    command = { "golangci-lint", "run", "--out-format", "json" }
+                },
+                filetypes = {"go", "gomod"},
+                root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
+                settings = {
+                    golangci_lint_ls = {
+                        enable_all = true,
+                        enable = {
+                            "golint",
+                            "govet",
+                            "golint",
+                            "goconst",
+                            "gocyclo",
+                            "ineffassign",
+                            "interfacer",
+                            "structcheck",
+                            "unused",
+                            "unusedparams",
+                            "varcheck",
+                        },
+                    },
+                },
+            })
+        end ]]
     end
 end
 
