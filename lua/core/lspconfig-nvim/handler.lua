@@ -57,7 +57,7 @@ M.setup = function ()
         local util = require("lspconfig/util")
         if server == "gopls" then
             lsp.gopls.setup({
-                cmd = {"gopls", "serve"},
+                cmd = {"gopls", "serve", "goimports", "golangci-lint"},
                 filetypes = {"go", "gomod"},
                 root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
                 settings = {
