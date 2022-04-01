@@ -62,7 +62,6 @@ return require('packer').startup(function(use)
     }
 
     -- Note taking
-    use {"vimwiki/vimwiki"}
     use {"akinsho/org-bullets.nvim"}
     use {'lervag/vimtex'}
     use {
