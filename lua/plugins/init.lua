@@ -1,6 +1,9 @@
 vim.cmd 'autocmd BufwritePost plugins.lua PackerCompile'
 vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 
+local packerPath = vim.fn.stdpath('data') .. '/site'
+vim.o.packpath = packerPath .. ',' .. vim.o.packpath
+
 require('packer').init({display = {auto_clean = false}})
 local packer = require('packer')
 
@@ -95,14 +98,6 @@ return require('packer').startup(function(use)
         },
         config = function()
             require('core.dashboard-nvim')
-        end
-    }
-
-    -- transparency
-    use {
-        'xiyaowong/nvim-transparent',
-        config = function()
-            require('core.transparent-nvim')
         end
     }
 

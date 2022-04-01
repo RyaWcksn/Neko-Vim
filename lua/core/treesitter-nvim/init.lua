@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "html", "javascript", "lua", "go", "typescript" },
+	require('utils.nekorc').languages.ensure_installed,
 	sync_install = true,
 	highlight = {
 		enable = true,

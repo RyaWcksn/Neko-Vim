@@ -1,52 +1,23 @@
-local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
-end
-
-local diff = {
-	"diff",
-	colored = false,
-	symbols = { added = "  ", modified = " ", removed = " " },
-	cond = hide_in_width,
-}
-
-local lsp = {
-    function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
-}
+local module = require('utils.nekorc')
 
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
+		theme = require("utils.nekorc").lualine_theme,
 		disabled_filetypes = {'dashboard', 'NvimTree', 'Outline', 'Terminal'},
 		section_separators = {
 			left = "",
 			right = "",
 		},
 		component_separators = {
-			left = "",
+			left = "",
 			right = "",
 		},
 	},
 
 	sections = {
 		lualine_a = { "branch" },
-		lualine_b = { "hostname" },
+		lualine_b = { 'hostname', module.lualine_modules.treesitter },
 		lualine_c = {
 			{
 				"diagnostics",
@@ -64,8 +35,8 @@ require("lualine").setup({
 				always_visible = false, -- Show diagnostics even if there are none.
 			},
 		},
-		lualine_x = { "location", lsp, "encoding" },
-		lualine_y = { diff },
+		lualine_x = { "location", module.lualine_modules.lsp, "encoding" },
+		lualine_y = { module.lualine_modules.diff },
 		lualine_z = { "filetype" },
 	},
 	inactive_sections = {

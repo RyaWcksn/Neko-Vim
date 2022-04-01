@@ -4,6 +4,14 @@ local exec = vim.api.nvim_exec
 
 opt.fillchars = { eob = " " }
 
+local colorscheme = require('utils.nekorc').colorscheme
+
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+
+if not status_ok then
+  print("Error loading colorscheme: " .. colorscheme)
+end
+
 opt.undofile = true
 opt.ruler = false
 opt.hidden = true
@@ -27,6 +35,7 @@ g.vimwiki_listsyms = "X"
 --opt.colorcolumn="90"
 vim.wo.wrap = false
 -- Outline
+
 vim.g.symbols_outline = {
     highlight_hovered_item = true,
     show_guides = true,
@@ -114,7 +123,6 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
-colorscheme base16-tomorrow-night
 ]])
 
 exec(

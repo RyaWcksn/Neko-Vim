@@ -1,4 +1,5 @@
 local lsp = require('lspconfig')
+local module = require('utils.nekorc')
 local M = {}
 
 M.setup = function ()
@@ -39,19 +40,7 @@ M.setup = function ()
     vim.o.updatetime = 250
     vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
     vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
-	local servers = {
-		"bashls",
-		"vuels",
-		"cssls",
-		"html",
-		"jsonls",
-		"sumneko_lua",
-		"phpactor",
-		"pyright",
-		"solargraph",
-		"tsserver",
-        "gopls",
-	}
+	local servers = module.languages.servers
     for _, server in ipairs(servers) do
         local util = require("lspconfig/util")
         if server == "gopls" then
@@ -70,34 +59,6 @@ M.setup = function ()
                 },
             })
         end
-        --[[ if server == "golangci_lint_ls" then
-           lsp.golangci_lint_ls.setup({
-                cmd = {"golangci-lint-langserver"},
-                init_options = {
-                    command = { "golangci-lint", "run", "--out-format", "json" }
-                },
-                filetypes = {"go", "gomod"},
-                root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
-                settings = {
-                    golangci_lint_ls = {
-                        enable_all = true,
-                        enable = {
-                            "golint",
-                            "govet",
-                            "golint",
-                            "goconst",
-                            "gocyclo",
-                            "ineffassign",
-                            "interfacer",
-                            "structcheck",
-                            "unused",
-                            "unusedparams",
-                            "varcheck",
-                        },
-                    },
-                },
-            })
-        end ]]
     end
 end
 

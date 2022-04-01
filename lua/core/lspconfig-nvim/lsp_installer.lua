@@ -3,27 +3,15 @@ if not no_err then
     return
 end
 
+local module = require('utils.nekorc')
+
 lsp_installer.on_server_ready(function(server)
     local opts = {
 		on_attach = require("core.lspconfig-nvim.handler").on_attach,
 		capabilities = require("core.lspconfig-nvim.handler").capabilities,
 	}
 	local lsp_installer_servers = require("nvim-lsp-installer.servers")
-
-	local servers = {
-		"bashls",
-		"vuels",
-		"cland",
-		"cssls",
-		"html",
-		"jsonls",
-		"sumneko_lua",
-		"phpactor",
-		"pyright",
-		"solargraph",
-		"tsserver",
-        "gopls",
-	}
+    local servers = module.languages.servers
 
 	for _, name in pairs(servers) do
 		---@diagnostic disable-next-line: redefined-local

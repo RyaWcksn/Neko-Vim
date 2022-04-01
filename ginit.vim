@@ -1,9 +1,3 @@
-" Enable Mouse
-set mouse=a
-
-" Set Editor Font
-" Check if the os is mac or linux
-
 let uname = substitute(system('uname'), '\n', '', '')
 if uname == 'Linux'
     set guifont=MesloLGS\ NF:h10

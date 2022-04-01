@@ -1,5 +1,5 @@
-local opt = { noremap = true, silent = true }
 vim.g.mapleader = " "
+local opt = {silent = true, noremap = true}
 local key = vim.api.nvim_set_keymap
 -- Disable key
 vim.cmd([[
@@ -92,9 +92,6 @@ key("n", "<Leader>h", "<C-w>h", opt)
 key("n", "<Leader>j", "<C-w>j", opt)
 key("n", "<Leader>k", "<C-w>k", opt)
 key("n", "<Leader>l", "<C-w>l", opt)
-
--- Transparency
-key("n", "<Leader>tt", ":TransparentToggle<CR>", opt)
 
 -- Split
 key("n", "<Leader>v", ":vs<CR>", opt)
