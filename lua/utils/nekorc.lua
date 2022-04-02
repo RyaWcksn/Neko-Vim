@@ -5,7 +5,7 @@ local hide_in_width = function()
 end
 
 -- Enter your colorscheme name here
-M.colorscheme = "base16-tomorrow-night"
+M.colorscheme = "moonfly"
 
 -- Enter your lualine colorscheme name here
 M.lualine_theme = "moonfly"

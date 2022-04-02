@@ -19,11 +19,14 @@ packer.init {
     profile = {
         enable = true,
     },
-    max_jobs = 1
+    max_jobs = 10
 }
 
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
+
+    -- Lua development
+    use {"folke/lua-dev.nvim"}
 
     -- Colorizer
     use {
@@ -44,37 +47,17 @@ return require('packer').startup(function(use)
     -- Theme
     use {'bluz71/vim-moonfly-colors'}
     use {'bluz71/vim-nightfly-guicolors'}
-    use {'folke/tokyonight.nvim'}
     use {'Lokaltog/vim-monotone'}
     use {'preservim/vim-colors-pencil'}
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
-    use {
-        'RRethy/nvim-base16',
-        config = function()
-            require('base16-colorscheme').setup({
-                base00 = '#16161D', base01 = '#2c313c', base02 = '#3e4451', base03 = '#6c7891',
-                base04 = '#565c64', base05 = '#abb2bf', base06 = '#9a9bb3', base07 = '#c5c8e6',
-                base08 = '#e06c75', base09 = '#d19a66', base0A = '#e5c07b', base0B = '#98c379',
-                base0C = '#56b6c2', base0D = '#0184bc', base0E = '#c678dd', base0F = '#a06949',
-            })
-        end,
-    }
 
     -- Note taking
-    use {"akinsho/org-bullets.nvim"}
-    use {'lervag/vimtex'}
     use {
         'nvim-orgmode/orgmode',
         config = function()
             require('core.orgmode-nvim')
         end
-    }
-    use {
-        'lukas-reineke/headlines.nvim',
-          config = function()
-            require('headlines').setup()
-          end,
     }
 
     -- Test
@@ -86,14 +69,6 @@ return require('packer').startup(function(use)
         event = "BufEnter",
         cmd = {
             "Dashboard",
-            "DashboardChangeColorscheme",
-            "DashboardFindFile",
-            "DashboardFindHistory",
-            "DashboardFindWord",
-            "DashboardNewFile",
-            "DashboardJumpMarks",
-            "SessionLoad",
-            "SessionSave"
         },
         config = function()
             require('core.dashboard-nvim')
@@ -278,17 +253,6 @@ return require('packer').startup(function(use)
     use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'lewis6991/impatient.nvim' }
 
-    -- Ranger plugin
-    use {
-        'kevinhwang91/rnvimr',
-        event = "BufEnter",
-        cmd = {
-            "RnvimrOpen",
-            "RnvimrFocus",
-            "RnvimrToggle",
-        }
-    }
-
     -- FZF
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim'}
@@ -304,14 +268,6 @@ return require('packer').startup(function(use)
 
     -- Copilot
     use {'github/copilot.vim'}
-
-    -- Light
-    use {
-        "folke/twilight.nvim",
-        config = function()
-            require("twilight").setup{}
-        end
-    }
 
     -- Hopping words
     use {
