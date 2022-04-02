@@ -10,6 +10,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
+        ['<S-k>'] = cmp.mapping.scroll_docs(-4),
+        ['<S-j>'] = cmp.mapping.scroll_docs(4),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<S-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
