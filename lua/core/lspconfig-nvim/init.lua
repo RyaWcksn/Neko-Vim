@@ -5,4 +5,3 @@ end
 
 require("core.lspconfig-nvim.handler").setup()
 require("core.lspconfig-nvim.lsp_installer")
-require("core.lspconfig-nvim.null-ls")
