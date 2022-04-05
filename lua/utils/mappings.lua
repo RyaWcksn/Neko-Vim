@@ -13,6 +13,7 @@ function GolangMock()
     local package = vim.fn.input("Package name: ")
     local cmd = {"mockgen", "-source", file, "-destination", output, "-package", package}
     os.execute(table.concat(cmd, " "))
+    print(", Mock file generated: " .. output .. " Package: " .. package)
 end
 
 
