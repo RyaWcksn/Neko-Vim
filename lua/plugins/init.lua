@@ -138,11 +138,20 @@ return require('packer').startup(function(use)
             require('core.treesitter-nvim')
         end
     }
+
+    -- Line
     use {
         'hoob3rt/lualine.nvim',
         after = "bufferline.nvim",
         config = function()
             require('core.lualine-nvim')
+        end
+    }
+    use {
+        "SmiteshP/nvim-gps",
+        requires = "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-gps").setup()
         end
     }
 

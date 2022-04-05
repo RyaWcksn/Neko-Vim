@@ -6,6 +6,16 @@ vim.cmd([[
 noremap . <NOP>
 ]])
 
+-- Go mock key
+function GolangMock()
+    local file = vim.trim(vim.fn.expand("%"))
+    local output = file:match"(.+)%..+$" .. "_mock.go"
+    local package = vim.fn.input("Package name: ")
+    local cmd = {"mockgen", "-source", file, "-destination", output, "-package", package}
+    os.execute(table.concat(cmd, " "))
+end
+
+
 -- Rename stuff
 local function dorename(win)
 	local new_name = vim.trim(vim.fn.getline("."))
@@ -65,13 +75,14 @@ key("n", "k", "gk", opt)
 key("n", "<C-L>", "zL", opt)
 key("n", "<C-H>", "zH", opt)
 
+key("n", "<leader>cm", ":lua GolangMock()<CR>", opt)
+
 -- LSP
 key("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opt)
 key("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opt)
 key("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opt)
 key("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
 key("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-key("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
 key("n", "gr", ":Telescope lsp_references<CR>", opt)
 key("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opt)
 key("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opt)

@@ -1,4 +1,5 @@
 local M = {}
+local lua_gps = require("nvim-gps")
 
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
@@ -45,6 +46,30 @@ M.lualine_modules = {
         colored = false,
         symbols = { added = "  ", modified = " ", removed = " " },
         cond = hide_in_width,
+    },
+    diagnostic = {
+        "diagnostics",
+        sources = { "nvim_diagnostic", "nvim_lsp" },
+        sections = { "error", "warn", "info", "hint" },
+        diagnostics_color = {
+            error = "DiagnosticError", -- Changes diagnostics' error color.
+            warn = "DiagnosticWarn", -- Changes diagnostics' warn color.
+            info = "DiagnosticInfo", -- Changes diagnostics' info color.
+            hint = "DiagnosticHint", -- Changes diagnostics' hint color.
+        },
+        symbols = { error = " ", warn = " ", info = " ", hint = " " },
+        colored = true, -- Displays diagnostics status in color if set to true.
+        update_in_insert = false, -- Update diagnostics in insert mode.
+        always_visible = false, -- Show diagnostics even if there are none.
+    },
+    branch = {
+        "branch",
+        cond = hide_in_width,
+        icon = " ",
+    },
+    gps = {
+        lua_gps.get_location,
+	    cond = lua_gps.is_available
     }
 }
 
@@ -52,14 +77,11 @@ M.lualine_modules = {
 M.languages = {
 	servers = {
 		"bashls",
-		"vuels",
 		"cssls",
 		"html",
 		"jsonls",
 		"sumneko_lua",
-		"phpactor",
 		"pyright",
-		"solargraph",
 		"tsserver",
         "gopls",
 	},
