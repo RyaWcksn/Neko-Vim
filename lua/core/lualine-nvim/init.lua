@@ -16,26 +16,10 @@ require("lualine").setup({
 	},
 
 	sections = {
-		lualine_a = { "branch" },
-		lualine_b = { 'hostname', module.lualine_modules.treesitter },
-		lualine_c = {
-			{
-				"diagnostics",
-				sources = { "nvim_diagnostic", "nvim_lsp" },
-				sections = { "error", "warn", "info", "hint" },
-				diagnostics_color = {
-					error = "DiagnosticError", -- Changes diagnostics' error color.
-					warn = "DiagnosticWarn", -- Changes diagnostics' warn color.
-					info = "DiagnosticInfo", -- Changes diagnostics' info color.
-					hint = "DiagnosticHint", -- Changes diagnostics' hint color.
-				},
-				symbols = { error = " ", warn = " ", info = " ", hint = " " },
-				colored = true, -- Displays diagnostics status in color if set to true.
-				update_in_insert = false, -- Update diagnostics in insert mode.
-				always_visible = false, -- Show diagnostics even if there are none.
-			},
-		},
-		lualine_x = { "location", module.lualine_modules.lsp, "encoding" },
+		lualine_a = { "mode" },
+		lualine_b = { module.lualine_modules.branch, module.lualine_modules.gps },
+		lualine_c = { module.lualine_modules.diagnostic, "filename"},
+		lualine_x = { "location", module.lualine_modules.lsp, "hostname" },
 		lualine_y = { module.lualine_modules.diff },
 		lualine_z = { "filetype" },
 	},
