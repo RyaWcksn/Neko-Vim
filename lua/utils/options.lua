@@ -12,6 +12,7 @@ if not status_ok then
   print("Error loading colorscheme: " .. colorscheme)
 end
 
+opt.hlsearch = false
 opt.undofile = true
 opt.ruler = false
 opt.hidden = true
