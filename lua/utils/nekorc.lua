@@ -11,6 +11,9 @@ M.colorscheme = "moonfly"
 -- Enter your lualine colorscheme name here
 M.lualine_theme = "moonfly"
 
+-- Enter your leader key
+M.leader = " "
+
 -- Lualine components
 M.lualine_modules = {
     treesitter = {
