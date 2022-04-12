@@ -73,6 +73,11 @@ M.lualine_modules = {
     gps = {
         lua_gps.get_location,
 	    cond = lua_gps.is_available
+    },
+    mode = {
+        function ()
+            return ""
+        end
     }
 }
 
