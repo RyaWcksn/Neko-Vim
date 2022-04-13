@@ -16,7 +16,7 @@ require("lualine").setup({
 	},
 
 	sections = {
-		lualine_a = { "mode" },
+		lualine_a = { module.lualine_modules.mode },
 		lualine_b = { module.lualine_modules.branch, module.lualine_modules.gps },
 		lualine_c = { module.lualine_modules.diagnostic, "filename"},
 		lualine_x = { "location", module.lualine_modules.lsp, "hostname" },

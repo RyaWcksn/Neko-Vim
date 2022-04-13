@@ -25,6 +25,14 @@ packer.init {
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
+    -- Which Key
+    use {
+        "folke/which-key.nvim",
+        config = function ()
+            require("core.whichkey-nvim")
+        end
+    }
+
     -- Lua development
     use {"folke/lua-dev.nvim"}
 
