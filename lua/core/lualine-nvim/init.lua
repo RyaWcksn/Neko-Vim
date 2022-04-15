@@ -3,25 +3,26 @@ local module = require('utils.nekorc')
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = require("utils.nekorc").lualine_theme,
+		theme = module.lualine_theme,
 		disabled_filetypes = {'dashboard', 'NvimTree', 'Outline', 'Terminal'},
 		section_separators = {
 			left = "",
 			right = "",
 		},
 		component_separators = {
-			left = "",
-			right = "",
+			left = " ",
+			right = " ",
 		},
 	},
 
 	sections = {
 		lualine_a = { module.lualine_modules.mode },
-		lualine_b = { module.lualine_modules.branch, module.lualine_modules.gps },
-		lualine_c = { module.lualine_modules.diagnostic, "filename"},
-		lualine_x = { "location", module.lualine_modules.lsp, "hostname" },
+		lualine_b = { module.lualine_modules.lsp, module.lualine_modules.gps, module.lualine_modules.diagnostic},
+		lualine_c = { },
+		lualine_x = { "location", module.lualine_modules.branch},
 		lualine_y = { module.lualine_modules.diff },
 		lualine_z = { "filetype" },
+
 	},
 	inactive_sections = {
 		lualine_a = {},

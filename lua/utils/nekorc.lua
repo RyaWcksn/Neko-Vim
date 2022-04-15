@@ -78,7 +78,15 @@ M.lualine_modules = {
         function ()
             return ""
         end
-    }
+    },
+    keymap = {
+        function ()
+            if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
+                return '⌨ ' .. vim.b.keymap_name
+            end
+            return ''
+        end
+    },
 }
 
 -- Input languages LSP to install

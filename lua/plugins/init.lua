@@ -162,6 +162,12 @@ return require('packer').startup(function(use)
             require("nvim-gps").setup()
         end
     }
+    --[[ use {
+        'tamton-aquib/staline.nvim',
+        config = function ()
+            require('core.staline-nvim')
+        end
+    } ]]
 
     -- Bufferline on top
     use {
