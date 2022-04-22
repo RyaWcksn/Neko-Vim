@@ -11,6 +11,17 @@ local function dorename(win)
 	vim.lsp.buf.rename(new_name)
 end
 
+-- Golang Mock
+function GolangMock()
+    local file = vim.trim(vim.fn.expand("%"))
+    local output = file:match"(.+)%..+$" .. "_mock.go"
+    local package = vim.fn.input("Package name: ")
+    local cmd = {"mockgen", "-source", file, "-destination", output, "-package", package}
+    os.execute(table.concat(cmd, " "))
+    print(", Mock file generated: " .. output .. " Package: " .. package)
+end
+
+
 local function rename()
 	local opts = {
 		relative = "cursor",
@@ -63,6 +74,7 @@ wk.setup{
     ["<space>"] = "SPC",
     ["<cr>"] = "RET",
     ["<tab>"] = "TAB",
+    ["<A>"] = "META"
   },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
@@ -76,15 +88,15 @@ wk.setup{
   window = {
     border = "none", -- none, single, double, shadow
     position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    margin = { 5, 0, 5, 0 }, -- extra window margin [top, right, bottom, left]
+    padding = { 10, 10, 10, 10 }, -- extra window padding [top, right, bottom, left]
     winblend = 0
   },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
+    width = { min = 50, max = 50 }, -- min and max width of the columns
+    spacing = 10, -- spacing between columns
+    align = "center", -- align columns left, center or right
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
@@ -114,9 +126,17 @@ wk.register({
         ["<Leader>"] = {
             k = { ":vs<CR>", "Split Vertically" },
             j = { ":sp<CR>", "Split Horizontally" },
-        }
+        },
+        ["1"] = { ":BufferLineGoToBuffer 1<CR>", "Buffer 1" },
+        ["2"] = { ":BufferLineGoToBuffer 2<CR>", "Buffer 2" },
+        ["3"] = { ":BufferLineGoToBuffer 3<CR>", "Buffer 3" },
+        ["4"] = { ":BufferLineGoToBuffer 4<CR>", "Buffer 4" },
+        ["5"] = { ":BufferLineGoToBuffer 5<CR>", "Buffer 5" },
+        ["6"] = { ":BufferLineGoToBuffer 6<CR>", "Buffer 6" },
+        ["7"] = { ":BufferLineGoToBuffer 7<CR>", "Buffer 7" },
+        ["8"] = { ":BufferLineGoToBuffer 8<CR>", "Buffer 8" },
+        ["9"] = { ":BufferLineGoToBuffer 9<CR>", "Buffer 9" },
     },
-    o = { ":SymbolsOutline<CR>", "Symbols Outline" },
     f = {
         name = "+Files",
         f = { ":FZF<CR>", "Find Files" }
@@ -143,10 +163,6 @@ wk.register({
             t = { ":term<CR>", "Open Terminal" },
         }
     },
-    z = {
-        name = "+Zen",
-        z = { ":ZenMode<CR>", "Zen" },
-    },
     b = {
         name = "+Buffer",
         t = { ":enew<CR>", "New Buffer" },
@@ -167,10 +183,50 @@ wk.register({
         t = { ":Trouble<CR>", "Errors"}
 
     },
-    cd = { ":cd %:h<CR>", "Change Directory" },
-    n = { ":set norelativenumber<CR>", "Disable relative numbers" },
-    N = { ":set relativenumber<CR>", "Enable relative numbers" },
+    ["/"] = {
+        name = "Comment"
+    },
+    o = {
+        name = "+Open",
+        a = { ":lua require('orgmode').action('agenda.prompt')<CR>", "Org Agenda" },
+        c = { ":lua require('orgmode').action('capture.prompt')<CR>", "Org Capture" },
+        d = { ":cd %:h<CR>", "Change Directory" },
+        o = { ":SymbolsOutline<CR>", "Symbols Outline" },
+        e = { ":NvimTreeToggle<CR>", "File Tree" },
+        z = { ":ZenMode<CR>", "Zen Mode" },
+        n = { ":set norelativenumber<CR>", "Disable relative numbers" },
+        N = { ":set relativenumber<CR>", "Enable relative numbers" },
+    },
+    e = {
+        name = "+Essentials",
+        m = { ":lua GolangMock()<CR>", "Golang Mock" },
+    },
+    g = {
+        name = "+Git",
+        s = { ":lua require('gitsigns').stage_hunk()<CR>", "Stage Hunk" },
+        S = { ":lua require('gitsigns').stage_buffer()<CR>", "Stage Buffer" },
+        u = { ":lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage Hunk" },
+        r = { ":lua require('gitsigns').reset_hunk()<CR>", "Reset Hunk" },
+        R = { ":lua require('gitsigns').reset_buffer()<CR>", "Reset Buffer" },
+        U = { ":lua require('gitsigns').reset_buffer_index()<CR>", "Reset Buffer" },
+        p = { ":lua require('gitsigns').preview_hunk()<CR>", "Preview Hunk" },
+        b = { ":lua require('gitsigns').blame_line(true)<CR>", "Blame Line" },
+
+    }
 },
-{ prefix = "<leader>" }),
+{ prefix = "<leader>", mode = "n", noremap = true }),
+
+wk.register({
+    ["/"] = {
+        name = "Comment"
+    },
+    g = {
+        name = "+Git",
+        s = { ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", "Stage Hunk" },
+        r = { ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", "Reset Hunk" },
+        i = { ":<C-U>lua require('gitsigns.actions').select_hunk()<CR>", "Select Hunk" },
+    }
+},
+{ prefix = "<leader>", mode = "v", noremap = true })
 
 }
