@@ -6,22 +6,22 @@ require("lualine").setup({
 		theme = module.lualine_theme,
 		disabled_filetypes = {'dashboard', 'NvimTree', 'Outline', 'Terminal'},
 		section_separators = {
-			left = "",
-			right = "",
+			left = "",
+			right = "",
 		},
 		component_separators = {
-			left = " ",
-			right = " ",
+			left = "",
+			right = "",
 		},
 	},
 
 	sections = {
-		lualine_a = { module.lualine_modules.mode },
-		lualine_b = { module.lualine_modules.lsp, module.lualine_modules.gps, module.lualine_modules.diagnostic},
-		lualine_c = { },
-		lualine_x = { "location", module.lualine_modules.branch},
-		lualine_y = { module.lualine_modules.diff },
-		lualine_z = { "filetype" },
+		lualine_a = {},
+		lualine_b = { module.lualine_modules.mode, module.lualine_modules.branch  },
+		lualine_c = {},
+		lualine_x = {},
+        lualine_y = { module.lualine_modules.diagnostic, module.lualine_modules.diff },
+		lualine_z = {},
 
 	},
 	inactive_sections = {

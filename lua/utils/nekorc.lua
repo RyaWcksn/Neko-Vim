@@ -5,26 +5,34 @@ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
+M.colors = {
+  bg       = '#000000',
+  fg       = '#bbc2cf',
+  yellow   = '#ECBE7B',
+  cyan     = '#008080',
+  darkblue = '#081633',
+  green    = '#98be65',
+  orange   = '#FF8800',
+  violet   = '#a9a1e1',
+  magenta  = '#c678dd',
+  blue     = '#51afef',
+  red      = '#ec5f67',
+}
+
 -- Enter your colorscheme name here
 M.colorscheme = "moonfly"
 
+-- Light or Dark
+M.colorstyle = "dark"
+
 -- Enter your lualine colorscheme name here
-M.lualine_theme = "moonfly"
+M.lualine_theme = "16color"
 
 -- Enter your leader key
 M.leader = " "
 
 -- Lualine components
 M.lualine_modules = {
-    treesitter = {
-        function()
-            local b = vim.api.nvim_get_current_buf()
-                if next(vim.treesitter.highlighter.active[b]) then
-                    return ""
-                end
-            return ""
-        end,
-    },
     lsp = {
         function()
         local msg = 'No Active Lsp'
@@ -49,6 +57,7 @@ M.lualine_modules = {
         colored = false,
         symbols = { added = "  ", modified = " ", removed = " " },
         cond = hide_in_width,
+        color = { fg = '#ffffff', bg = '#000000' },
     },
     diagnostic = {
         "diagnostics",
@@ -69,6 +78,7 @@ M.lualine_modules = {
         "branch",
         cond = hide_in_width,
         icon = " ",
+        color = { fg = '#ffffff', bg = '#000000' },
     },
     gps = {
         lua_gps.get_location,
@@ -77,14 +87,31 @@ M.lualine_modules = {
     mode = {
         function ()
             return ""
-        end
-    },
-    keymap = {
-        function ()
-            if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
-                return '⌨ ' .. vim.b.keymap_name
-            end
-            return ''
+        end,
+        color = function ()
+            local mode_color = {
+                n = M.colors.magenta,
+                i = M.colors.green,
+                v = M.colors.blue,
+                [''] = M.colors.blue,
+                V = M.colors.blue,
+                c = M.colors.magenta,
+                no = M.colors.red,
+                s = M.colors.orange,
+                S = M.colors.orange,
+                [''] = M.colors.orange,
+                ic = M.colors.yellow,
+                R = M.colors.violet,
+                Rv = M.colors.violet,
+                cv = M.colors.red,
+                ce = M.colors.red,
+                r = M.colors.cyan,
+                rm = M.colors.cyan,
+                ['r?'] = M.colors.cyan,
+                ['!'] = M.colors.red,
+                t = M.colors.red,
+            }
+            return { fg = mode_color[vim.fn.mode()], bg = M.colors.bg }
         end
     },
 }

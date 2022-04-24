@@ -102,11 +102,7 @@ wk.setup{
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
   triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for key maps that start with a native binding
-    -- most people should not need to change this
     i = { "j", "k" },
     v = { "j", "k" },
   },
@@ -153,8 +149,8 @@ wk.register({
     },
     d = {
         name = "+Discord",
-        s = { ":lua package.loaded.presence:cancel()", "Stop Discord" },
-        d = { ":lua package.loaded.presence:update()", "Start Discord" },
+        s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
+        d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
     },
     t = {
         name = "+Terminal",
