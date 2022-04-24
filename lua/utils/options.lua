@@ -5,13 +5,16 @@ local exec = vim.api.nvim_exec
 opt.fillchars = { eob = " " }
 
 local colorscheme = require('utils.nekorc').colorscheme
+local style = require('utils.nekorc').colorstyle
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+local color_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
-if not status_ok then
+if not color_ok then
   print("Error loading colorscheme: " .. colorscheme)
 end
 
+
+vim.o.background = style
 opt.hlsearch = false
 opt.undofile = true
 opt.ruler = false
@@ -31,7 +34,6 @@ opt.foldmethod = "manual"
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
-g.vimwiki_listsyms = "X"
 --opt.colorcolumn="90"
 vim.wo.wrap = false
 -- Outline

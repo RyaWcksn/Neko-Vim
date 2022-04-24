@@ -33,9 +33,6 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Lua development
-    use {"folke/lua-dev.nvim"}
-
     -- Colorizer
     use {
         'norcalli/nvim-colorizer.lua',
@@ -43,11 +40,6 @@ return require('packer').startup(function(use)
             require('colorizer').setup()
         end
     }
-
-    -- Dap
-    use {'mfussenegger/nvim-dap'}
-    use {'theHamsta/nvim-dap-virtual-text'}
-    use {'leoluz/nvim-dap-go'}
 
     -- Markdown
     use {'iamcco/markdown-preview.nvim'}
@@ -59,10 +51,12 @@ return require('packer').startup(function(use)
     use {'preservim/vim-colors-pencil'}
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
+    use {'NLKNguyen/papercolor-theme'}
 
     -- Note taking
     use {
         'nvim-orgmode/orgmode',
+        ft = {'org'},
         config = function()
             require('core.orgmode-nvim')
         end
@@ -114,12 +108,7 @@ return require('packer').startup(function(use)
         'hrsh7th/cmp-calc'
     }
     use {
-        'hrsh7th/cmp-nvim-lua',
-        after = "cmp-calc"
-    }
-    use {
         'hrsh7th/cmp-path',
-        after = "cmp-nvim-lua"
     }
     use {
         'hrsh7th/cmp-vsnip',
@@ -129,9 +118,7 @@ return require('packer').startup(function(use)
     -- Check startup time speed
     use {'dstein64/vim-startuptime'}
 
-    -- Spotify
-    use {'stsewd/spotify.nvim'}
-
+    -- Sniprun
     use {
         'michaelb/sniprun',
         run = 'bash ./install.sh',
@@ -139,6 +126,8 @@ return require('packer').startup(function(use)
             require('core.sniprun-nvim')
         end
     }
+
+    -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
@@ -195,7 +184,6 @@ return require('packer').startup(function(use)
             require('core.telescope-nvim')
         end
     }
-    use {"nvim-telescope/telescope-file-browser.nvim"}
     use {'nvim-telescope/telescope-media-files.nvim'}
 
 
@@ -255,9 +243,6 @@ return require('packer').startup(function(use)
             require('core.gitsign-nvim')
         end
     }
-
-    -- Suround
-    use {'tpope/vim-surround'}
 
     -- Sudo write
     use {'lambdalisue/suda.vim'}
