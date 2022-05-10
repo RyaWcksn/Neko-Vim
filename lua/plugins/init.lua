@@ -185,6 +185,7 @@ return require('packer').startup(function(use)
         end
     }
     use {'nvim-telescope/telescope-media-files.nvim'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
 
     -- Lsp

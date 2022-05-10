@@ -92,5 +92,5 @@ pcall(function()
 		telescope.load_extension(ext)
 	end
 end)
-require("telescope").load_extension("file_browser")
 require("telescope").load_extension("media_files")
+require("telescope").load_extension("fzf")

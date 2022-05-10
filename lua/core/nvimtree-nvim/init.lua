@@ -36,7 +36,7 @@ g.nvim_tree_icons = {
    },
 }
 nvimtree.setup {
-   diagnostics = {
+   --[[ diagnostics = {
       enable = false,
       icons = {
         hint = "",
@@ -50,12 +50,12 @@ nvimtree.setup {
         symlink = "",
         symlink_open = "",
       },
-   },
+   }, ]]
    disable_netrw        = false,
    hijack_netrw         = true,
    open_on_setup        = false,
    ignore_ft_on_setup   = {},
-   auto_close           = false,
+   -- auto_close           = false,
    auto_reload_on_write = true,
    open_on_tab          = false,
    hijack_cursor        = false,
@@ -65,11 +65,11 @@ nvimtree.setup {
     enable = true,
     auto_open = true,
    },
-   view = {
+   --[[ view = {
     allow_resize = true,
     side = "left",
     width = 25,
-   },
+   }, ]]
     filters = {
     dotfiles = false,
     custom = {}
