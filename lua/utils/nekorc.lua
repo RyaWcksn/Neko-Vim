@@ -6,7 +6,7 @@ local hide_in_width = function()
 end
 
 M.colors = {
-  bg       = '#000000',
+  bg       = '#262626',
   fg       = '#bbc2cf',
   yellow   = '#ECBE7B',
   cyan     = '#008080',
@@ -20,13 +20,13 @@ M.colors = {
 }
 
 -- Enter your colorscheme name here
-M.colorscheme = "moonfly"
+M.colorscheme = "vscode"
 
 -- Light or Dark
 M.colorstyle = "dark"
 
 -- Enter your lualine colorscheme name here
-M.lualine_theme = "16color"
+M.lualine_theme = "vscode"
 
 -- Enter your leader key
 M.leader = " "
@@ -57,7 +57,7 @@ M.lualine_modules = {
         colored = false,
         symbols = { added = "  ", modified = " ", removed = " " },
         cond = hide_in_width,
-        color = { fg = '#ffffff', bg = '#000000' },
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     diagnostic = {
         "diagnostics",
@@ -78,7 +78,7 @@ M.lualine_modules = {
         "branch",
         cond = hide_in_width,
         icon = " ",
-        color = { fg = '#ffffff', bg = '#000000' },
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     gps = {
         lua_gps.get_location,
@@ -116,6 +116,11 @@ M.lualine_modules = {
     },
 }
 
+vim.g.vscode_style = "dark"
+-- vim.g.vscode_transparent = 0
+vim.g.vscode_italic_comment = 1
+-- vim.g.vscode_disable_nvimtree_bg = true
+
 -- Input languages LSP to install
 M.languages = {
 	servers = {
@@ -127,6 +132,7 @@ M.languages = {
 		"pyright",
 		"tsserver",
         "gopls",
+        "robotframework_ls",
 	},
     -- Treesitter
 	ensure_installed = { "html", "javascript", "lua", "go", "typescript" },

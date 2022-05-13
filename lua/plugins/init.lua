@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
     use {'NLKNguyen/papercolor-theme'}
+    use {'Mofiqul/vscode.nvim'}
 
     -- Note taking
     use {

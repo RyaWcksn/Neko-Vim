@@ -2,7 +2,7 @@ local lsp = require('lspconfig')
 local module = require('utils.nekorc')
 local M = {}
 
-M.setup = function ()
+M.setup = function()
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
@@ -30,25 +30,25 @@ M.setup = function ()
     }
     vim.diagnostic.config(config)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
+        border = "rounded",
     })
 
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
+        border = "rounded",
     })
 
     vim.o.updatetime = 250
     vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
     -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
     -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
-	local servers = module.languages.servers
+    local servers = module.languages.servers
     local util = require("lspconfig/util")
 
     for _, server in ipairs(servers) do
         if server == "gopls" then
             lsp.gopls.setup({
-                cmd = {"gopls", "serve"},
-                filetypes = {"go", "gomod", "gotmpl"},
+                cmd = { "gopls", "serve" },
+                filetypes = { "go", "gomod", "gotmpl" },
                 root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
                 single_file_support = true,
                 settings = {
@@ -58,8 +58,8 @@ M.setup = function ()
                         },
                         staticcheck = true,
                         signatureHelp = {
-				            enabled = true,
-			            },
+                            enabled = true,
+                        },
                         codelens = {
                             generate = true,
                             gc_details = true,
@@ -73,6 +73,14 @@ M.setup = function ()
                     },
                 },
             })
+        end
+
+        if server == "robotframework_ls" then
+            lsp.robotframework_ls.setup {
+                cmd = { "robotframework_ls" },
+                filetypes = { "robot" },
+                root_dir = util.root_pattern('robotidy.toml', 'pyproject.toml')(fname) or util.find_git_ancestor(fname)
+            }
         end
     end
 end
@@ -95,11 +103,11 @@ M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 M.capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
+    properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+    },
 }
 
 return M
