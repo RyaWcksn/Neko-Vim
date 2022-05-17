@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
     use {'pbrisbin/vim-colors-off'}
     use {'danishprakash/vim-yami'}
     use {'NLKNguyen/papercolor-theme'}
+    use {'Mofiqul/vscode.nvim'}
 
     -- Note taking
     use {
@@ -185,6 +186,7 @@ return require('packer').startup(function(use)
         end
     }
     use {'nvim-telescope/telescope-media-files.nvim'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
 
     -- Lsp

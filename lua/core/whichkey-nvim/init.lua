@@ -135,7 +135,7 @@ wk.register({
     },
     f = {
         name = "+Files",
-        f = { ":FZF<CR>", "Find Files" }
+        f = { ":Telescope find_files<CR>", "Find Files" }
     },
     p = {
         name = "+Packer",
@@ -208,6 +208,9 @@ wk.register({
         p = { ":lua require('gitsigns').preview_hunk()<CR>", "Preview Hunk" },
         b = { ":lua require('gitsigns').blame_line(true)<CR>", "Blame Line" },
 
+    },
+    y = {
+        ["<"] = { "yi<", "Stage Hunk" },
     }
 },
 { prefix = "<leader>", mode = "n", noremap = true }),

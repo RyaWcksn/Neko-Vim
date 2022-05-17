@@ -5,7 +5,7 @@ end
 
 bufferline.setup{
      options = {
-      offsets = {{filetype = "NvimTree", text = "ディレクトリ", padding = 0}},
+      offsets = {{filetype = "NvimTree", text = "File", padding = 0}},
       buffer_close_icon = "",
       modified_icon = "",
       close_icon = "",
