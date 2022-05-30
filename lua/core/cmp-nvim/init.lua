@@ -83,6 +83,7 @@ cmp.setup({
 			}
 			local menu = source_mapping[entry.source.name]
 			vim_item.menu = menu
+            vim_item.abbr = string.sub(vim_item.abbr, 1, 30)
 			return vim_item
 		end,
 	},

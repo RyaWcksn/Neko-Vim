@@ -4,7 +4,7 @@ vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 local packerPath = vim.fn.stdpath('data') .. '/site'
 vim.o.packpath = packerPath .. ',' .. vim.o.packpath
 
-require('packer').init({display = {auto_clean = false}})
+require('packer').init({ display = { auto_clean = false } })
 local packer = require('packer')
 
 packer.init {
@@ -23,12 +23,18 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-    use {'wbthomason/packer.nvim'}
+    use { 'wbthomason/packer.nvim' }
+
+    -- Browser
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
+    }
 
     -- Which Key
     use {
         "folke/which-key.nvim",
-        config = function ()
+        config = function()
             require("core.whichkey-nvim")
         end
     }
@@ -42,29 +48,29 @@ return require('packer').startup(function(use)
     }
 
     -- Markdown
-    use {'iamcco/markdown-preview.nvim'}
+    use { 'iamcco/markdown-preview.nvim' }
 
     -- Theme
-    use {'bluz71/vim-moonfly-colors'}
-    use {'bluz71/vim-nightfly-guicolors'}
-    use {'Lokaltog/vim-monotone'}
-    use {'preservim/vim-colors-pencil'}
-    use {'pbrisbin/vim-colors-off'}
-    use {'danishprakash/vim-yami'}
-    use {'NLKNguyen/papercolor-theme'}
-    use {'Mofiqul/vscode.nvim'}
+    use { 'bluz71/vim-moonfly-colors' }
+    use { 'bluz71/vim-nightfly-guicolors' }
+    use { 'Lokaltog/vim-monotone' }
+    use { 'preservim/vim-colors-pencil' }
+    use { 'pbrisbin/vim-colors-off' }
+    use { 'danishprakash/vim-yami' }
+    use { 'NLKNguyen/papercolor-theme' }
+    use { 'Mofiqul/vscode.nvim' }
 
     -- Note taking
     use {
         'nvim-orgmode/orgmode',
-        ft = {'org'},
+        ft = { 'org' },
         config = function()
             require('core.orgmode-nvim')
         end
     }
 
     -- Test
-    use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
+    use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
 
     -- Dashboard
     use {
@@ -79,7 +85,7 @@ return require('packer').startup(function(use)
     }
 
     -- Notify
-    use {'rcarriga/nvim-notify'}
+    use { 'rcarriga/nvim-notify' }
 
     -- Indent Line
     use {
@@ -117,7 +123,7 @@ return require('packer').startup(function(use)
     }
 
     -- Check startup time speed
-    use {'dstein64/vim-startuptime'}
+    use { 'dstein64/vim-startuptime' }
 
     -- Sniprun
     use {
@@ -178,15 +184,15 @@ return require('packer').startup(function(use)
     }
 
     -- Telescope
-    use {'nvim-lua/plenary.nvim'}
+    use { 'nvim-lua/plenary.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
         config = function()
             require('core.telescope-nvim')
         end
     }
-    use {'nvim-telescope/telescope-media-files.nvim'}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    use { 'nvim-telescope/telescope-media-files.nvim' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 
     -- Lsp
@@ -196,7 +202,7 @@ return require('packer').startup(function(use)
             require('core.lspconfig-nvim')
         end
     }
-    use {'onsails/lspkind-nvim'}
+    use { 'onsails/lspkind-nvim' }
     use {
         "ray-x/lsp_signature.nvim",
         after = "nvim-lspconfig",
@@ -204,7 +210,7 @@ return require('packer').startup(function(use)
             require('core.signature-nvim')
         end
     }
-    use {'williamboman/nvim-lsp-installer'}
+    use { 'williamboman/nvim-lsp-installer' }
 
     -- Autopairs tag
     use {
@@ -216,14 +222,14 @@ return require('packer').startup(function(use)
     }
 
     -- Discord Rich Presence
-    use {'andweeb/presence.nvim'}
+    use { 'andweeb/presence.nvim' }
 
 
     -- Comment
-    use {'b3nj5m1n/kommentary'}
+    use { 'b3nj5m1n/kommentary' }
 
     -- Floating terminal
-    use {'voldikss/vim-floaterm'}
+    use { 'voldikss/vim-floaterm' }
 
     -- Zen Mode
     use {
@@ -235,7 +241,7 @@ return require('packer').startup(function(use)
     }
 
     -- Multiple cursors
-    use {"terryma/vim-multiple-cursors"}
+    use { "terryma/vim-multiple-cursors" }
 
     -- Git
     use {
@@ -247,10 +253,10 @@ return require('packer').startup(function(use)
     }
 
     -- Sudo write
-    use {'lambdalisue/suda.vim'}
+    use { 'lambdalisue/suda.vim' }
 
     -- Snipper
-    use {'hrsh7th/vim-vsnip'}
+    use { 'hrsh7th/vim-vsnip' }
 
     -- Database
     use { 'tpope/vim-dadbod' }
@@ -258,8 +264,8 @@ return require('packer').startup(function(use)
     use { 'lewis6991/impatient.nvim' }
 
     -- FZF
-    use {'junegunn/fzf'}
-    use {'junegunn/fzf.vim'}
+    use { 'junegunn/fzf' }
+    use { 'junegunn/fzf.vim' }
 
     -- Code snip
     use {
@@ -271,26 +277,26 @@ return require('packer').startup(function(use)
     }
 
     -- Copilot
-    use {'github/copilot.vim'}
+    use { 'github/copilot.vim' }
 
     -- Hopping words
     use {
         'phaazon/hop.nvim',
         as = 'hop',
         config = function()
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     }
 
     -- Outline
-    use {"simrat39/symbols-outline.nvim"}
+    use { "simrat39/symbols-outline.nvim" }
 
     -- Trouble
-    use {"folke/trouble.nvim",
+    use { "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("trouble").setup {
-        }
+            }
         end
     }
 
