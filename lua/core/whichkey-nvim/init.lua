@@ -191,7 +191,8 @@ wk.setup {
             z = { ":ZenMode<CR>", "Zen Mode" },
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
-            w = { "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", "Open Url" }
+            w = { "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", "Open Url" },
+            W = { "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", "OPEN LINK" }
         },
         e = {
             name = "+Essentials",
