@@ -222,7 +222,12 @@ return require('packer').startup(function(use)
     }
 
     -- Discord Rich Presence
-    use { 'andweeb/presence.nvim' }
+    use {
+        'andweeb/presence.nvim',
+        config = function()
+            require('core.presence-nvim')
+        end
+    }
 
 
     -- Comment
