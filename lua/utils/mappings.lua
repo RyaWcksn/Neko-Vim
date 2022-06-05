@@ -54,6 +54,9 @@ key("v", "<F5>", ":CarbonNowSh<CR>", opt)
 key("n", "<Leader>/", "<Plug>kommentary_line_default", opt)
 key("v", "<Leader>/", "<Plug>kommentary_visual_default<C-c>", opt)
 
+key("n", "<Up>", "<C-u>", opt)
+key("n", "<Down>", "<C-d>", opt)
+
 -- Unix specified keybinding, using meta as leader key
 if vim.fn.has("unix") then
 	key("n", "<A-w>", ":w <CR>", opt)
