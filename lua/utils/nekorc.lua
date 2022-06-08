@@ -1,23 +1,34 @@
 local M = {}
-local lua_gps = require("nvim-gps")
+local notify = require('notify')
 
 local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
+    return vim.fn.winwidth(0) > 80
 end
 
 M.colors = {
-  bg       = '#262626',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+    bg       = '#262626',
+    fg       = '#bbc2cf',
+    yellow   = '#ECBE7B',
+    cyan     = '#008080',
+    darkblue = '#081633',
+    green    = '#98be65',
+    orange   = '#FF8800',
+    violet   = '#a9a1e1',
+    magenta  = '#c678dd',
+    blue     = '#51afef',
+    red      = '#ec5f67',
 }
+
+function os.capture(cmd, raw)
+    local f = assert(io.popen(cmd, 'r'))
+    local s = assert(f:read('*a'))
+    f:close()
+    if raw then return s end
+    s = string.gsub(s, '^%s+', '')
+    s = string.gsub(s, '%s+$', '')
+    s = string.gsub(s, '[\n\r]+', ' ')
+    return s
+end
 
 -- Enter your colorscheme name here
 M.colorscheme = "vscode"
@@ -35,22 +46,22 @@ M.leader = " "
 M.lualine_modules = {
     lsp = {
         function()
-        local msg = 'No Active Lsp'
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then
-          return msg
-        end
-        for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-              return client.name
+            local msg = 'No Active Lsp'
+            local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) == nil then
+                return msg
             end
-        end
-        return msg
-      end,
-      icon = ' LSP:',
-      color = { fg = '#ffffff', gui = 'bold' },
+            for _, client in ipairs(clients) do
+                local filetypes = client.config.filetypes
+                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    return client.name
+                end
+            end
+            return msg
+        end,
+        icon = ' LSP:',
+        color = { fg = '#ffffff', gui = 'bold' },
     },
     diff = {
         "diff",
@@ -71,8 +82,9 @@ M.lualine_modules = {
         },
         symbols = { error = " ", warn = " ", info = " ", hint = " " },
         colored = true, -- Displays diagnostics status in color if set to true.
-        update_in_insert = false, -- Update diagnostics in insert mode.
+        update_in_insert = true, -- Update diagnostics in insert mode.
         always_visible = false, -- Show diagnostics even if there are none.
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     branch = {
         "branch",
@@ -80,15 +92,18 @@ M.lualine_modules = {
         icon = " ",
         color = { fg = '#ffffff', bg = '#262626' },
     },
-    gps = {
-        lua_gps.get_location,
-	    cond = lua_gps.is_available
+    user = {
+        function()
+            local user = os.capture("git config --get user.name")
+            return " " .. user
+        end,
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     mode = {
-        function ()
+        function()
             return ""
         end,
-        color = function ()
+        color = function()
             local mode_color = {
                 n = M.colors.magenta,
                 i = M.colors.green,
@@ -123,19 +138,19 @@ vim.g.vscode_italic_comment = 1
 
 -- Input languages LSP to install
 M.languages = {
-	servers = {
-		"bashls",
-		"cssls",
-		"html",
-		"jsonls",
-		"sumneko_lua",
-		"pyright",
-		"tsserver",
+    servers = {
+        "bashls",
+        "cssls",
+        "html",
+        "jsonls",
+        "sumneko_lua",
+        "pyright",
+        "tsserver",
         "gopls",
         "robotframework_ls",
-	},
+    },
     -- Treesitter
-	ensure_installed = { "html", "javascript", "lua", "go", "typescript" },
+    ensure_installed = { "html", "javascript", "lua", "go", "typescript" },
 }
 
 return M

@@ -4,41 +4,7 @@ if not present then
     return
 end
 
-local g = vim.g
-
 vim.o.termguicolors = true
-g.nvim_tree_add_trailing = 0
-g.nvim_tree_show_icons = {
-   folders = 1,
-   files = 1,
-   git = 1,
-   folder_arrows = 0,
-}
-g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
-        deleted = "",
-        ignored = "◌",
-        renamed = "➜",
-        staged = "✓",
-        unmerged = "",
-        unstaged = "✗",
-        untracked = "★",
-    },
-    icons = {
-        webdev_colors = true,
-        git_placement = "before",
-    },
-    folder = {
-        default = "",
-        empty = "", -- 
-        empty_open = "",
-        open = "",
-        symlink = "",
-        symlink_open = "",
-    },
-}
 nvimtree.setup {
     diagnostics                        = {
         enable = false,
@@ -88,6 +54,32 @@ nvimtree.setup {
         },
         icons = {
             webdev_colors = true,
+            show = {
+                file = true,
+                folder = true,
+                folder_arrow = false,
+            },
+            glyphs = {
+                default = "",
+                symlink = "",
+                git = {
+                    deleted = "",
+                    ignored = "◌",
+                    renamed = "➜",
+                    staged = "✓",
+                    unmerged = "",
+                    unstaged = "✗",
+                    untracked = "★",
+                },
+                folder = {
+                    default = "",
+                    empty = "", -- 
+                    empty_open = "",
+                    open = "",
+                    symlink = "",
+                    symlink_open = "",
+                },
+            }
         },
     },
     filters                            = {

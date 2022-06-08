@@ -133,8 +133,12 @@ wk.setup {
             ["9"] = { ":BufferLineGoToBuffer 9<CR>", "Buffer 9" },
         },
         f = {
-            name = "+Files",
-            f = { ":Telescope find_files<CR>", "Find Files" }
+            name = "+Finds",
+            f = { ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", "Find Files" },
+            w = { ":Telescope live_grep<CR>", "Find Words" },
+            g = { ":Telescope git_commit<CR>", "Find Commits" },
+            b = { ":Telescope buffers<CR>", "Find Buffers" },
+            h = { ":Telescope help_tags<CR>", "Find Helps" },
         },
         p = {
             name = "+Packer",
