@@ -71,6 +71,12 @@ return require('packer').startup(function(use)
 
     -- Test
     use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
+    use {
+        "klen/nvim-test",
+        config = function()
+            require("core.test-nvim")
+        end
+    }
 
     -- Dashboard
     use {
@@ -268,6 +274,7 @@ return require('packer').startup(function(use)
 
     -- Snipper
     use { 'hrsh7th/vim-vsnip' }
+    use { "rafamadriz/friendly-snippets" }
 
     -- Database
     use { 'tpope/vim-dadbod' }
