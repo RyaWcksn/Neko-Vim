@@ -94,7 +94,6 @@ M.lualine_modules = {
     user = {
         function ()
             local user = os.capture("git config --get user.name")
-            print(user)
             return " " .. user
         end,
         color = { fg = '#ffffff', bg = '#262626' },
