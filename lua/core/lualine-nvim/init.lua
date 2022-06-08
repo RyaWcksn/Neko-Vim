@@ -17,7 +17,7 @@ require("lualine").setup({
 
 	sections = {
 		lualine_a = {},
-		lualine_b = { module.lualine_modules.mode, module.lualine_modules.branch  },
+		lualine_b = { module.lualine_modules.mode, module.lualine_modules.branch, module.lualine_modules.user },
 		lualine_c = {},
 		lualine_x = {},
         lualine_y = { module.lualine_modules.diagnostic, module.lualine_modules.diff },

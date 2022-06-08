@@ -1,5 +1,4 @@
 local M = {}
-local lua_gps = require("nvim-gps")
 
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
@@ -18,6 +17,17 @@ M.colors = {
   blue     = '#51afef',
   red      = '#ec5f67',
 }
+
+function os.capture(cmd, raw)
+  local f = assert(io.popen(cmd, 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  if raw then return s end
+  s = string.gsub(s, '^%s+', '')
+  s = string.gsub(s, '%s+$', '')
+  s = string.gsub(s, '[\n\r]+', ' ')
+  return s
+end
 
 -- Enter your colorscheme name here
 M.colorscheme = "vscode"
@@ -73,6 +83,7 @@ M.lualine_modules = {
         colored = true, -- Displays diagnostics status in color if set to true.
         update_in_insert = false, -- Update diagnostics in insert mode.
         always_visible = false, -- Show diagnostics even if there are none.
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     branch = {
         "branch",
@@ -80,9 +91,13 @@ M.lualine_modules = {
         icon = " ",
         color = { fg = '#ffffff', bg = '#262626' },
     },
-    gps = {
-        lua_gps.get_location,
-	    cond = lua_gps.is_available
+    user = {
+        function ()
+            local user = os.capture("git config --get user.name")
+            print(user)
+            return " " .. user
+        end,
+        color = { fg = '#ffffff', bg = '#262626' },
     },
     mode = {
         function ()
