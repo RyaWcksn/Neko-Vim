@@ -142,6 +142,12 @@ return require('packer').startup(function(use)
             require('core.treesitter-nvim')
         end
     }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require('core.treesitter-nvim')
+        end
+    }
 
     -- Line
     use {

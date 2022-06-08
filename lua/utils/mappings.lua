@@ -15,8 +15,6 @@ key("n", "Y", "y$", opt)
 key("n", "J", "mzJ`z", opt)
 key("n", "n", "nzzzv", opt)
 key("n", "N", "Nzzzv", opt)
-key("n", "j", "gj", opt)
-key("n", "k", "gk", opt)
 key("n", "<C-L>", "zL", opt)
 key("n", "<C-H>", "zH", opt)
 
