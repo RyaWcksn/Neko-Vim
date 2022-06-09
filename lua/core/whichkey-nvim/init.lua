@@ -13,12 +13,19 @@ end
 
 -- Golang Mock
 function GolangMock()
-    local file = vim.trim(vim.fn.expand("%"))
+    local file = vim.fn.expand("%")
     local output = file:match "(.+)%..+$" .. "_mock.go"
     local package = vim.fn.input("Package name: ")
     local cmd = { "mockgen", "-source", file, "-destination", output, "-package", package }
     os.execute(table.concat(cmd, " "))
     print(", Mock file generated: " .. output .. " Package: " .. package)
+end
+
+function Coverage()
+    local file = vim.trim(vim.fn.expand("%"))
+    local output = file:match "\\v([^.])\\.cov$"
+    print(output)
+    os.execute("go tool cover -html=" .. output)
 end
 
 local function rename()
@@ -168,8 +175,9 @@ wk.setup {
         },
         u = {
             name = "+Unit testing",
-            w = { ":UltestNearest<CR>", "Test Function" },
-            s = { ":UltestSummary<CR>", "Test Summary" }
+            w = { ":TestNearest<CR>", "Test Function" },
+            s = { ":TestFile<CR>", "Test File" },
+            a = { ":TestSuite<CR>", "Test All" }
         },
         l = {
             name = "+LSP",
@@ -195,11 +203,13 @@ wk.setup {
             z = { ":ZenMode<CR>", "Zen Mode" },
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
-            w = { "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", "Open Url" }
+            w = { "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", "Open Url" },
+            W = { "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", "OPEN LINK" }
         },
         e = {
             name = "+Essentials",
             m = { ":lua GolangMock()<CR>", "Golang Mock" },
+            c = { ":lua Coverage()<CR>", "Golang Coverage" },
         },
         g = {
             name = "+Git",

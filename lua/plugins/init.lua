@@ -71,6 +71,12 @@ return require('packer').startup(function(use)
 
     -- Test
     use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
+    use {
+        "klen/nvim-test",
+        config = function()
+            require("core.test-nvim")
+        end
+    }
 
     -- Dashboard
     use {
@@ -241,6 +247,9 @@ return require('packer').startup(function(use)
 
     -- Floating terminal
     use { 'voldikss/vim-floaterm' }
+    use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+        require("toggleterm").setup()
+    end }
 
     -- Zen Mode
     use {
@@ -268,6 +277,7 @@ return require('packer').startup(function(use)
 
     -- Snipper
     use { 'hrsh7th/vim-vsnip' }
+    use { "rafamadriz/friendly-snippets" }
 
     -- Database
     use { 'tpope/vim-dadbod' }
