@@ -1,11 +1,11 @@
-require('nvim-test').setup {
+require('nvim-test').setup({
   run = true,                 -- run tests (using for debug)
   commands_create = true,     -- create commands (TestFile, TestLast, ...)
   filename_modifier = ":.",   -- modify filenames before tests run(:h filename-modifiers)
   silent = false,             -- less notifications
-  term = "terminal",          -- a terminal to run ("terminal"|"toggleterm")
+  term = "toggleterm",          -- a terminal to run ("terminal"|"toggleterm")
   termOpts = {
-    direction = "vertical",   -- terminal's direction ("horizontal"|"vertical"|"float")
+    direction = "horizontal",   -- terminal's direction ("horizontal"|"vertical"|"float")
     width = 96,               -- terminal's width (for vertical|float)
     height = 24,              -- terminal's height (for horizontal|float)
     go_back = false,          -- return focus to original window after executing
@@ -25,4 +25,4 @@ require('nvim-test').setup {
     typescript = "nvim-test.runners.jest",
     typescriptreact = "nvim-test.runners.jest",
   }
-}
+})

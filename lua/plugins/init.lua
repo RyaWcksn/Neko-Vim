@@ -247,6 +247,9 @@ return require('packer').startup(function(use)
 
     -- Floating terminal
     use { 'voldikss/vim-floaterm' }
+    use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+        require("toggleterm").setup()
+    end }
 
     -- Zen Mode
     use {
