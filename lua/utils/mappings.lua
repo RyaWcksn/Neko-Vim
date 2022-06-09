@@ -42,7 +42,7 @@ key("n", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
 key("t", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
 
 -- Hop word
-key("n", "w", ":HopWord<CR>", opt)
+key("n", "W", ":HopWord<CR>", opt)
 
 -- Carbon Now Sha
 key("v", "<F5>", ":CarbonNowSh<CR>", opt)

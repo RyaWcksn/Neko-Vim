@@ -47,6 +47,14 @@ local function rename()
     vim.api.nvim_buf_set_keymap(buf, "i", "<CR>", string.format(fmt, win), { silent = true })
 end
 
+function OpenLink()
+    if vim.fn.has("unix") then
+        vim.api.nvim_command("silent execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)")
+    else
+        vim.api.nvim_command("silent execute '!open ' . shellescape(expand('<cfile>'), 1)")
+    end
+end
+
 _G.Rename = {
     rename = rename,
     dorename = dorename,
@@ -203,8 +211,7 @@ wk.setup {
             z = { ":ZenMode<CR>", "Zen Mode" },
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
-            w = { "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", "Open Url" },
-            W = { "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", "OPEN LINK" }
+            w = { ":lua OpenLink()<CR>", "Open Url" },
         },
         e = {
             name = "+Essentials",
