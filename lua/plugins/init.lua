@@ -25,12 +25,6 @@ packer.init {
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }
 
-    -- Browser
-    use {
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end
-    }
-
     -- Which Key
     use {
         "folke/which-key.nvim",
@@ -47,9 +41,6 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Markdown
-    use { 'iamcco/markdown-preview.nvim' }
-
     -- Theme
     use { 'bluz71/vim-moonfly-colors' }
     use { 'bluz71/vim-nightfly-guicolors' }
@@ -60,17 +51,7 @@ return require('packer').startup(function(use)
     use { 'NLKNguyen/papercolor-theme' }
     use { 'Mofiqul/vscode.nvim' }
 
-    -- Note taking
-    use {
-        'nvim-orgmode/orgmode',
-        ft = { 'org' },
-        config = function()
-            require('core.orgmode-nvim')
-        end
-    }
-
     -- Test
-    use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
     use {
         "klen/nvim-test",
         config = function()
@@ -81,7 +62,7 @@ return require('packer').startup(function(use)
     -- Dashboard
     use {
         'glepnir/dashboard-nvim',
-        event = "BufEnter",
+        event = "VimEnter",
         cmd = {
             "Dashboard",
         },
@@ -104,7 +85,7 @@ return require('packer').startup(function(use)
     -- Icons
     use {
         'kyazdani42/nvim-web-devicons',
-        event = "BufEnter"
+        after = "dashboard-nvim"
     }
 
     -- CMP
@@ -116,12 +97,14 @@ return require('packer').startup(function(use)
     }
     use {
         'hrsh7th/cmp-nvim-lsp',
+        after = "nvim-cmp"
     }
     use {
-        'hrsh7th/cmp-calc'
+        'hrsh7th/cmp-calc',
     }
     use {
         'hrsh7th/cmp-path',
+        after = "cmp-calc"
     }
     use {
         'hrsh7th/cmp-vsnip',
@@ -163,13 +146,6 @@ return require('packer').startup(function(use)
             require('core.lualine-nvim')
         end
     }
-    use {
-        "SmiteshP/nvim-gps",
-        requires = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("nvim-gps").setup()
-        end
-    }
 
     -- Bufferline on top
     use {
@@ -184,7 +160,6 @@ return require('packer').startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        event = "BufEnter",
         cmd = {
             "NvimTreeOpen",
             "NvimTreeFocus",
@@ -254,7 +229,6 @@ return require('packer').startup(function(use)
     -- Zen Mode
     use {
         'folke/zen-mode.nvim',
-        event = "BufEnter",
         cmd = {
             "ZenMode"
         }
@@ -280,8 +254,8 @@ return require('packer').startup(function(use)
     use { "rafamadriz/friendly-snippets" }
 
     -- Database
-    use { 'tpope/vim-dadbod' }
-    use { 'kristijanhusak/vim-dadbod-ui' }
+    --[[ use { 'tpope/vim-dadbod' }
+    use { 'kristijanhusak/vim-dadbod-ui' } ]]
     use { 'lewis6991/impatient.nvim' }
 
     -- FZF
@@ -320,8 +294,5 @@ return require('packer').startup(function(use)
             }
         end
     }
-
-    -- Nullls
-    use { 'jose-elias-alvarez/null-ls.nvim' }
 end
 )

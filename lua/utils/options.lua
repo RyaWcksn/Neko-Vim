@@ -128,17 +128,3 @@ filetype indent on
 set autoindent
 set smartindent
 ]])
-
-exec(
-    [[
-  autocmd BufEnter,BufNew term://* startinsert
-  autocmd TermOpen * startinsert
-  autocmd TermOpen * setlocal nonumber norelativenumber
-  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
-  augroup end
-]]   ,
-    false
-)

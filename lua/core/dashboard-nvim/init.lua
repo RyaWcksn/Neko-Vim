@@ -25,7 +25,6 @@ g.dashboard_custom_header = {
 
 g.dashboard_custom_section = {
 	a = { description = { "ﰍ  Find File   " }, command = "FZF" },
-	b = { description = { "  Orgs Agenda " }, command = "e ~/my-orgs" },
 	c = { description = { "  New File    " }, command = "DashboardNewFile" },
 	d = { description = { "  Config File " }, command = "e ~/.config/nvim/lua/utils/nekorc.lua" },
 	e = { description = { "  Sandbox     " }, command = "e ~/sandbox" },
