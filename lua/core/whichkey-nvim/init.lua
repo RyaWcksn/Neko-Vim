@@ -172,7 +172,7 @@ wk.setup {
         },
         t = {
             name = "+Terminal",
-            t = { ":20new +terminal | setlocal nobuflisted <CR>", "Open Terminal" },
+            t = { ":ToggleTerm<CR>", "Open Terminal" },
             ["<Leader>"] = {
                 t = { ":term<CR>", "Open Terminal" },
             }

@@ -32,8 +32,13 @@ opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamed"
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldmethod = "indent"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.fillchars       = "fold: "  
+vim.wo.foldmethod   = "expr"  
+opt.foldlevel       = 99  
+vim.o.foldtext      = [[substitute(getline(v:foldstart),'t',repeat(' ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+--
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
