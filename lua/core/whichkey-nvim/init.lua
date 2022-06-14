@@ -206,12 +206,14 @@ wk.setup {
             a = { ":lua require('orgmode').action('agenda.prompt')<CR>", "Org Agenda" },
             c = { ":lua require('orgmode').action('capture.prompt')<CR>", "Org Capture" },
             d = { ":cd %:h<CR>", "Change Directory" },
-            o = { ":SymbolsOutline<CR>", "Symbols Outline" },
+            s = { ":SymbolsOutline<CR>", "Symbols Outline" },
             e = { ":NvimTreeToggle<CR>", "File Tree" },
             z = { ":ZenMode<CR>", "Zen Mode" },
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
             w = { ":lua OpenLink()<CR>", "Open Url" },
+            o = { "zo", "Open Fold" },
+            O = { "zc", "Close Fold" }
         },
         e = {
             name = "+Essentials",
