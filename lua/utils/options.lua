@@ -1,6 +1,5 @@
 local opt = vim.opt
 local g = vim.g
-local exec = vim.api.nvim_exec
 
 opt.fillchars = { eob = " " }
 
@@ -33,7 +32,8 @@ opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamed"
-opt.foldmethod = "manual"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
@@ -122,6 +122,34 @@ local global_pkg_settings = {
 }
 
 for k, v in pairs(global_pkg_settings) do vim.g[k] = v end
+
+local vim = vim
+local api = vim.api
+local M = {}
+-- function to create a list of commands and convert them to autocommands
+-------- This function is taken from https://github.com/norcalli/nvim_utils
+function M.nvim_create_augroups(definitions)
+    for group_name, definition in pairs(definitions) do
+        api.nvim_command('augroup '..group_name)
+        api.nvim_command('autocmd!')
+        for _, def in ipairs(definition) do
+            local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+            api.nvim_command(command)
+        end
+        api.nvim_command('augroup END')
+    end
+end
+
+
+local autoCommands = {
+    -- other autocommands
+    open_folds = {
+        {"BufReadPost,FileReadPost", "*", "normal zR"}
+    }
+}
+
+M.nvim_create_augroups(autoCommands)
+
 
 vim.cmd([[
 filetype indent on
