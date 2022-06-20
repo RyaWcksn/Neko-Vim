@@ -37,9 +37,12 @@ key("t", "jk", "<C-\\><C-n>", opt)
 key("i", "jk", "<esc>", opt)
 
 -- Terminal Float
-key("i", "<F2>", "<Esc>:FloatermToggle<CR>", opt)
+--[[ key("i", "<F2>", "<Esc>:FloatermToggle<CR>", opt)
 key("n", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
-key("t", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt)
+key("t", "<F2>", "<C-\\><C-n>:FloatermToggle<CR>", opt) ]]
+key("t", "<F2>", "<C-\\><C-n>:ToggleTerm<CR>", opt)
+key("i", "<F2>", "<C-\\><C-n>:ToggleTerm<CR>", opt)
+key("n", "<F2>", ":ToggleTerm<CR>", opt)
 
 -- Hop word
 key("n", "W", ":HopWord<CR>", opt)

@@ -48,10 +48,10 @@ local function rename()
 end
 
 function OpenLink()
-    if vim.fn.has("unix") then
-        vim.api.nvim_command("silent execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)")
+    if vim.fn.has("macunix") == 1 then
+        vim.api.nvim_command("silent execute '!open ' . shellescape('<cWORD>')")
     else
-        vim.api.nvim_command("silent execute '!open ' . shellescape(expand('<cfile>'), 1)")
+        vim.api.nvim_command("silent execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)")
     end
 end
 
@@ -170,13 +170,6 @@ wk.setup {
             s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
             d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
         },
-        t = {
-            name = "+Terminal",
-            t = { ":ToggleTerm<CR>", "Open Terminal" },
-            ["<Leader>"] = {
-                t = { ":term<CR>", "Open Terminal" },
-            }
-        },
         b = {
             name = "+Buffer",
             t = { ":enew<CR>", "New Buffer" },
@@ -249,6 +242,6 @@ wk.setup {
             i = { ":<C-U>lua require('gitsigns.actions').select_hunk()<CR>", "Select Hunk" },
         }
     },
-        { prefix = "<leader>", mode = "v", noremap = true })
+        { prefix = "<leader>", mode = "v", noremap = true }),
 
 }
