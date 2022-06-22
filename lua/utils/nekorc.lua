@@ -1,5 +1,4 @@
 local M = {}
-local notify = require('notify')
 
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80

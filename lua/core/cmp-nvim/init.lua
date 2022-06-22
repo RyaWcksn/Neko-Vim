@@ -74,12 +74,8 @@ cmp.setup({
 			local source_mapping = {
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
-				nvim_lua = "[Lua]",
-				cmp_tabnine = "[TabNine]",
 				path = "[Path]",
-				emoji = "[Emoji]",
 				calc = "[Calc]",
-				latex_symbol = "[Latex]",
 			}
 			local menu = source_mapping[entry.source.name]
 			vim_item.menu = menu
