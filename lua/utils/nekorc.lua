@@ -1,4 +1,5 @@
 local M = {}
+local api = vim.api
 
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -27,6 +28,18 @@ function os.capture(cmd, raw)
     s = string.gsub(s, '%s+$', '')
     s = string.gsub(s, '[\n\r]+', ' ')
     return s
+end
+
+function M.nvim_create_augroups(definitions)
+    for group_name, definition in pairs(definitions) do
+        api.nvim_command('augroup '..group_name)
+        api.nvim_command('autocmd!')
+        for _, def in ipairs(definition) do
+            local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+            api.nvim_command(command)
+        end
+        api.nvim_command('augroup END')
+    end
 end
 
 -- Enter your colorscheme name here

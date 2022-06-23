@@ -271,8 +271,8 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- Copilot
-    use { 'github/copilot.vim' }
+    --[[ -- Copilot
+    use { 'github/copilot.vim' } ]]
 
     -- Hopping words
     use {
