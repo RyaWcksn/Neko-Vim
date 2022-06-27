@@ -6,11 +6,11 @@ require("plugins")
 require("utils")
 local folds = require('utils.nekorc')
 
-local autoCommands = {
+--[[ local autoCommands = {
     -- other autocommands
     open_folds = {
         {"BufReadPost,FileReadPost", "*", "normal zR"}
     }
 }
 
-folds.nvim_create_augroups(autoCommands)
+folds.nvim_create_augroups(autoCommands) ]]
