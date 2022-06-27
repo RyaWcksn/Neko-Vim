@@ -5,7 +5,7 @@ require('nvim-test').setup({
   silent = false,             -- less notifications
   term = "toggleterm",          -- a terminal to run ("terminal"|"toggleterm")
   termOpts = {
-    direction = "horizontal",   -- terminal's direction ("horizontal"|"vertical"|"float")
+    direction = "float",   -- terminal's direction ("horizontal"|"vertical"|"float")
     width = 96,               -- terminal's width (for vertical|float)
     height = 24,              -- terminal's height (for horizontal|float)
     go_back = false,          -- return focus to original window after executing

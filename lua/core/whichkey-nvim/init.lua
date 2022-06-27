@@ -21,13 +21,6 @@ function GolangMock()
     print(", Mock file generated: " .. output .. " Package: " .. package)
 end
 
-function Coverage()
-    local file = vim.trim(vim.fn.expand("%"))
-    local output = file:match "\\v([^.])\\.cov$"
-    print(output)
-    os.execute("go tool cover -html=" .. output)
-end
-
 local function rename()
     local opts = {
         relative = "cursor",
@@ -100,17 +93,17 @@ wk.setup {
             scroll_up = '<c-u>', -- binding to scroll up inside the popup
         },
         window = {
-            border = "none", -- none, single, double, shadow
+            border = "single", -- none, single, double, shadow
             position = "bottom", -- bottom, top
-            margin = { 5, 0, 5, 0 }, -- extra window margin [top, right, bottom, left]
-            padding = { 10, 10, 10, 10 }, -- extra window padding [top, right, bottom, left]
+            margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+            padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
             winblend = 0
         },
         layout = {
             height = { min = 4, max = 25 }, -- min and max height of the columns
-            width = { min = 50, max = 50 }, -- min and max width of the columns
+            width = { min = 20, max = 50 }, -- min and max width of the columns
             spacing = 10, -- spacing between columns
-            align = "center", -- align columns left, center or right
+            align = "left", -- align columns left, center or right
         },
         ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
         hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
@@ -196,8 +189,6 @@ wk.setup {
         },
         o = {
             name = "+Open",
-            a = { ":lua require('orgmode').action('agenda.prompt')<CR>", "Org Agenda" },
-            c = { ":lua require('orgmode').action('capture.prompt')<CR>", "Org Capture" },
             d = { ":cd %:h<CR>", "Change Directory" },
             s = { ":SymbolsOutline<CR>", "Symbols Outline" },
             e = { ":NvimTreeToggle<CR>", "File Tree" },
@@ -206,7 +197,8 @@ wk.setup {
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
             w = { ":lua OpenLink()<CR>", "Open Url" },
             o = { "zo", "Open Fold" },
-            O = { "zc", "Close Fold" }
+            O = { "zc", "Close Fold" },
+            a = { "zR", "Open All Fold" }
         },
         e = {
             name = "+Essentials",
