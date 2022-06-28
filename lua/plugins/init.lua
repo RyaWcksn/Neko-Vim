@@ -124,7 +124,7 @@ return require('packer').startup(function(use)
     }
     use {
         'is0n/jaq-nvim',
-        config = function ()
+        config = function()
             require('core.jaq-nvim')
         end
     }
@@ -304,7 +304,31 @@ return require('packer').startup(function(use)
             }
         end
     }
-    use 'ray-x/go.nvim'
+    use {
+        'ray-x/go.nvim',
+        config = function()
+            require('go').setup()
+        end
+    }
     use 'ray-x/guihua.lua' -- recommanded if need floating window support
+    use {
+        'mfussenegger/nvim-dap',
+        opt = true,
+        event = "BufReadPre",
+        module = { "dap" },
+        wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+        requires = {
+            "Pocco81/DAPInstall.nvim",
+            "theHamsta/nvim-dap-virtual-text",
+            "rcarriga/nvim-dap-ui",
+            "mfussenegger/nvim-dap-python",
+            "nvim-telescope/telescope-dap.nvim",
+            { "leoluz/nvim-dap-go", module = "dap-go" },
+            { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+        },
+        config = function()
+            require('core.dap-nvim')
+        end
+    }
 end
 )
