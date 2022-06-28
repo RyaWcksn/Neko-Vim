@@ -10,7 +10,7 @@ local cfg = {
 
 	floating_window_above_cur_line = true,
 
-	floating_window_off_x = 1, -- adjust float windows x position.
+	floating_window_off_x = 6, -- adjust float windows x position.
 	floating_window_off_y = 1, -- adjust float windows y position.
 
 	fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters

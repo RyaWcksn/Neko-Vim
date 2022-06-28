@@ -122,6 +122,12 @@ return require('packer').startup(function(use)
             require('core.sniprun-nvim')
         end
     }
+    use {
+        'is0n/jaq-nvim',
+        config = function ()
+            require('core.jaq-nvim')
+        end
+    }
 
     -- Treesitter
     use {
@@ -190,13 +196,13 @@ return require('packer').startup(function(use)
         end
     }
     use { 'onsails/lspkind-nvim' }
-    use {
+    --[[ use {
         "ray-x/lsp_signature.nvim",
         after = "nvim-lspconfig",
         config = function()
             require('core.signature-nvim')
         end
-    }
+    } ]]
     use { 'williamboman/nvim-lsp-installer' }
 
     -- Autopairs tag
@@ -298,5 +304,7 @@ return require('packer').startup(function(use)
             }
         end
     }
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua' -- recommanded if need floating window support
 end
 )

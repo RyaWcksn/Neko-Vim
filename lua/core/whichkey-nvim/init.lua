@@ -15,6 +15,7 @@ end
 function GolangMock()
     local file = vim.fn.expand("%")
     local output = file:match "(.+)%..+$" .. "_mock.go"
+    local source = file:match "^.+/(.+)$"
     local package = vim.fn.input("Package name: ")
     local cmd = { "mockgen", "-source", file, "-destination", output, "-package", package }
     os.execute(table.concat(cmd, " "))

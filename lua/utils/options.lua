@@ -158,4 +158,7 @@ vim.cmd([[
 filetype indent on
 set autoindent
 set smartindent
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 ]])
+
+
