@@ -14,4 +14,3 @@ local folds = require('utils.nekorc')
 }
 
 folds.nvim_create_augroups(autoCommands) ]]
-require('go').setup()

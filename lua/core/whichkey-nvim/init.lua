@@ -17,7 +17,7 @@ function GolangMock()
     local output = file:match "(.+)%..+$" .. "_mock.go"
     local source = file:match "^.+/(.+)$"
     local package = vim.fn.input("Package name: ")
-    local cmd = { "mockgen", "-source", file, "-destination", output, "-package", package }
+    local cmd = { "mockgen", "-source", source, "-destination", output, "-package", package }
     os.execute(table.concat(cmd, " "))
     print(", Mock file generated: " .. output .. " Package: " .. package)
 end
@@ -204,7 +204,7 @@ wk.setup {
         e = {
             name = "+Essentials",
             m = { ":lua GolangMock()<CR>", "Golang Mock" },
-            c = { ":lua Coverage()<CR>", "Golang Coverage" },
+            c = { ":lua Code()<CR>", "Golang Coverage" },
         },
         g = {
             name = "+Git",
