@@ -32,6 +32,9 @@ key("v", "H", "<gv", opt)
 -- Using ; to Command mode
 key("n", ";", ":", opt)
 
+-- DAP
+key("n", "<F3>", ":DapToggleBreakpoint<CR>", opt)
+
 -- Using jk as ESC
 key("t", "jk", "<C-\\><C-n>", opt)
 key("i", "jk", "<esc>", opt)
