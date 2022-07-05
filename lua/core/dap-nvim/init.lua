@@ -33,7 +33,7 @@ dap.adapters.go = function(callback, config)
         end,
         100)
 end
--- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+
 dap.configurations.go = {
     {
         type = "go",
@@ -58,8 +58,67 @@ dap.configurations.go = {
     }
 }
 
-dap.adapters.go = {
-    type = "server",
-    host = "127.0.0.1",
-    port = 38697,
+require("dapui").setup({
+    icons = { expanded = "▾", collapsed = "▸" },
+    mappings = {
+        -- Use a table to apply multiple mappings
+        expand = { "<CR>", "<2-LeftMouse>" },
+        open = "o",
+        remove = "d",
+        edit = "e",
+        repl = "r",
+    },
+    layouts = {
+        {
+            elements = {
+                'scopes',
+                'breakpoints',
+                'stacks',
+                'watches',
+            },
+            size = 40,
+            position = 'left',
+        },
+        {
+            elements = {
+                'repl',
+                'console',
+            },
+            size = 10,
+            position = 'bottom',
+        },
+    },
+    floating = {
+        max_height = nil, -- These can be integers or a float between 0 and 1.
+        max_width = nil, -- Floats will be treated as percentage of your screen.
+        border = "single", -- Border style. Can be "single", "double" or "rounded"
+        mappings = {
+            close = { "q", "<Esc>" },
+        },
+    },
+    windows = { indent = 1 },
+})
+local dap_breakpoint = {
+    error = {
+        text = "🟥",
+        texthl = "LspDiagnosticsSignError",
+        linehl = "",
+        numhl = "",
+    },
+    rejected = {
+        text = "",
+        texthl = "LspDiagnosticsSignHint",
+        linehl = "",
+        numhl = "",
+    },
+    stopped = {
+        text = "⭐️",
+        texthl = "LspDiagnosticsSignInformation",
+        linehl = "DiagnosticUnderlineInfo",
+        numhl = "LspDiagnosticsSignInformation",
+    },
 }
+
+vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)

@@ -4,9 +4,9 @@ if impatient_ok then
 end
 require("plugins")
 require("utils")
-local folds = require('utils.nekorc')
+--[[ local folds = require('utils.nekorc')
 
---[[ local autoCommands = {
+local autoCommands = {
     -- other autocommands
     open_folds = {
         {"BufReadPost,FileReadPost", "*", "normal zR"}

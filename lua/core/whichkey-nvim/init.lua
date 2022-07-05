@@ -160,9 +160,12 @@ wk.setup {
             s = { ":SudaWrite<CR>", "Sudo save" },
         },
         d = {
-            name = "+Discord",
-            s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
-            d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
+            name = "+Debug",
+            du = { ':lua require("dapui").toggle()<CR>', "Toggle DAP Ui" },
+            dc = { ':lua require("dap").continue()<CR>', "DAP Continue" },
+            dv = { ':lua require("dap").step_over()<CR>', "DAP Step Over" },
+            di = { ':lua require("dap").step_into()<CR>', "DAP Step Into" },
+            da = { ':lua require("dap").step_out()<CR>', "DAP Step Out" },
         },
         b = {
             name = "+Buffer",
@@ -205,6 +208,8 @@ wk.setup {
             name = "+Essentials",
             m = { ":lua GolangMock()<CR>", "Golang Mock" },
             c = { ":lua Code()<CR>", "Golang Coverage" },
+            s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
+            d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
         },
         g = {
             name = "+Git",
