@@ -38,15 +38,22 @@ M.setup = function()
     })
 
     vim.o.updatetime = 250
-    vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+    -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
     -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
     -- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
+    vim.cmd([[autocmd! CursorHold,CursorHoldI *.go lua vim.lsp.buf.signature_help(nil, {focus=false})]])
+
+    local Handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+    }
+
     local servers = module.languages.servers
     local util = require("lspconfig/util")
-
     for _, server in ipairs(servers) do
         if server == "gopls" then
             lsp.gopls.setup({
+                handlers = Handlers,
                 cmd = { "gopls", "serve" },
                 filetypes = { "go", "gomod", "gotmpl" },
                 root_dir = util.root_pattern("go.work", "go.mod", ".git", "go.sum"),
