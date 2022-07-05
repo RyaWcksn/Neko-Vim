@@ -107,7 +107,7 @@ return require('packer').startup(function(use)
         after = "cmp-calc"
     }
     use {
-        'hrsh7th/cmp-vsnip',
+        'saadparwaiz1/cmp_luasnip',
         after = 'nvim-cmp'
     }
 
@@ -260,7 +260,7 @@ return require('packer').startup(function(use)
     use { 'lambdalisue/suda.vim' }
 
     -- Snipper
-    use { 'hrsh7th/vim-vsnip' }
+    use { 'L3MON4D3/LuaSnip' }
     use { "rafamadriz/friendly-snippets" }
 
     -- Database
