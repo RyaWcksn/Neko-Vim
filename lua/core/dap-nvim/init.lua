@@ -106,7 +106,7 @@ local dap_breakpoint = {
         numhl = "",
     },
     rejected = {
-        text = "",
+        text = " ",
         texthl = "LspDiagnosticsSignHint",
         linehl = "",
         numhl = "",
@@ -118,6 +118,8 @@ local dap_breakpoint = {
         numhl = "LspDiagnosticsSignInformation",
     },
 }
+
+
 
 vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
 vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
