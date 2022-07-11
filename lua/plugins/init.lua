@@ -153,6 +153,12 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Winbar
+    --[[ use {
+        'fgheng/winbar.nvim',
+        config =    
+}
+ ]]
     -- Bufferline on top
     use {
         'akinsho/bufferline.nvim',
@@ -261,7 +267,7 @@ return require('packer').startup(function(use)
 
     -- Snipper
     use { 'L3MON4D3/LuaSnip' }
-    use { "rafamadriz/friendly-snippets" }
+    -- use { "rafamadriz/friendly-snippets" }
 
     -- Database
     --[[ use { 'tpope/vim-dadbod' }
