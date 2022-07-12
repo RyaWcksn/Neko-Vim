@@ -11,6 +11,13 @@ local function dorename(win)
     vim.lsp.buf.rename(new_name)
 end
 
+--[[ function Commit()
+    local message = vim.fn.input("Commit Message: ")
+    local cmd = {"git", "commit", "-m", message}
+    os.execute(table.concat(cmd, " "))
+    print(" Commited")
+end ]]
+
 -- Golang Mock
 function GolangMock()
     local file = vim.fn.expand("%")
@@ -195,7 +202,9 @@ wk.setup {
             a = { ":lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
             d = { ":lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
             w = { ":lua vim.lsp.buf.references()<CR>", "References" },
-            t = { ":Trouble<CR>", "Errors" }
+            -- t = { ":Trouble<CR>", "Errors" }
+            t = {":Telescope diagnostics<CR>", "Error Diagnostics"}
+
 
         },
         ["/"] = {
@@ -223,6 +232,7 @@ wk.setup {
         },
         g = {
             name = "+Git",
+            l = { ":Telescope git_stash<CR>", "List All Stash"},
             s = { ":lua require('gitsigns').stage_hunk()<CR>", "Stage Hunk" },
             S = { ":lua require('gitsigns').stage_buffer()<CR>", "Stage Buffer" },
             u = { ":lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage Hunk" },
