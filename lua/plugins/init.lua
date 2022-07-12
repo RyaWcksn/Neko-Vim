@@ -316,6 +316,8 @@ return require('packer').startup(function(use)
             require('go').setup()
         end
     }
+    use { 'MunifTanjim/nui.nvim' }
+    use { 'VonHeikemen/searchbox.nvim' }
     use 'ray-x/guihua.lua' -- recommanded if need floating window support
     use {
         'mfussenegger/nvim-dap',

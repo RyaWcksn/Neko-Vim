@@ -6,9 +6,6 @@ local opt = {silent = true, noremap = true}
 local key = vim.api.nvim_set_keymap
 
 -- Disable key
-vim.cmd([[
-noremap . <NOP>
-]])
 
 -- Stuff
 key("n", "Y", "y$", opt)
@@ -31,6 +28,8 @@ key("v", "H", "<gv", opt)
 
 -- Using ; to Command mode
 key("n", ";", ":", opt)
+key("n", "/", ":SearchBoxIncSearch<CR>", opt)
+key("n", ".", ":SearchBoxReplace<CR>", opt)
 
 -- DAP
 key("n", "<F3>", ":DapToggleBreakpoint<CR>", opt)
