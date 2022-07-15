@@ -6,9 +6,6 @@ local opt = {silent = true, noremap = true}
 local key = vim.api.nvim_set_keymap
 
 -- Disable key
-vim.cmd([[
-noremap . <NOP>
-]])
 
 -- Stuff
 key("n", "Y", "y$", opt)
@@ -31,6 +28,8 @@ key("v", "H", "<gv", opt)
 
 -- Using ; to Command mode
 key("n", ";", ":", opt)
+key("n", "/", ":SearchBoxIncSearch<CR>", opt)
+key("n", ".", ":SearchBoxReplace<CR>", opt)
 
 -- DAP
 key("n", "<F3>", ":DapToggleBreakpoint<CR>", opt)
@@ -59,6 +58,9 @@ key("v", "<Leader>/", "<Plug>kommentary_visual_default<C-c>", opt)
 
 key("n", "<Up>", "<C-u>", opt)
 key("n", "<Down>", "<C-d>", opt)
+
+key("n", "hh", "zc", opt)
+key("n", "ll", "zo", opt)
 
 -- Unix specified keybinding, using meta as leader key
 if vim.fn.has("unix") then

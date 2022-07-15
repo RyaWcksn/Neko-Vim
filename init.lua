@@ -4,7 +4,7 @@ if impatient_ok then
 end
 require("plugins")
 require("utils")
---[[ local folds = require('utils.nekorc')
+local folds = require('utils.nekorc')
 
 local autoCommands = {
     -- other autocommands
@@ -13,4 +13,4 @@ local autoCommands = {
     }
 }
 
-folds.nvim_create_augroups(autoCommands) ]]
+folds.nvim_create_augroups(autoCommands)

@@ -11,6 +11,13 @@ local function dorename(win)
     vim.lsp.buf.rename(new_name)
 end
 
+--[[ function Commit()
+    local message = vim.fn.input("Commit Message: ")
+    local cmd = {"git", "commit", "-m", message}
+    os.execute(table.concat(cmd, " "))
+    print(" Commited")
+end ]]
+
 -- Golang Mock
 function GolangMock()
     local file = vim.fn.expand("%")
@@ -143,10 +150,11 @@ wk.setup {
         },
         f = {
             name = "+Finds",
-            f = { ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", "Find Files" },
+            -- f = { ":lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<CR>", "Find Files" },
+            f = { ":Telescope find_files theme=dropdown<CR>", "Find Files" },
             w = { ":Telescope live_grep<CR>", "Find Words" },
-            g = { ":Telescope git_commit<CR>", "Find Commits" },
-            b = { ":Telescope buffers<CR>", "Find Buffers" },
+            g = { ":Telescope git_status<CR>", "Find Commits" },
+            b = { ":lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<CR>", "Find Buffers" },
             h = { ":Telescope help_tags<CR>", "Find Helps" },
         },
         p = {
@@ -161,15 +169,24 @@ wk.setup {
         },
         d = {
             name = "+Debug",
-            du = { ':lua require("dapui").toggle()<CR>', "Toggle DAP Ui" },
-            dc = { ':lua require("dap").continue()<CR>', "DAP Continue" },
-            dv = { ':lua require("dap").step_over()<CR>', "DAP Step Over" },
-            di = { ':lua require("dap").step_into()<CR>', "DAP Step Into" },
-            da = { ':lua require("dap").step_out()<CR>', "DAP Step Out" },
+            u = { ':lua require("dapui").toggle()<CR>', "Toggle DAP Ui" },
+            c = { ':lua require("dap").continue()<CR>', "DAP Continue" },
+            v = { ':lua require("dap").step_over()<CR>', "DAP Step Over" },
+            i = { ':lua require("dap").step_into()<CR>', "DAP Step Into" },
+            a = { ':lua require("dap").step_out()<CR>', "DAP Step Out" },
+            R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+            E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
+            s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+            x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+            r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+            d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+            h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
+
         },
         b = {
             name = "+Buffer",
             t = { ":enew<CR>", "New Buffer" },
+            d = { ":bd!<CR>", "Delete Buffer" },
         },
         u = {
             name = "+Unit testing",
@@ -185,7 +202,9 @@ wk.setup {
             a = { ":lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
             d = { ":lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
             w = { ":lua vim.lsp.buf.references()<CR>", "References" },
-            t = { ":Trouble<CR>", "Errors" }
+            -- t = { ":Trouble<CR>", "Errors" }
+            t = {":Telescope diagnostics<CR>", "Error Diagnostics"}
+
 
         },
         ["/"] = {
@@ -200,8 +219,8 @@ wk.setup {
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
             w = { ":lua OpenLink()<CR>", "Open Url" },
-            o = { "zo", "Open Fold" },
-            O = { "zc", "Close Fold" },
+            --[[ ll = { "zo", "Open Fold" },
+            hh = { "zc", "Close Fold" }, ]]
             a = { "zR", "Open All Fold" }
         },
         e = {
@@ -213,6 +232,7 @@ wk.setup {
         },
         g = {
             name = "+Git",
+            l = { ":Telescope git_stash<CR>", "List All Stash"},
             s = { ":lua require('gitsigns').stage_hunk()<CR>", "Stage Hunk" },
             S = { ":lua require('gitsigns').stage_buffer()<CR>", "Stage Buffer" },
             u = { ":lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage Hunk" },
@@ -235,8 +255,8 @@ wk.setup {
         },
         g = {
             name = "+Git",
-            s = { ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", "Stage Hunk" },
-            r = { ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", "Reset Hunk" },
+            s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
+            r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
             i = { ":<C-U>lua require('gitsigns.actions').select_hunk()<CR>", "Select Hunk" },
         }
     },

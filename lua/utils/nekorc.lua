@@ -127,7 +127,7 @@ M.lualine_modules = {
     },
     mode = {
         function()
-            return ""
+            return ""
         end,
         color = function()
             local mode_color = {
