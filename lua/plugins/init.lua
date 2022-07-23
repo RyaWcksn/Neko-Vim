@@ -147,24 +147,16 @@ return require('packer').startup(function(use)
     -- Line
     use {
         'hoob3rt/lualine.nvim',
-        after = "bufferline.nvim",
         config = function()
             require('core.lualine-nvim')
         end
     }
 
     -- Winbar
-    --[[ use {
-        'fgheng/winbar.nvim',
-        config =    
-}
- ]]
-    -- Bufferline on top
     use {
-        'akinsho/bufferline.nvim',
-        after = "nvim-web-devicons",
-        config = function()
-            require('core/bufferline-nvim')
+        'fgheng/winbar.nvim',
+        config = function ()
+            require('core.winbar-nvim')
         end
     }
 
@@ -267,7 +259,7 @@ return require('packer').startup(function(use)
 
     -- Snipper
     use { 'L3MON4D3/LuaSnip' }
-    -- use { "rafamadriz/friendly-snippets" }
+    use { "rafamadriz/friendly-snippets" }
 
     -- Database
     --[[ use { 'tpope/vim-dadbod' }

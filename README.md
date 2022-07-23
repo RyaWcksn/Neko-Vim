@@ -24,36 +24,8 @@ Why i'm using Neko as name? It's simple because when it combine, the name turns 
 
 - Linux and MacOS 
 
-```Shell
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-  
-``` shell
-cd .config  
-mv nvim nvim.bak  
-git clone https://github.com/AyaWcksn/neovim-configuration.git nvim
-```
-
-``` shell
-nvim +PackerSync
-```
-
-- Windows
-
-``` cmd
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-```
-   
-``` cmd
-cd %userprofile%\AppData\Local\nvim
-del /s /q *
-for /f "delims=" %x in ('dir /b /ad .') do rd /s /q "%x"
-```
-
-``` cmd
-cd %userprofile%\AppData\Local
-git clone https://github.com/AyaWcksn/neovim-configuration nvim
+```shell
+bash <(curl -s https://github.com/RyaWcksn/Neko-Vim/install.sh)>
 ```
 
 ## Features 🔥
@@ -114,6 +86,6 @@ For the language server, i'm using [nvim-lsp-installer](https://github.com/willi
 
 | Feature                    | Status   |
 |----------------------------|----------|
-| Debugging                  | Done     |
-| Work in termux and windows | Done     |
+| Debugging                  | [On Progress](https://github.com/RyaWcksn/Neko-Vim/issues/50)|
+| Work in termux             | Done      |
 

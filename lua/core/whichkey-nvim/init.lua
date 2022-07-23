@@ -4,6 +4,37 @@ if not ok then
     os.exit(1)
 end
 
+local Terminal = require("toggleterm.terminal").Terminal
+vim.notify = require("notify")
+
+-- Go mod tidy
+local go_tidy = Terminal:new { cmd = "go mod tidy", hidden = true }
+function GO_TIDY()
+    go_tidy:toggle()
+    vim.notify("Go mod tidy under progress, please wait until terminal close", "Info", {
+        title = "Go mod tidy"
+    })
+end
+
+local lazygit = Terminal:new {
+  cmd = "lazygit",
+  hidden = true,
+  direction = "tab",
+  on_open = function(_)
+    vim.cmd "startinsert!"
+    vim.cmd "set laststatus=0"
+  end,
+  on_close = function(_)
+    vim.cmd "set laststatus=3"
+  end,
+  count = 99,
+}
+
+function LAZYGIT_TOGGLE()
+  lazygit:toggle()
+end
+
+
 -- Rename stuff
 local function dorename(win)
     local new_name = vim.trim(vim.fn.getline("."))
@@ -13,7 +44,7 @@ end
 
 --[[ function Commit()
     local message = vim.fn.input("Commit Message: ")
-    local cmd = {"git", "commit", "-m", message}
+    local cmd = {}
     os.execute(table.concat(cmd, " "))
     print(" Commited")
 end ]]
@@ -135,18 +166,10 @@ wk.setup {
             H = { ":vertical res -5<CR>", "Resize Left" },
             L = { ":vertical res +5<CR>", "Resize Right" },
             ["<Leader>"] = {
+                name = "+Split",
                 k = { ":vs<CR>", "Split Vertically" },
                 j = { ":sp<CR>", "Split Horizontally" },
             },
-            ["1"] = { ":BufferLineGoToBuffer 1<CR>", "Buffer 1" },
-            ["2"] = { ":BufferLineGoToBuffer 2<CR>", "Buffer 2" },
-            ["3"] = { ":BufferLineGoToBuffer 3<CR>", "Buffer 3" },
-            ["4"] = { ":BufferLineGoToBuffer 4<CR>", "Buffer 4" },
-            ["5"] = { ":BufferLineGoToBuffer 5<CR>", "Buffer 5" },
-            ["6"] = { ":BufferLineGoToBuffer 6<CR>", "Buffer 6" },
-            ["7"] = { ":BufferLineGoToBuffer 7<CR>", "Buffer 7" },
-            ["8"] = { ":BufferLineGoToBuffer 8<CR>", "Buffer 8" },
-            ["9"] = { ":BufferLineGoToBuffer 9<CR>", "Buffer 9" },
         },
         f = {
             name = "+Finds",
@@ -196,16 +219,14 @@ wk.setup {
         },
         l = {
             name = "+LSP",
-            f = { ":lua vim.lsp.buf.formatting()<CR>", "Format" },
+            f = { ":lua vim.lsp.buf.format()<CR>", "Format" },
             c = { ":lua vim.lsp.buf.code_action()<CR>", "Code Action" },
             r = { ":lua Rename.rename()<CR>", "Rename" },
             a = { ":lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
             d = { ":lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
             w = { ":lua vim.lsp.buf.references()<CR>", "References" },
             -- t = { ":Trouble<CR>", "Errors" }
-            t = {":Telescope diagnostics<CR>", "Error Diagnostics"}
-
-
+            t = { ":Telescope diagnostics<CR>", "Error Diagnostics" }
         },
         ["/"] = {
             name = "Comment"
@@ -219,8 +240,6 @@ wk.setup {
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
             w = { ":lua OpenLink()<CR>", "Open Url" },
-            --[[ ll = { "zo", "Open Fold" },
-            hh = { "zc", "Close Fold" }, ]]
             a = { "zR", "Open All Fold" }
         },
         e = {
@@ -232,7 +251,7 @@ wk.setup {
         },
         g = {
             name = "+Git",
-            l = { ":Telescope git_stash<CR>", "List All Stash"},
+            l = { ":Telescope git_stash<CR>", "List All Stash" },
             s = { ":lua require('gitsigns').stage_hunk()<CR>", "Stage Hunk" },
             S = { ":lua require('gitsigns').stage_buffer()<CR>", "Stage Buffer" },
             u = { ":lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage Hunk" },
@@ -241,10 +260,14 @@ wk.setup {
             U = { ":lua require('gitsigns').reset_buffer_index()<CR>", "Reset Buffer" },
             p = { ":lua require('gitsigns').preview_hunk()<CR>", "Preview Hunk" },
             b = { ":lua require('gitsigns').blame_line(true)<CR>", "Blame Line" },
-
+            z = { ":lua LAZYGIT_TOGGLE()<CR>", "Lazy Git" },
         },
-        y = {
-            ["<"] = { "yi<", "Stage Hunk" },
+        t = {
+            name = "+Terminal",
+            g = {
+                name = "+Golang",
+                t = {":lua GO_TIDY()<CR>", "Go mod tidy" }
+            },
         }
     },
         { prefix = "<leader>", mode = "n", noremap = true }),
@@ -261,5 +284,4 @@ wk.setup {
         }
     },
         { prefix = "<leader>", mode = "v", noremap = true }),
-
 }
