@@ -25,7 +25,7 @@ Why i'm using Neko as name? It's simple because when it combine, the name turns 
 - Linux and MacOS 
 
 ```shell
-bash <(curl -s https://github.com/RyaWcksn/Neko-Vim/install.sh)>
+bash <(curl -s https://github.com/RyaWcksn/Neko-Vim/install.sh)
 ```
 
 ## Features 🔥
