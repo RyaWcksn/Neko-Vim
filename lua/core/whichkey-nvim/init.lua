@@ -3,51 +3,7 @@ if not ok then
     print("which-key not found, please install it.")
     os.exit(1)
 end
-
-local Terminal = require("toggleterm.terminal").Terminal
 vim.notify = require("notify")
-
--- Go mod tidy
-local go_tidy = Terminal:new { cmd = "go mod tidy", hidden = true }
-function GO_TIDY()
-    go_tidy:toggle()
-    vim.notify("Go mod tidy under progress, please wait until terminal close", "Info", {
-        title = "Go mod tidy"
-    })
-end
-
-local lazygit = Terminal:new {
-  cmd = "lazygit",
-  hidden = true,
-  direction = "tab",
-  on_open = function(_)
-    vim.cmd "startinsert!"
-    vim.cmd "set laststatus=0"
-  end,
-  on_close = function(_)
-    vim.cmd "set laststatus=3"
-  end,
-  count = 99,
-}
-
-function LAZYGIT_TOGGLE()
-  lazygit:toggle()
-end
-
-
--- Rename stuff
-local function dorename(win)
-    local new_name = vim.trim(vim.fn.getline("."))
-    vim.api.nvim_win_close(win, true)
-    vim.lsp.buf.rename(new_name)
-end
-
---[[ function Commit()
-    local message = vim.fn.input("Commit Message: ")
-    local cmd = {}
-    os.execute(table.concat(cmd, " "))
-    print(" Commited")
-end ]]
 
 -- Golang Mock
 function GolangMock()
@@ -58,6 +14,9 @@ function GolangMock()
     local cmd = { "mockgen", "-source", source, "-destination", output, "-package", package }
     os.execute(table.concat(cmd, " "))
     print(", Mock file generated: " .. output .. " Package: " .. package)
+    vim.notify("Go mock created", "Info", {
+        title = "Go mock"
+    })
 end
 
 local function rename()
@@ -132,7 +91,7 @@ wk.setup {
             scroll_up = '<c-u>', -- binding to scroll up inside the popup
         },
         window = {
-            border = "single", -- none, single, double, shadow
+            border = "double", -- none, single, double, shadow
             position = "bottom", -- bottom, top
             margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
             padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -173,7 +132,6 @@ wk.setup {
         },
         f = {
             name = "+Finds",
-            -- f = { ":lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<CR>", "Find Files" },
             f = { ":Telescope find_files theme=dropdown<CR>", "Find Files" },
             w = { ":Telescope live_grep<CR>", "Find Words" },
             g = { ":Telescope git_status<CR>", "Find Commits" },
@@ -262,11 +220,19 @@ wk.setup {
             b = { ":lua require('gitsigns').blame_line(true)<CR>", "Blame Line" },
             z = { ":lua LAZYGIT_TOGGLE()<CR>", "Lazy Git" },
         },
-        t = {
+        --[[ t = {
             name = "+Terminal",
             g = {
                 name = "+Golang",
                 t = {":lua GO_TIDY()<CR>", "Go mod tidy" }
+            },
+        } ]]
+        c = {
+            name = "+Code",
+            g = {
+                name = "+Golang",
+                t = { ":lua GO_TIDY()<CR>", "Go Mod Tidy" },
+                m = { ":lua GolangMock()<CR>", "Go Mock" },
             },
         }
     },
