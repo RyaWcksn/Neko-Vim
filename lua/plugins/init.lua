@@ -96,6 +96,9 @@ return require('packer').startup(function(use)
         end
     }
     use {
+        'hrsh7th/cmp-nvim-lsp-signature-help'
+    }
+    use {
         'hrsh7th/cmp-nvim-lsp',
         after = "nvim-cmp"
     }
@@ -155,7 +158,7 @@ return require('packer').startup(function(use)
     -- Winbar
     use {
         'fgheng/winbar.nvim',
-        config = function ()
+        config = function()
             require('core.winbar-nvim')
         end
     }
@@ -330,5 +333,13 @@ return require('packer').startup(function(use)
             require('core.dap-nvim')
         end
     }
+    use({
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    })
+    -- Wakatime
+    use 'wakatime/vim-wakatime'
 end
 )
