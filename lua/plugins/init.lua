@@ -156,12 +156,12 @@ return require('packer').startup(function(use)
     }
 
     -- Winbar
-    use {
+    --[[ use {
         'fgheng/winbar.nvim',
         config = function()
             require('core.winbar-nvim')
         end
-    }
+    } ]]
 
     -- File tree
     use {
