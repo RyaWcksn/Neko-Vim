@@ -12,5 +12,8 @@ local autoCommands = {
         {"BufReadPost,FileReadPost", "*", "normal zR"}
     }
 }
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
 folds.nvim_create_augroups(autoCommands)
