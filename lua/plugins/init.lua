@@ -50,6 +50,11 @@ return require('packer').startup(function(use)
     use { 'danishprakash/vim-yami' }
     use { 'NLKNguyen/papercolor-theme' }
     use { 'Mofiqul/vscode.nvim' }
+    use { 'Everblush/everblush.nvim', as = 'everblush', config = function()
+        local everblush = require('everblush')
+
+        everblush.setup({ nvim_tree = { contrast = true } })
+    end }
 
     -- Test
     use {
@@ -95,9 +100,9 @@ return require('packer').startup(function(use)
             require('core.cmp-nvim')
         end
     }
-    use {
+    --[[ use {
         'hrsh7th/cmp-nvim-lsp-signature-help'
-    }
+    } ]]
     use {
         'hrsh7th/cmp-nvim-lsp',
         after = "nvim-cmp"

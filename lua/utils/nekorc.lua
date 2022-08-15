@@ -1,5 +1,6 @@
 local M = {}
 local api = vim.api
+local lsp = require('lspconfig')
 
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -32,32 +33,18 @@ end
 
 function M.nvim_create_augroups(definitions)
     for group_name, definition in pairs(definitions) do
-        api.nvim_command('augroup '..group_name)
+        api.nvim_command('augroup ' .. group_name)
         api.nvim_command('autocmd!')
         for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+            local command = table.concat(vim.tbl_flatten { 'autocmd', def }, ' ')
             api.nvim_command(command)
         end
         api.nvim_command('augroup END')
     end
 end
 
---[[ local lsp_util = vim.lsp.util
-
-function M.code_action_listener()
-  local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics() }
-  local params = lsp_util.make_range_params()
-  params.context = context
-  vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, _, result)
-    -- do something with result - e.g. check if empty and show some indication such as a sign
-    if result == nil then
-       print(err)
-    end
-  end)
-end ]]
-
 -- Enter your colorscheme name here
-M.colorscheme = "vscode"
+M.colorscheme = "everblush"
 
 -- Light or Dark
 M.colorstyle = "dark"
@@ -158,25 +145,131 @@ M.lualine_modules = {
 }
 
 vim.g.vscode_style = "dark"
--- vim.g.vscode_transparent = 0
+vim.g.vscode_transparent = 0
 vim.g.vscode_italic_comment = 1
--- vim.g.vscode_disable_nvimtree_bg = true
+vim.g.vscode_disable_nvimtree_bg = true
 
 -- Input languages LSP to install
 M.languages = {
     servers = {
         "bashls",
-        "cssls",
-        "html",
         "jsonls",
         "sumneko_lua",
         "pyright",
         "tsserver",
         "gopls",
-        "robotframework_ls",
+        "golangci_lint_ls",
     },
     -- Treesitter
-    ensure_installed = { "html", "javascript", "lua", "go", "typescript" },
+    ensure_installed = { "bash", "javascript", "lua", "go", "typescript" },
 }
+
+M.on_attach = function(client, bufnr)
+  if vim.g.vim_version > 7 then
+    -- nightly
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  else
+    -- stable
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
+
+  lsp.utils.load_mappings("lspconfig", { buffer = bufnr })
+end
+
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+    return
+end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+M.capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+
+function M.gopls(handler)
+    return lsp.gopls.setup({
+        handlers = handler,
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gotmpl" },
+        root_dir = lsp.util.root_pattern("go.mod", ".git", "go.sum"),
+        single_file_support = true,
+        default_config = {
+            init_options = {
+                analyses = {
+                    unusedparams = true,
+                },
+                codelenses = {
+                    test = true,
+                    generate = true,
+                    gc_details = true,
+                    regenerate_cgo = true,
+                    tidy = true,
+                    upgrade_depdendency = true,
+                    vendor = true,
+                },
+            },
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                    signatureHelp = {
+                        enabled = true,
+                    },
+                    linksInHover = false,
+                    usePlaceholders = true,
+                },
+            },
+        }
+    })
+end
+
+function M.golang_ci(handler)
+    return lsp.golangci_lint_ls.setup {
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        cmd = { 'golangci-lint-langserver' },
+        root_dir = lsp.util.root_pattern('.git', 'go.mod'),
+        handlers = handler,
+        filetypes = { 'go', 'gomod' },
+        default_config = {
+            init_options = {
+                command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
+                analyses = {
+                    unusedparams = true,
+                },
+                codelenses = {
+                    test = true,
+                    generate = true,
+                    gc_details = true,
+                    regenerate_cgo = true,
+                    tidy = true,
+                    upgrade_depdendency = true,
+                    vendor = true,
+                },
+            };
+        },
+    }
+end
 
 return M
