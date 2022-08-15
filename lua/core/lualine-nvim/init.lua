@@ -4,6 +4,7 @@ require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = module.lualine_theme,
+		-- theme = "everblush",
 		disabled_filetypes = {'dashboard', 'NvimTree', 'Outline', 'Terminal'},
 		section_separators = {
 			left = "",

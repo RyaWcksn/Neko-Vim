@@ -19,25 +19,6 @@ function GolangMock()
     })
 end
 
-local function rename()
-    local opts = {
-        relative = "cursor",
-        row = 0,
-        col = 0,
-        width = 30,
-        height = 1,
-        style = "minimal",
-        border = "single",
-    }
-    local cword = vim.fn.expand("<cword>")
-    local buf = vim.api.nvim_create_buf(false, true)
-    local win = vim.api.nvim_open_win(buf, true, opts)
-    local fmt = "<cmd>lua Rename.dorename(%d)<CR>"
-
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { cword })
-    vim.api.nvim_buf_set_keymap(buf, "i", "<CR>", string.format(fmt, win), { silent = true })
-end
-
 function OpenLink()
     if vim.fn.has("macunix") == 1 then
         vim.api.nvim_command("silent execute '!open ' . shellescape('<cWORD>')")
@@ -45,11 +26,6 @@ function OpenLink()
         vim.api.nvim_command("silent execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)")
     end
 end
-
-_G.Rename = {
-    rename = rename,
-    dorename = dorename,
-}
 
 wk.setup {
     {
@@ -177,14 +153,15 @@ wk.setup {
         },
         l = {
             name = "+LSP",
-            f = { ":lua vim.lsp.buf.format()<CR>", "Format" },
+            f = { ":lua vim.lsp.buf.format()<CR>", "Code Format" },
             c = { ":lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-            r = { ":lua Rename.rename()<CR>", "Rename" },
-            a = { ":lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
-            d = { ":lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-            w = { ":lua vim.lsp.buf.references()<CR>", "References" },
-            -- t = { ":Trouble<CR>", "Errors" }
-            t = { ":Telescope diagnostics<CR>", "Error Diagnostics" }
+            s = { ":lua vim.lsp.buf.signature_help()<CR>", "Code Signature" },
+            d = { ":lua vim.lsp.buf.definition()<CR>", "Code Definition" },
+            i = { ":lua vim.lsp.buf.implementation()<CR>", "Code Implementation" },
+            w = { ":lua vim.lsp.buf.references()<CR>", "Code References" },
+            l = { ":lua vim.lsp.codelens.run()<CR>", "Code Lens" },
+            r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
+            t = { ":Telescope diagnostics<CR>", "Error Diagnostics" },
         },
         ["/"] = {
             name = "Comment"
