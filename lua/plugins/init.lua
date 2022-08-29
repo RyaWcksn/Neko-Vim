@@ -319,6 +319,7 @@ return require('packer').startup(function(use)
     use { 'MunifTanjim/nui.nvim' }
     use { 'VonHeikemen/searchbox.nvim' }
     use 'ray-x/guihua.lua' -- recommanded if need floating window support
+    use 'nvim-treesitter/playground'
     use {
         'mfussenegger/nvim-dap',
         opt = true,
@@ -346,5 +347,11 @@ return require('packer').startup(function(use)
     })
     -- Wakatime
     use 'wakatime/vim-wakatime'
+    -- using packer.nvim
+    use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require("bufferline").setup {}
+        end
+    }
 end
 )
