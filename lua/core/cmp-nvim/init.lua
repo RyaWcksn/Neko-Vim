@@ -89,55 +89,51 @@ cmp.setup({
     },
     window = {
         documentation = {
-            border = "rounded",
-            winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
-        completion = {
-            border = "rounded",
-            winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-        },
+        completion = cmp.config.window.bordered(),
     },
     experimental = {
         ghost_text = true,
     },
     formatting = {
-        fields = { "kind", "abbr", "menu" },
+        fields = { "abbr", "kind", "menu" },
         format = function(entry, vim_item)
             vim_item.kind = ({
-                Text = " Text",
-                Method = " Method",
-                Function = " Function",
-                Constructor = " Constructor",
-                Field = "ﰠ Field",
-                Variable = " Variable",
-                Class = "ﴯ Class",
-                Interface = " Interface",
-                Module = " Module",
-                Property = "ﰠ Property",
-                Unit = "塞Unit",
-                Value = " Value",
-                Enum = " Enum",
-                Keyword = " Keyword",
-                Snippet = " Snippets",
-                Color = " Color",
-                File = " File",
-                Reference = " Reference",
-                Folder = " Folder",
-                EnumMember = " EnumMember",
-                Constant = " Constant",
-                Struct = "פּ Struct",
-                Event = " AI",
-                Operator = " Operator",
+                Text = "",
+                Method = "",
+                Function = "",
+                Constructor = "",
+                Field = "ﰠ",
+                Variable = "",
+                Class = "ﴯ",
+                Interface = "",
+                Module = "",
+                Property = "ﰠ",
+                Unit = "塞",
+                Value = "",
+                Enum = "",
+                Keyword = "",
+                Snippet = "",
+                Color = "",
+                File = "",
+                Reference = "",
+                Folder = "",
+                EnumMember = "",
+                Constant = "",
+                Struct = "פּ",
+                Event = "",
+                Operator = "",
                 TypeParameter = "",
             })[vim_item.kind]
-            local source_mapping = {
+            --[[ local source_mapping = {
                 buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
                 path = "[Path]",
                 calc = "[Calc]",
             }
             local menu = source_mapping[entry.source.name]
-            vim_item.menu = menu
+            vim_item.menu = menu ]]
             vim_item.abbr = string.sub(vim_item.abbr, 1, 30)
             return vim_item
         end,

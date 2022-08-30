@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
     }
 
     -- Dashboard
-    use {
+    --[[ use {
         'glepnir/dashboard-nvim',
         event = "VimEnter",
         cmd = {
@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
         config = function()
             require('core.dashboard-nvim')
         end
-    }
+    } ]]
 
     -- Notify
     use { 'rcarriga/nvim-notify' }

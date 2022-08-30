@@ -19,4 +19,8 @@ vim.diagnostic.config({
 folds.nvim_create_augroups(autoCommands)
 
 vim.api.nvim_set_hl(0, 'LspCodeLens', { fg = '#88C0D0', underline = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "term://*",
+    command = "setlocal nonumber norelativenumber signcolumn=no | setfiletype terminal",
+})
 

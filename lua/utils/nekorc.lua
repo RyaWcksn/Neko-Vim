@@ -159,23 +159,24 @@ M.languages = {
         "tsserver",
         "gopls",
         "golangci_lint_ls",
+        "rust_analyzer",
     },
     -- Treesitter
     ensure_installed = { "bash", "javascript", "lua", "go", "typescript" },
 }
 
 M.on_attach = function(client, bufnr)
-  if vim.g.vim_version > 7 then
-    -- nightly
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  else
-    -- stable
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-  end
+    if vim.g.vim_version > 7 then
+        -- nightly
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    else
+        -- stable
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+    end
 
-  lsp.utils.load_mappings("lspconfig", { buffer = bufnr })
+    lsp.utils.load_mappings("lspconfig", { buffer = bufnr })
 end
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -186,21 +187,21 @@ end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+        properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+        },
     },
-  },
 }
 
 function M.gopls(handler)
@@ -269,6 +270,20 @@ function M.golang_ci(handler)
                 },
             };
         },
+    }
+end
+
+function M.rust_analyzer(handler)
+    return lsp.rust_analyzer.setup {
+        handlers = handler,
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        cmd = { "rust-analyzer" },
+        filetypes = { "rust" },
+        root_dir = lsp.util.root_pattern("Cargo.toml", "rust-project.json"),
+        settings = {
+            ["rust-analyzer"] = {}
+        }
     }
 end
 

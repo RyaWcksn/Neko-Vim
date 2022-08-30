@@ -126,7 +126,7 @@ wk.setup {
         },
         d = {
             name = "+Debug",
-            u = { ':lua require("dapui").toggle()<CR>', "Toggle DAP Ui" },
+            u = { ':lua require("dapui").open()<CR>', "Toggle DAP Ui" },
             c = { ':lua require("dap").continue()<CR>', "DAP Continue" },
             v = { ':lua require("dap").step_over()<CR>', "DAP Step Over" },
             i = { ':lua require("dap").step_into()<CR>', "DAP Step Into" },
@@ -143,7 +143,9 @@ wk.setup {
         b = {
             name = "+Buffer",
             t = { ":enew<CR>", "New Buffer" },
-            d = { ":bd!<CR>", "Delete Buffer" },
+            x = { ":bd!<CR>", "Delete Buffer" },
+            d = { "::bd|e#<CR>", "Delete Buffer" },
+
         },
         u = {
             name = "+Unit testing",
@@ -175,7 +177,8 @@ wk.setup {
             n = { ":set norelativenumber<CR>", "Disable relative numbers" },
             N = { ":set relativenumber<CR>", "Enable relative numbers" },
             w = { ":lua OpenLink()<CR>", "Open Url" },
-            a = { "zR", "Open All Fold" }
+            a = { "zR", "Open All Fold" },
+            t = { ":10new +terminal<CR>", "Open Terminal" }
         },
         e = {
             name = "+Essentials",
@@ -195,15 +198,7 @@ wk.setup {
             U = { ":lua require('gitsigns').reset_buffer_index()<CR>", "Reset Buffer" },
             p = { ":lua require('gitsigns').preview_hunk()<CR>", "Preview Hunk" },
             b = { ":lua require('gitsigns').blame_line(true)<CR>", "Blame Line" },
-            z = { ":lua LAZYGIT_TOGGLE()<CR>", "Lazy Git" },
         },
-        --[[ t = {
-            name = "+Terminal",
-            g = {
-                name = "+Golang",
-                t = {":lua GO_TIDY()<CR>", "Go mod tidy" }
-            },
-        } ]]
         c = {
             name = "+Code",
             g = {
