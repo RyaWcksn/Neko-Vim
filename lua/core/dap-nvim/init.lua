@@ -24,6 +24,27 @@ dap.adapters.delve = {
     }
 }
 
+dap.adapters.go = function(callback, config)
+    stdout = vim.loop.new_pipe(false)
+    stderr = vim.loop.new_pipe(false)
+    local pid_or_err
+    port = config.port or port
+
+    local host = config.host or "127.0.0.1"
+
+    local addr = string.format("%s:%d", host, port)
+    -- print('ERROR: ', err)
+end
+if not data or data == "" then
+    return
+end
+if data:find("couldn't start") then
+end
+
+vim.schedule(function()
+    require("dap.repl").append(data)
+end)
+
 -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
 dap.configurations.go = {
     {
