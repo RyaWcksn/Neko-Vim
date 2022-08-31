@@ -205,43 +205,72 @@ M.capabilities.textDocument.completion.completionItem = {
 }
 
 function M.gopls(handler)
+    local get_current_gomod = function()
+        local file = io.open('go.mod', 'r')
+        if file == nil then
+            return nil
+        end
+
+        local first_line = file:read()
+        local mod_name = first_line:gsub('module ', '')
+        file:close()
+        return mod_name
+    end
     return lsp.gopls.setup({
         handlers = handler,
         on_attach = M.on_attach,
         capabilities = M.capabilities,
-        cmd = { "gopls" },
-        filetypes = { "go", "gomod", "gotmpl" },
-        root_dir = lsp.util.root_pattern("go.mod", ".git", "go.sum"),
-        single_file_support = true,
-        default_config = {
-            init_options = {
+        filetypes = { 'go', 'gomod', 'gosum', 'gotmpl', 'gohtmltmpl', 'gotexttmpl' },
+        message_level = vim.lsp.protocol.MessageType.Error,
+        cmd = {
+            'gopls', -- share the gopls instance if there is one already
+            '-remote.debug=:0',
+        },
+        root_dir = function(fname)
+            local has_lsp, lspconfig = pcall(require, 'lspconfig')
+            if has_lsp then
+                local util = lspconfig.util
+                return util.root_pattern('go.mod', '.git')(fname) or util.path.dirname(fname)
+            end
+        end,
+        flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+        settings = {
+            gopls = {
+                -- more settings: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+                -- not supported
                 analyses = {
+                    unreachable = true,
+                    nilness = true,
                     unusedparams = true,
+                    useany = true,
+                    unusedwrite = true,
+                    ST1003 = true,
+                    undeclaredname = true,
+                    fillreturns = true,
+                    nonewvars = true,
+                    fieldalignment = false,
+                    shadow = true,
                 },
                 codelenses = {
+                    generate = true, -- show the `go generate` lens.
+                    gc_details = true, -- Show a code lens toggling the display of gc's choices.
                     test = true,
-                    generate = true,
-                    gc_details = true,
-                    regenerate_cgo = true,
                     tidy = true,
-                    upgrade_depdendency = true,
                     vendor = true,
+                    regenerate_cgo = true,
+                    upgrade_dependency = true,
                 },
+                usePlaceholders = true,
+                completeUnimported = true,
+                staticcheck = true,
+                matcher = 'Fuzzy',
+                diagnosticsDelay = '500ms',
+                experimentalWatchedFileDelay = '200ms',
+                symbolMatcher = 'fuzzy',
+                ['local'] = get_current_gomod(),
+                buildFlags = { '-tags', 'integration' },
             },
-            settings = {
-                gopls = {
-                    analyses = {
-                        unusedparams = true,
-                    },
-                    staticcheck = true,
-                    signatureHelp = {
-                        enabled = true,
-                    },
-                    linksInHover = false,
-                    usePlaceholders = true,
-                },
-            },
-        }
+        },
     })
 end
 
