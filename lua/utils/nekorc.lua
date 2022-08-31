@@ -44,7 +44,7 @@ function M.nvim_create_augroups(definitions)
 end
 
 -- Enter your colorscheme name here
-M.colorscheme = "everblush"
+M.colorscheme = "github-theme"
 
 -- Light or Dark
 M.colorstyle = "dark"

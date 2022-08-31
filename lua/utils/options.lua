@@ -3,14 +3,11 @@ local g = vim.g
 
 opt.fillchars = { eob = " " }
 
-local colorscheme = require('utils.nekorc').colorscheme
+-- local colorscheme = require('utils.nekorc').colorscheme
 local style = require('utils.nekorc').colorstyle
 
-local color_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
-if not color_ok then
-    print("Error loading colorscheme: " .. colorscheme)
-end
+-- vim.cmd.colorscheme(colorscheme)
 
 g.ultest_use_pty = 1
 g.do_filetype_lua = 1
