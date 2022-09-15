@@ -1,4 +1,5 @@
 local dap, dapui = require("dap"), require("dapui")
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
@@ -93,8 +94,6 @@ local dap_breakpoint = {
         numhl = "LspDiagnosticsSignInformation",
     },
 }
-
-
 
 vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
 vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)

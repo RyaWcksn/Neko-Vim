@@ -27,12 +27,17 @@ M.setup = function()
     }
     vim.diagnostic.config(config)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
+        border = "single",
     })
 
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
+        border = "single",
     })
+
+    vim.api.nvim_set_hl(0, 'LspCodeLens', { link = 'LspDiagnosticsHint', default = true })
+    vim.api.nvim_set_hl(0, 'LspCodeLensText', { link = 'LspDiagnosticsInformation', default = true })
+    vim.api.nvim_set_hl(0, 'LspCodeLensSign', { link = 'LspDiagnosticsInformation', default = true })
+    vim.api.nvim_set_hl(0, 'LspCodeLensSeparator', { link = 'Boolean', default = true })
 
     vim.o.updatetime = 250
     vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
@@ -41,8 +46,8 @@ M.setup = function()
     end
 
     local Handlers = {
-        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
     local servers = module.languages.servers
