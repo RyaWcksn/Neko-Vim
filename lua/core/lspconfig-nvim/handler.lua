@@ -58,6 +58,9 @@ M.setup = function()
         if server == "golangci_lint_ls" then
             module.golang_ci(Handlers)
         end
+        --[[ if server == "jdtls" then
+            module.jdtls(Handlers)
+        end ]]
     end
 end
 

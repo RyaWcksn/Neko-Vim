@@ -316,4 +316,41 @@ function M.rust_analyzer(handler)
     }
 end
 
+local home = os.getenv('HOME')
+local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+function M.jdtls(handler)
+    return lsp.jdtls.setup {
+        handlers = handler,
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        cmd = {
+            'java',
+            '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+            '-Dosgi.bundles.defaultStartLevel=4',
+            '-Declipse.product=org.eclipse.jdt.ls.core.product',
+            '-Dlog.level=ALL',
+            '-noverify',
+            '-Xmx1G',
+            '-jar', home .. '/Documents/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+            '-configuration', home .. '/Documents/config_mac/',
+            '-data', vim.fn.expand('~/jdtls-workspace') .. workspace_dir,
+        },
+        filetypes = {
+            "java"
+        },
+        --[[ root_dir = {
+            {
+                'build.xml', -- Ant
+                'pom.xml', -- Maven
+                'settings.gradle', -- Gradle
+                'settings.gradle.kts', -- Gradle
+            },
+            -- Multi-module projects
+            { 'build.gradle', 'build.gradle.kts' },
+        } or vim.fn.getcwd(), ]]
+        root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }),
+        single_file_support = true,
+    }
+end
+
 return M
