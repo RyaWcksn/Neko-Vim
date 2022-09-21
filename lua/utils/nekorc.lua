@@ -160,9 +160,10 @@ M.languages = {
         "gopls",
         "golangci_lint_ls",
         "rust_analyzer",
+        "jdtls",
     },
     -- Treesitter
-    ensure_installed = { "bash", "javascript", "lua", "go", "typescript" },
+    ensure_installed = { "bash", "javascript", "lua", "go", "typescript", "c", "java" },
 }
 
 M.on_attach = function(client, bufnr)
