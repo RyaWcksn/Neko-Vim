@@ -362,12 +362,12 @@ return require('packer').startup(function(use)
             require('core.dap-nvim')
         end
     }
-    use({
+    --[[ use({
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
             require("lsp_lines").setup()
         end,
-    })
+    }) ]]
     -- Wakatime
     use 'wakatime/vim-wakatime'
     -- using packer.nvim

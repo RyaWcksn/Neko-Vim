@@ -13,7 +13,7 @@ local autoCommands = {
     }
 }
 vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
 })
 
 folds.nvim_create_augroups(autoCommands)
