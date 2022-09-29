@@ -15,6 +15,11 @@ key("n", "N", "Nzzzv", opt)
 key("n", "<C-L>", "zL", opt)
 key("n", "<C-H>", "zH", opt)
 
+key("n", "t", "vt", opt)
+key("n", "f", "vf", opt)
+key("n", "T", "vT", opt)
+key("n", "F", "vF", opt)
+
 -- LSP
 key("n", "lD", ":lua vim.lsp.buf.declaration()<CR>", opt)
 key("n", "ld", ":lua vim.lsp.buf.definition()<CR>", opt)

@@ -26,6 +26,78 @@ function OpenLink()
     end
 end
 
+function OpenTerminal(dir)
+    local Terminal = require('toggleterm.terminal').Terminal
+    local Term = Terminal:new({
+        cmd = "zsh",
+        direction = dir,
+        close_on_exit = false,
+        on_close = function()
+            vim.cmd("startinsert!")
+        end,
+        on_open = function()
+            vim.cmd("startinsert!")
+        end,
+    })
+    Term:toggle()
+end
+
+function RunProgram()
+    local file     = vim.fn.expand("%")
+    local ext      = GetFileExtension(file)
+    local Terminal = require('toggleterm.terminal').Terminal
+    Cmd            = {}
+    --[[ local str      = debug.getinfo(2, "S").source:sub(2)
+    print(str:match "^.*.(out)$") ]]
+    local handle   = assert(io.popen("pwd", 'r'))
+    local output   = assert(handle:read('*a'))
+    if ext == ".py" then
+        Cmd.execute = { "python3", file }
+        local cmd = table.concat(Cmd.execute, " ")
+        runFile = Terminal:new({
+            cmd = cmd,
+            hidden = true,
+            close_on_exit = false,
+        })
+        runFile:toggle()
+    end
+    if ext == ".js" then
+        Cmd.execute = { "node", file }
+        local cmd = table.concat(Cmd.execute, " ")
+        runFile = Terminal:new({
+            cmd = cmd,
+            hidden = true,
+            close_on_exit = false,
+        })
+        runFile:toggle()
+    end
+    if ext == ".c" then
+        Cmd.execute = { "gcc", file, "&&", "./a.out" }
+        local cmd = table.concat(Cmd.execute, " ")
+        runFile = Terminal:new({
+            cmd = cmd,
+            hidden = true,
+            close_on_exit = false,
+        })
+        runFile:toggle()
+    end
+    if ext == ".go" then
+        local path = output .. "/main.go"
+        Cmd.execute = { "go", "run", path }
+        local cmd = table.concat(Cmd.execute, " ")
+        runFile = Terminal:new({
+            cmd = cmd,
+            hidden = true,
+            close_on_exit = false,
+        })
+        runFile:toggle()
+    end
+end
+
+function GetFileExtension(url)
+    return url:match("^.+(%..+)$")
+end
+
 wk.setup {
     {
         plugins = {
@@ -57,8 +129,8 @@ wk.setup {
             ["<A>"] = "META"
         },
         icons = {
-            breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-            separator = "➜", -- symbol used between a key and it's label
+            breadcrumb = ">>", -- symbol used in the command line area that shows your active key combo
+            separator = "->", -- symbol used between a key and it's label
             group = "+", -- symbol prepended to a group
         },
         popup_mappings = {
@@ -143,14 +215,7 @@ wk.setup {
             name = "+Buffer",
             t = { ":enew<CR>", "New Buffer" },
             x = { ":bd!<CR>", "Delete Buffer" },
-            d = { "::bd|e#<CR>", "Delete Buffer" },
-
-        },
-        u = {
-            name = "+Unit testing",
-            w = { ":TestNearest<CR>", "Test Function" },
-            s = { ":TestFile<CR>", "Test File" },
-            a = { ":TestSuite<CR>", "Test All" }
+            d = { "::%bd|e#<CR>", "Delete all except this Buffer" },
         },
         l = {
             name = "+LSP",
@@ -172,19 +237,29 @@ wk.setup {
             d = { ":cd %:h<CR>", "Change Directory" },
             s = { ":SymbolsOutline<CR>", "Symbols Outline" },
             e = { ":NvimTreeToggle<CR>", "File Tree" },
-            z = { ":ZenMode<CR>", "Zen Mode" },
-            n = { ":set norelativenumber<CR>", "Disable relative numbers" },
-            N = { ":set relativenumber<CR>", "Enable relative numbers" },
+            n = {
+                name = "+Line number",
+                n = { ":set norelativenumber<CR>", "Disable relative numbers" },
+                r = { ":set relativenumber<CR>", "Enable relative numbers" },
+            },
             w = { ":lua OpenLink()<CR>", "Open Url" },
             a = { "zR", "Open All Fold" },
-            t = { ":10new +terminal<CR>", "Open Terminal" }
+            t = {
+                name = "+Terminal",
+                j = { ':lua OpenTerminal("horizontal")<CR>', "Open Horizontal" },
+                l = { ':lua OpenTerminal("vertical")<CR>', "Open Vertical" },
+                k = { ':lua OpenTerminal("tab")<CR>', "Open Tab" },
+                h = { ':lua OpenTerminal("float")<CR>', "Open Float" },
+            }
         },
         e = {
             name = "+Essentials",
-            m = { ":lua GolangMock()<CR>", "Golang Mock" },
-            c = { ":lua Code()<CR>", "Golang Coverage" },
-            s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
-            d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
+            d = {
+                name = "+Discord",
+                s = { ":lua package.loaded.presence:cancel()<CR>", "Stop Discord" },
+                d = { ":lua package.loaded.presence:update()<CR>", "Start Discord" },
+            },
+            z = { ":ZenMode<CR>", "Zen Mode" },
         },
         g = {
             name = "+Git",
@@ -200,11 +275,7 @@ wk.setup {
         },
         c = {
             name = "+Code",
-            g = {
-                name = "+Golang",
-                t = { ":lua GO_TIDY()<CR>", "Go Mod Tidy" },
-                m = { ":lua GolangMock()<CR>", "Go Mock" },
-            },
+            r = { ":lua RunProgram()<CR>", "Run Program" }
         }
     },
         { prefix = "<leader>", mode = "n", noremap = true }),
