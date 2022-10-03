@@ -81,6 +81,16 @@ function RunProgram()
         })
         runFile:toggle()
     end
+    if ext == ".cpp" then
+        Cmd.execute = { "g++", file, "&&", "./a.out" }
+        local cmd = table.concat(Cmd.execute, " ")
+        runFile = Terminal:new({
+            cmd = cmd,
+            hidden = true,
+            close_on_exit = false,
+        })
+        runFile:toggle()
+    end
     if ext == ".go" then
         local path = output .. "/main.go"
         Cmd.execute = { "go", "run", path }
