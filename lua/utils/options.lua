@@ -6,12 +6,22 @@ opt.fillchars = { eob = " " }
 -- local colorscheme = require('utils.nekorc').colorscheme
 local style = require('utils.nekorc').colorstyle
 
-
 -- vim.cmd.colorscheme(colorscheme)
 
 g.ultest_use_pty = 1
 g.do_filetype_lua = 1
 
+opt.virtualedit = 'block'
+
+
+opt.guicursor = {
+    'n-v-c:block',
+    'i-ci-ve:ver25',
+    'r-cr:hor20',
+    'o:hor50',
+    'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
+    'sm:block-blinkwait175-blinkoff150-blinkon175',
+}
 
 vim.o.background = style
 opt.hlsearch = false

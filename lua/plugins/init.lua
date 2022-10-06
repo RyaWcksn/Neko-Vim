@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
         'projekt0n/github-nvim-theme',
         config = function()
             require("github-theme").setup({
-                theme_style = "dark",
+                theme_style = "light",
                 function_style = "italic",
                 sidebars = { "qf", "vista_kind", "terminal", "packer" },
 
@@ -252,13 +252,7 @@ return require('packer').startup(function(use)
 
     -- Floating terminal
     use { 'voldikss/vim-floaterm' }
-    use {
-        "akinsho/toggleterm.nvim",
-        tag = 'v1.*',
-        config = function()
-            require('core.toggleterm-nvim')
-        end
-    }
+    use { "akinsho/toggleterm.nvim" }
 
     -- Zen Mode
     use {

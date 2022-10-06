@@ -19,8 +19,8 @@ function GolangMock()
 end
 
 function OpenLink()
-    if vim.fn.has("macunix") == 1 then
-        vim.api.nvim_command("silent execute '!open ' . shellescape('<cWORD>')")
+    if vim.fn.has("mac") == 1 then
+        vim.api.nvim_command("execute '!open ' . shellescape('<cWORD>')")
     else
         vim.api.nvim_command("silent execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)")
     end
@@ -29,7 +29,7 @@ end
 function OpenTerminal(dir)
     local Terminal = require('toggleterm.terminal').Terminal
     local Term = Terminal:new({
-        cmd = "zsh",
+        open_mapping = [[<c-\>]],
         direction = dir,
         close_on_exit = false,
         on_close = function()

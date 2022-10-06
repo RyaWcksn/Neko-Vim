@@ -81,7 +81,7 @@ M.lualine_modules = {
         colored = false,
         symbols = { added = "  ", modified = " ", removed = " " },
         cond = hide_in_width,
-        color = { fg = '#ffffff', bg = '#262626' },
+        color = { fg = '#ffffff', bg = M.colors.blue },
     },
     diagnostic = {
         "diagnostics",
@@ -97,20 +97,20 @@ M.lualine_modules = {
         colored = true, -- Displays diagnostics status in color if set to true.
         update_in_insert = true, -- Update diagnostics in insert mode.
         always_visible = false, -- Show diagnostics even if there are none.
-        color = { fg = '#ffffff', bg = '#262626' },
+        color = { fg = '#ffffff', bg = M.colors.blue },
     },
     branch = {
         "branch",
         cond = hide_in_width,
         icon = " ",
-        color = { fg = '#ffffff', bg = '#262626' },
+        color = { fg = '#ffffff', bg = M.colors.blue },
     },
     user = {
         function()
             local user = os.capture("git config --get user.name")
             return " " .. user
         end,
-        color = { fg = '#ffffff', bg = '#262626' },
+        color = { fg = '#ffffff', bg = M.colors.blue },
     },
     mode = {
         function()
@@ -139,7 +139,7 @@ M.lualine_modules = {
                 ['!'] = M.colors.red,
                 t = M.colors.red,
             }
-            return { fg = mode_color[vim.fn.mode()], bg = M.colors.bg }
+            return { fg = mode_color[vim.fn.mode()], bg = M.colors.blue }
         end
     },
 }
