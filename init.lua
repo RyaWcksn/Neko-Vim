@@ -24,3 +24,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
     command = "setlocal nonumber norelativenumber signcolumn=no | setfiletype terminal",
 })
 
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
