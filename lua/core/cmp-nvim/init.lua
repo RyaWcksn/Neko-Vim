@@ -141,7 +141,7 @@ cmp.setup({
             return vim_item
         end,
     },
-    enabled = function()
+    --[[ enabled = function()
         -- disable completion in comments
         local context = require 'cmp.config.context'
         -- keep command mode completion enabled when cursor is in a comment
@@ -151,5 +151,5 @@ cmp.setup({
             return not context.in_treesitter_capture("comment")
                 and not context.in_syntax_group("Comment")
         end
-    end
+    end ]]
 })

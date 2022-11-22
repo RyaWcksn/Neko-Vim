@@ -44,13 +44,13 @@ function M.nvim_create_augroups(definitions)
 end
 
 -- Enter your colorscheme name here
-M.colorscheme = "vscode"
+M.colorscheme = "catppuccin"
 
 -- Light or Dark
 M.colorstyle = "dark"
 
 -- Enter your lualine colorscheme name here
-M.lualine_theme = "vscode"
+M.lualine_theme = "catppuccin"
 
 -- Enter your leader key
 M.leader = " "
@@ -144,23 +144,17 @@ M.lualine_modules = {
     },
 }
 
-vim.g.vscode_style = "dark"
-vim.g.vscode_transparent = 0
-vim.g.vscode_italic_comment = 1
-vim.g.vscode_disable_nvimtree_bg = true
-
 -- Input languages LSP to install
 M.languages = {
     servers = {
         "bashls",
         "jsonls",
         "sumneko_lua",
-        "pyright",
         "tsserver",
         "gopls",
         "golangci_lint_ls",
-        "rust_analyzer",
         "jdtls",
+        "grammarly",
     },
     -- Treesitter
     ensure_installed = { "bash", "javascript", "lua", "go", "typescript", "c", "java" },
@@ -314,6 +308,15 @@ function M.rust_analyzer(handler)
         settings = {
             ["rust-analyzer"] = {}
         }
+    }
+end
+
+function M.grammarly()
+    return lsp.grammarly.setup{
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        cmd = { "grammarly-languageserver", "--stdio" },
+        filetypes = { "markdown" },
     }
 end
 
