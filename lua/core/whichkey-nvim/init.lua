@@ -4,20 +4,6 @@ if not ok then
     os.exit(1)
 end
 
--- Golang Mock
-function GolangMock()
-    local file = vim.fn.expand("%")
-    local output = file:match "(.+)%..+$" .. "_mock.go"
-    local source = file:match "^.+/(.+)$"
-    local package = vim.fn.input("Package name: ")
-    local cmd = { "mockgen", "-source", source, "-destination", output, "-package", package }
-    os.execute(table.concat(cmd, " "))
-    print(", Mock file generated: " .. output .. " Package: " .. package)
-    vim.notify("Go mock created", "Info", {
-        title = "Go mock"
-    })
-end
-
 function OpenLink()
     if vim.fn.has("mac") == 1 then
         vim.api.nvim_command("execute '!open ' . shellescape('<cWORD>')")
@@ -112,31 +98,20 @@ wk.setup {
     {
         plugins = {
             marks = true, -- shows a list of your marks on ' and `
-            registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+            registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
             spelling = {
-                enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
                 suggestions = 20, -- how many suggestions should be shown in the list?
             },
-            -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-            -- No actual key bindings are created
             presets = {
-                operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-                motions = true, -- adds help for motions
-                text_objects = true, -- help for text objects triggered after entering an operator
+                operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+                motions = false, -- adds help for motions
+                text_objects = false, -- help for text objects triggered after entering an operator
                 windows = true, -- default bindings on <c-w>
-                nav = true, -- misc bindings to work with windows
-                z = true, -- bindings for folds, spelling and others prefixed with z
-                g = true, -- bindings for prefixed with g
+                nav = false, -- misc bindings to work with windows
+                z = false, -- bindings for folds, spelling and others prefixed with z
+                g = false, -- bindings for prefixed with g
             },
-        },
-        -- add operators that will trigger motion and text object completion
-        -- to enable all native operators, set the preset / operators plugin above
-        operators = { gc = "Comments" },
-        key_labels = {
-            ["<space>"] = "SPC",
-            ["<cr>"] = "RET",
-            ["<tab>"] = "TAB",
-            ["<A>"] = "META"
         },
         icons = {
             breadcrumb = ">>", -- symbol used in the command line area that shows your active key combo
