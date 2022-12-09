@@ -123,7 +123,11 @@ M.Mapping = {
     },
     c = {
         name = "+Code",
-        r = { ":lua RunProgram()<CR>", "Run Program" }
+        r = { ":lua RunProgram()<CR>", "Run Program" },
+        ["g"] = {
+            name = "+Golang",
+            t = {":GoTestFunc<CR>", "Test this function"}
+        }
     },
     ["Y"] = { "y$", "Yank from this line" },
     ["J"] = { "mzJ`z", "Move line below to this line" },
